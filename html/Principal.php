@@ -13,14 +13,15 @@
     <p>Centro de ayuda</p>
   </div>
   <div class="body">
-    <form class="form-busqueda" action="#" method="post">
+    <form class="form-busqueda" action="../controllers/resultado_busqueda.php" method="post">
       <h2>Buscar Vuelos</h2>
       <label for="origen">Origen:</label>
       <input type="text" name="origen" placeholder="Ingrese un origen" value="">
       <label for="destino">Origen:</label>
       <input type="text" name="destino" placeholder="Ingrese un destino" value="">
       <label for="fecha">Fecha:</label>
-      <input type="date" name="fech" value="">
+      <input type="date" name="fecha" value="">
+      <input type="submit" name="" value="Buscar">
     </form>
     <h2>Destacados</h2>
     <?php foreach($this->vuelos_precio_minimo as $v){ ?>
