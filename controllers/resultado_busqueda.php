@@ -11,9 +11,13 @@ if (count($_POST)>1) {
 
   $origen = $_POST['origen'];
   $destino = $_POST['destino'];
-  $fecha = $_POST['fecha'];
 
-  $resultado_vuelos = $m->getVuelosDesdeBuscador($origen,$destino,$fecha);
+  if (isset($_POST['no-fecha'])) {
+    $resultado_vuelos = $m->getVuelosDesdeBuscadorSinFecha($origen,$destino);
+  }else{
+    $fecha = $_POST['fecha'];
+    $resultado_vuelos = $m->getVuelosDesdeBuscadorConFecha($origen,$destino,$fecha);
+  }
 
   $v = new Resultado_busqueda();
   $v->resultado = $resultado_vuelos;

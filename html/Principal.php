@@ -17,10 +17,12 @@
       <h2>Buscar Vuelos</h2>
       <label for="origen">Origen:</label>
       <input type="text" name="origen" placeholder="Ingrese un origen" value="">
-      <label for="destino">Origen:</label>
+      <label for="destino">Destino:</label>
       <input type="text" name="destino" placeholder="Ingrese un destino" value="">
       <label for="fecha">Fecha:</label>
       <input type="date" name="fecha" value="">
+      <label for="no-fecha">No he decidido la fecha aun:</label>
+      <input type="checkbox" name="no-fecha" value="" checked>
       <input type="submit" name="" value="Buscar">
     </form>
     <h2>Destacados</h2>
@@ -29,6 +31,9 @@
         <p><?= $v['destino'] ?></p>
         <p>Saliendo desde <?= $v['origen'] ?></p>
         <p>Precio desde <?= $v['precio_minimo'] ?></p>
+        <button type="button" name="button">
+          <a href="#">Mas Info</a>
+        </button>
     <?php } ?>
   </div>
   <div class="footer">
