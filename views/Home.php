@@ -1,6 +1,6 @@
 <?php
 
-class Menu extends View{
+class Home extends View{
 
     public $vuelos;
 

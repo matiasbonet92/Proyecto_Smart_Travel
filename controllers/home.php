@@ -1,14 +1,14 @@
 <?php
 
-// controllers/menu
+  // controllers/menu
 
-require('../fw/fw.php');
-require('../views/Menu.php');
-require('../models/Vuelos.php');
+  require('../fw/fw.php');
+  require('../views/Home.php');
+  require('../models/Vuelos.php');
 
-$m = new Vuelos();
-$vuelos = $m->getVuelos();
+  $m = new Vuelos();
+  $vuelos = $m->getVuelos();
 
-$v = new Menu();
-$v->vuelos = $vuelos;
-$v->render();
+  $v = new Home();
+  $v->vuelos = $vuelos;
+  $v->render();

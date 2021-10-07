@@ -7,8 +7,17 @@
     <title>Document</title>
 </head>
 <body>
+  <div class="header">
+    <p>Aca iria el logo</p>
+    <button type="button" name="button">Boton de Login</button>
+  </div>
+  <div class="body">
     <?php foreach($this->vuelos as $v){ ?>
         <p><?= $v['nombre'] ?></p>
     <?php } ?>
+  </div>
+  <div class="footer">
+    <p>Aca iria el pie de pagina</p>
+  </div>
 </body>
 </html>
