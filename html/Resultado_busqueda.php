@@ -19,6 +19,12 @@
           <p><?= $r['destino'] ?></p>
           <p>Saliendo desde <?= $r['origen'] ?></p>
           <p>Precio <?= $r['precio'] ?></p>
+          <button type="button" name="button">
+            <a href="#">Favoritos</a>
+          </button>
+          <button type="button" name="button">
+            <a href="../controllers/principal.php">Volver a Buscar</a>
+          </button>
       <?php } ?>
     <?php }else{ ?>
               <h1><?= $this->resultado ?></h1>
