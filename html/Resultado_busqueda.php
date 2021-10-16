@@ -13,6 +13,9 @@
     <p>Centro de ayuda</p>
   </div>
     <h2>Resultados</h2>
+    <button type="button" name="button">
+      <a href="../controllers/principal.php">Volver a Buscar</a>
+    </button>
     <?php if (is_array($this->resultado)) { ?>
       <?php foreach($this->resultado as $r){ ?>
           <h3>Destino</h3>
@@ -20,17 +23,14 @@
           <p>Saliendo desde <?= $r['origen'] ?></p>
           <p>Precio <?= $r['precio'] ?></p>
           <button type="button" name="button">
-            <a href="#">Favoritos</a>
+            <a href="#">Mas Informacion</a>
           </button>
           <button type="button" name="button">
-            <a href="../controllers/principal.php">Volver a Buscar</a>
+            <a href="#">Favoritos</a>
           </button>
       <?php } ?>
     <?php }else{ ?>
               <h1><?= $this->resultado ?></h1>
-              <button type="button" name="">
-                <a href="../controllers/principal.php">Nueva Busqueda</a>
-              </button>
     <?php } ?>
   </div>
   <div class="footer">

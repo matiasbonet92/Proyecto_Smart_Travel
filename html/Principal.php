@@ -9,8 +9,12 @@
 <body>
   <div class="header">
     <p>Aca iria el logo</p>
-    <button type="button" name="button">Boton de Login</button>
-    <p>Centro de ayuda</p>
+    <button type="button" name="button">
+      <a href="#">Login</a>
+    </button>
+    <button type="button" name="button">
+      <a href="#">Centro de Ayuda</a>
+    </button>
   </div>
   <div class="body">
     <form class="form-busqueda" action="../controllers/resultado_busqueda.php" method="post">
@@ -32,7 +36,7 @@
         <p>Saliendo desde <?= $v['origen'] ?></p>
         <p>Precio desde <?= $v['precio_minimo'] ?></p>
         <button type="button" name="button">
-          <a href="#">Mas Info</a>
+          <a href="../controllers/resultado_busqueda.php?origen=<?= $v['origen'] ?>&destino=<?= $v['destino'] ?>">Ver mas</a>
         </button>
     <?php } ?>
   </div>
