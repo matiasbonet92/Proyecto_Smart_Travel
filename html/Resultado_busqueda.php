@@ -9,8 +9,12 @@
 <body>
   <div class="header">
     <p>Aca iria el logo</p>
-    <button type="button" name="button">Boton de Login</button>
-    <p>Centro de ayuda</p>
+    <button type="button" name="button">
+      <a href="#">Login</a>
+    </button>
+    <button type="button" name="button">
+      <a href="#">Centro de Ayuda</a>
+    </button>
   </div>
     <h2>Resultados</h2>
     <button type="button" name="button">
