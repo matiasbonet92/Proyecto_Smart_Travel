@@ -7,15 +7,9 @@
     <title>Document</title>
 </head>
 <body>
-  <div class="header">
-    <p>Aca iria el logo</p>
-    <button type="button" name="button">
-      <a href="#">Login</a>
-    </button>
-    <button type="button" name="button">
-      <a href="#">Centro de Ayuda</a>
-    </button>
-  </div>
+  <?php require '../html/Header.php'; ?>
+
+  <div class="body">
     <h2>Resultados</h2>
     <button type="button" name="button">
       <a href="../controllers/principal.php">Volver a Buscar</a>
@@ -30,15 +24,15 @@
             <a href="#">Mas Informacion</a>
           </button>
           <button type="button" name="button">
-            <a href="#">Favoritos</a>
+            <a href="../controllers/favorito.php?id_vuelo=<?=$r['id_vuelos']?>">Favoritos</a>
           </button>
       <?php } ?>
     <?php }else{ ?>
               <h1><?= $this->resultado ?></h1>
     <?php } ?>
   </div>
-  <div class="footer">
-    <p>Aca iria el pie de pagina</p>
-  </div>
+
+  <?php require '../html/Footer.php'; ?>
+  
 </body>
 </html>

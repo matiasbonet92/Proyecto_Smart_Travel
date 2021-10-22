@@ -4,18 +4,12 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <link rel="stylesheet" type="text/css" href="../css/bootstrap.css"> -->
     <title>Document</title>
 </head>
 <body>
-  <div class="header">
-    <p>Aca iria el logo</p>
-    <button type="button" name="button">
-      <a href="#">Login</a>
-    </button>
-    <button type="button" name="button">
-      <a href="#">Centro de Ayuda</a>
-    </button>
-  </div>
+  <?php require '../html/Header.php'; ?>
+  
   <div class="body">
     <form class="form-busqueda" action="../controllers/resultado_busqueda.php" method="post">
       <h2>Buscar Vuelos</h2>
@@ -29,19 +23,48 @@
       <input type="checkbox" name="no-fecha" value="" checked>
       <input type="submit" name="" value="Buscar">
     </form>
-    <h2>Destacados</h2>
-    <?php foreach($this->vuelos_precio_minimo as $v){ ?>
-        <h3>Destino</h3>
-        <p><?= $v['destino'] ?></p>
-        <p>Saliendo desde <?= $v['origen'] ?></p>
-        <p>Precio desde <?= $v['precio_minimo'] ?></p>
-        <button type="button" name="button">
-          <a href="../controllers/resultado_busqueda.php?origen=<?= $v['origen'] ?>&destino=<?= $v['destino'] ?>">Ver mas</a>
-        </button>
+
+    <?php if (isset($this->favoritos)) { ?>
+
+        <h2>Favoritos</h2>
+        <?php foreach($this->favoritos as $fav){ ?>
+          <h3>Destino</h3>
+          <p><?= $fav['destino'] ?></p>
+          <p>Saliendo desde <?= $fav['origen'] ?></p>
+          <p>Precio <?= $fav['precio'] ?></p>
+          <button type="button" name="button">
+            <a href="../controllers/resultado_busqueda.php?origen=<?= $fav['origen'] ?>&destino=<?= $fav['destino'] ?>">Ver mas</a>
+          </button>
+        <?php } ?>
+            
+        <h2>Destacados</h2>
+        <?php foreach($this->vuelos_precio_minimo as $v){ ?>
+            <h3>Destino</h3>
+            <p><?= $v['destino'] ?></p>
+            <p>Saliendo desde <?= $v['origen'] ?></p>
+            <p>Precio desde <?= $v['precio_minimo'] ?></p>
+            <button type="button" name="button">
+              <a href="../controllers/resultado_busqueda.php?origen=<?= $v['origen'] ?>&destino=<?= $v['destino'] ?>">Ver mas</a>
+            </button>
+        <?php } ?>
+
+    <?php }else{ ?>
+
+      <h2>Destacados</h2>
+      <?php foreach($this->vuelos_precio_minimo as $v){ ?>
+          <h3>Destino</h3>
+          <p><?= $v['destino'] ?></p>
+          <p>Saliendo desde <?= $v['origen'] ?></p>
+          <p>Precio desde <?= $v['precio_minimo'] ?></p>
+          <button type="button" name="button">
+            <a href="../controllers/resultado_busqueda.php?origen=<?= $v['origen'] ?>&destino=<?= $v['destino'] ?>">Ver mas</a>
+          </button>
+      <?php } ?>
+      
     <?php } ?>
   </div>
-  <div class="footer">
-    <p>Aca iria el pie de pagina</p>
-  </div>
+  
+  <?php require '../html/Footer.php'; ?>
+
 </body>
 </html>

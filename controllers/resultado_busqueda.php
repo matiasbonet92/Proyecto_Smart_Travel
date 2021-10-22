@@ -1,13 +1,15 @@
 <?php
 
 //controllers/resultado_busqueda
+session_start();
+
 require('../fw/fw.php');
 require('../views/Resultado_busqueda.php');
 require('../models/Vuelos.php');
 
 $m = new Vuelos();
 
-if (count($_GET)>1) {
+if (count($_GET)>0) {
 
   $origen = $_GET['origen'];
   $destino = $_GET['destino'];
@@ -19,7 +21,7 @@ if (count($_GET)>1) {
   $v->render();
 }
 
-if (count($_POST)>1) {
+if (count($_POST)>0) {
 
   $origen = $_POST['origen'];
   $destino = $_POST['destino'];
