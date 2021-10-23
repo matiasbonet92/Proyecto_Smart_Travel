@@ -38,6 +38,8 @@
       header("Location: ../controllers/reserva.php?id_vuelo=$id_vuelo");
       exit;
 
+      /*ver si viene por el lado de reserva o favorito*/
+
     }else{
       header("Location: ../controllers/login.php?error=$login_correcto");
       exit;
@@ -65,7 +67,7 @@
 
       header("Location: ../controllers/favorito.php?id_vuelo=$id_vuelo");
       exit;
-      
+
     }else{
       header("Location: ../controllers/login.php?error=$login_correcto");
       exit;

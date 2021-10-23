@@ -32,9 +32,9 @@ if(isset($_GET['id_vuelo'])){
       $datos_login = $u->createUsuarios($mail,$clave,$nombre);
 
       if (is_array($datos_login)) {
-        
+
         $_SESSION['logueado'] = true;
-        
+
         foreach($datos_login as $data){
           $_SESSION['id_login'] = $data['id_login'];
           $_SESSION['mail'] = $data['mail'];
@@ -46,7 +46,8 @@ if(isset($_GET['id_vuelo'])){
           exit;
         }
 
-        header("Location: ../controllers/principal.php");
+        $mensaje = 'Complete sus datos personales ya que son obligatorios para reservar vuelos y guardar favoritos';
+        header("Location: ../controllers/perfil.php?mensaje=$mensaje");
         exit;
 
       }else{

@@ -23,7 +23,7 @@
         <p>Precio final <?= $datos['precio'] ?></p>
         <form class="" action="../controllers/reserva.php" method="post">
           <label for="cant_pasajeros">Cantidad de Pasajeros:</label>
-          <input type="number" name="cant_pasajeros" id="cant_pasajeros" min="1" max="200" required>
+          <input type="number" name="cant_pasajeros" id="cant_pasajeros" min="1" required>
           <label for="contrato">He leido las condiciones y expreso conformidad:</label>
           <input type="checkbox" name="contrato" id="contrato" required checked>
   				<input type="text" name="id_vuelo" value="<?= $this->id_vuelo ?>" hidden>

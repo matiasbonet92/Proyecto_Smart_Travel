@@ -10,7 +10,7 @@
   $u = new Usuarios();
 
   if (count($_POST)>0) {
-    
+
     $nombre = $_POST['nombre'];
     $apellido = $_POST['apellido'];
     $mail = $_POST['mail'];
@@ -27,7 +27,7 @@
       $_SESSION['direccion'] = $data['direccion'];
       $_SESSION['telefono'] = $data['telefono'];
     }
-     
+
     if (is_array($consulta)) {
       $v = new Perfil();
       $v->id_login = $id_login;
@@ -79,6 +79,5 @@
       $v->direccion = $direccion;
       $v->telefono = $telefono;
       $v->render();
-      
+
     }
-            
