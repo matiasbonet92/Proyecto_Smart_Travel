@@ -7,13 +7,13 @@
       <button type="button" name="button">
         <a href="#">Centro de Ayuda</a>
       </button>
-    <?php }else{ ?> 
+    <?php }else{ ?>
       <h2>Bienvenido/a <?= $_SESSION['nombre'] ?></h2>
       <ul>
         <li>Menu
           <ul>
             <li><a href="../controllers/perfil.php">Mi Perfil</a></li>
-            <li><a href="#">Mis Viajes</a></li>
+            <li><a href="../controllers/misviajes.php">Mis Viajes</a></li>
             <li><a href="../controllers/misfavoritos.php">Favoritos</a></li>
           </ul>
         </li>
