@@ -7,6 +7,13 @@
       return $this->db->fetchAll();
     }
 
+    public function getVueloById($id_vuelo){
+      $this->db->query("SELECT id_vuelos,v.nombre as nombre_vuelo, origen,fecha_origen,destino,fecha_destino,precio,descripcion_vuelo,v.id_empresa as id_empresa,e.nombre as nombre_empresa,contacto,direccion
+                        FROM vuelos v LEFT JOIN empresa e ON v.id_empresa=e.id_empresa
+                        WHERE id_vuelos='$id_vuelo'");
+      return $this->db->fetchAll();
+    }
+
     public function getVuelosConPrecioMinimo(){
       $this->db->query("SELECT origen,destino,MIN(precio) as precio_minimo FROM `vuelos` GROUP BY destino");
       return $this->db->fetchAll();

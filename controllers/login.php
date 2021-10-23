@@ -15,14 +15,16 @@
     $v->error = $_GET['error'];
     $v->render();
 
-  }elseif (count($_POST)==3) {
+  }elseif (count($_POST)==4) {
 
     $mail = $_POST['mail'];
     $clave = $_POST['clave'];
     $login_correcto = $m->getUsuarios($mail,$clave);
     $id_vuelo = $_POST['estado'];
+    $mensaje = $_POST['mensaje'];
 
     if (is_array($login_correcto)) {
+
       foreach ($login_correcto as $data) {
         $_SESSION['logueado'] = true;
         $_SESSION['id_login'] = $data['id_login'];
@@ -32,14 +34,44 @@
         $_SESSION['apellido'] = $data['apellido'];
         $_SESSION['direccion'] = $data['direccion'];
       }
-      header("Location: ../controllers/favorito.php?id_vuelo=$id_vuelo");
+
+      header("Location: ../controllers/reserva.php?id_vuelo=$id_vuelo");
       exit;
+
     }else{
       header("Location: ../controllers/login.php?error=$login_correcto");
       exit;
     }
-    
-    }elseif (count($_POST)>0) {       
+
+}elseif (count($_POST)==3) {
+
+    $mail = $_POST['mail'];
+    $clave = $_POST['clave'];
+    $login_correcto = $m->getUsuarios($mail,$clave);
+    $id_vuelo = $_POST['estado'];
+    $mensaje = $_POST['mensaje'];
+
+    if (is_array($login_correcto)) {
+
+      foreach ($login_correcto as $data) {
+        $_SESSION['logueado'] = true;
+        $_SESSION['id_login'] = $data['id_login'];
+        $_SESSION['mail'] = $data['mail'];
+        $_SESSION['dni'] = $data['dni'];
+        $_SESSION['nombre'] = $data['nombre'];
+        $_SESSION['apellido'] = $data['apellido'];
+        $_SESSION['direccion'] = $data['direccion'];
+      }
+
+      header("Location: ../controllers/favorito.php?id_vuelo=$id_vuelo");
+      exit;
+      
+    }else{
+      header("Location: ../controllers/login.php?error=$login_correcto");
+      exit;
+    }
+
+    }elseif (count($_POST)>0) {
 
         $mail = $_POST['mail'];
         $clave = $_POST['clave'];
@@ -64,9 +96,5 @@
         }
     }else{
         $v = new Ingreso();
-        $v->render();         
+        $v->render();
      }
-
-  
-
-  

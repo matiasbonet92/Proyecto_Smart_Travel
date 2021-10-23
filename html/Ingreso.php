@@ -6,7 +6,7 @@
 </head>
 <body>
 	<?php require '../html/HeaderLoginRegister.php'; ?>
-	
+
 	<div class="body">
 
 		<?php if (isset($this->resultado)) { ?>
@@ -15,6 +15,7 @@
 				<input type="text" name="mail">
 				<input type="password" name="clave">
 				<input type="text" name="estado" value="<?= $this->estado ?>" hidden>
+				<input type="text" name="mensaje" value="<?= $this->mensaje ?>" hidden>
 				<input type="submit" name="" value="Ingresar">
 			</form>
 			<button type="button" name="button">
@@ -36,7 +37,7 @@
 			<button type="button" name="button">
 			    <a href="../controllers/principal.php">Volver al Principal</a>
 			</button>
-		<?php }else{ ?> 
+		<?php }else{ ?>
 			<form action="../controllers/login.php" method="post">
 				<input type="text" name="mail">
 				<input type="password" name="clave">
@@ -49,7 +50,7 @@
 			    <a href="../controllers/principal.php">Volver al Principal</a>
 			</button>
 		<?php } ?>
-		
+
 	</div>
 
 	<?php require '../html/Footer.php'; ?>

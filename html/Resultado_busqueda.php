@@ -21,7 +21,7 @@
           <p>Saliendo desde <?= $r['origen'] ?></p>
           <p>Precio <?= $r['precio'] ?></p>
           <button type="button" name="button">
-            <a href="#">Mas Informacion</a>
+            <a href="../controllers/info_vuelo.php?id_vuelo=<?= $r['id_vuelos'] ?>">Mas Informacion</a>
           </button>
           <button type="button" name="button">
             <a href="../controllers/favorito.php?id_vuelo=<?=$r['id_vuelos']?>">Favoritos</a>
@@ -33,6 +33,6 @@
   </div>
 
   <?php require '../html/Footer.php'; ?>
-  
+
 </body>
 </html>
