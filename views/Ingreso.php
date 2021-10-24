@@ -6,5 +6,6 @@ class Ingreso extends View{
 	public $resultado;
 	public $error;
 	public $mensaje;
+	public $redireccion;
 
 }

@@ -13,7 +13,7 @@
 
   if (isset($_SESSION['logueado'])) {
     $vuelos_precio_minimo = $m->getVuelosConPrecioMinimo();
-    if ($_SESSION['dni']==0) {
+    if (!isset($_SESSION['dni'])) {
       $v = new Principal();
       $v->vuelos_precio_minimo = $vuelos_precio_minimo;
       $v->render();

@@ -17,7 +17,7 @@
 			<p>Nombre: <?= $this->nombre ?></p>
 			<p>Apellido: <?= $this->apellido ?></p>
 			<p>Mail: <?= $this->mail ?></p>
-			<?php if($this->dni > 0){ ?>
+			<?php if($this->dni){ ?>
 				<p>Dni: <?= $this->dni ?></p>
 			<?php } ?>
 			<p>Direccion: <?= $this->direccion ?></p>
@@ -35,7 +35,7 @@
 				<input type="text" name="apellido" id="apellido" value="<?= $this->apellido ?>">
 				<label for="mail">Mail:</label>
 				<input type="text" name="mail" id="mail" value="<?= $this->mail ?>">
-				<?php if($this->dni == 0){ ?>
+				<?php if(!isset($this->dni)){ ?>
 					<label for="dni">Dni:</label>
 					<input type="number" name="dni" id="dni" maxlength="10">
 				<?php }else{ ?>

@@ -15,7 +15,7 @@ $r = new Reservas();
 
 if (isset($_SESSION['logueado'])) {
 
-  if (count($_POST)==4) {
+  if (count($_POST)==5) {
 
     $id_vuelo = $_POST['id_vuelo'];
     $dni = $_POST['dni'];
@@ -47,13 +47,20 @@ if (isset($_SESSION['logueado'])) {
     $id_vuelo = $_GET['id_vuelo'];
     $dni = $_SESSION['dni'];
 
-    $datos_vuelo = $m->getVueloById($id_vuelo);
+    if (!isset($dni)) {
+      $mensaje = 'Debe completar sus datos personales para poder guardar favoritos y realizar reservas';
 
-    $v = new Reservar();
-    $v->id_vuelo = $id_vuelo;
-    $v->datos_vuelo = $datos_vuelo;
-    $v->dni = $dni;
-    $v->render();
+      header("Location: ../controllers/perfil.php?mensaje=$mensaje&id_vuelo=$id_vuelo");
+      exit;
+    }else{
+      $datos_vuelo = $m->getVueloById($id_vuelo);
+
+      $v = new Reservar();
+      $v->id_vuelo = $id_vuelo;
+      $v->datos_vuelo = $datos_vuelo;
+      $v->dni = $dni;
+      $v->render();
+    }
 
   }
 
@@ -62,6 +69,7 @@ if (isset($_SESSION['logueado'])) {
   $v = new Ingreso();
   $v->resultado = 'Por favor, debe ingresar con su usuario para reservar el vuelo';
   $v->estado = $_GET['id_vuelo'];
+  $v->redireccion = 'reserva';
   $v->mensaje = 'reserva';
   $v->render();
 

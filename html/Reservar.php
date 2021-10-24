@@ -6,7 +6,7 @@
   </head>
   <body>
 
-    <?php require ('../html/HeaderLoginRegister.php'); ?>
+    <?php require ('../html/Header.php'); ?>
 
     <div class="body">
       <h2>Tu reserva esta casi finalizada!!</h2>

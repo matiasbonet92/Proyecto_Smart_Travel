@@ -15,7 +15,7 @@
     $v->error = $_GET['error'];
     $v->render();
 
-  }elseif (count($_POST)==4) {
+  }elseif (count($_POST)==5) {
 
     $mail = $_POST['mail'];
     $clave = $_POST['clave'];
@@ -35,9 +35,15 @@
         $_SESSION['direccion'] = $data['direccion'];
       }
 
-      header("Location: ../controllers/reserva.php?id_vuelo=$id_vuelo");
-      exit;
+      $redireccion = $_POST['redireccion'];
 
+      if ($redireccion == 'favorito') {
+        header("Location: ../controllers/favorito.php?id_vuelo=$id_vuelo");
+        exit;
+      }else{
+        header("Location: ../controllers/reserva.php?id_vuelo=$id_vuelo");
+        exit;
+      }
       /*ver si viene por el lado de reserva o favorito*/
 
     }else{

@@ -16,6 +16,8 @@
 				<input type="password" name="clave">
 				<input type="text" name="estado" value="<?= $this->estado ?>" hidden>
 				<input type="text" name="mensaje" value="<?= $this->mensaje ?>" hidden>
+				<input type="text" name="redireccion" value="<?= $this->redireccion ?>" hidden>
+
 				<input type="submit" name="" value="Ingresar">
 			</form>
 			<button type="button" name="button">
