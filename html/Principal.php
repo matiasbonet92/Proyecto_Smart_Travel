@@ -10,7 +10,8 @@
     <title>SMART TRAVEL</title>
     <link rel="icon" type="image/png" href="../media/logo.png">
 </head>
-<body>
+<body style="background-image: url('../media/back.jpg');background-repeat: no-repeat;background-attachment: fixed;background-size: cover;">
+
   <?php require '../html/Header.php'; ?>
 
   <div class="d-grid gap-2" style="background-color: white">
