@@ -8,6 +8,7 @@
     }
 
     public function getReservasByDni($dni){
+
       $this->db->query("SELECT id_reserva,r.dni as dni,r.id_vuelos as id_vuelos,cant_pasajeros,v.nombre as nombre_vuelo,v.origen,v.fecha_origen,v.destino,v.fecha_destino,v.precio,v.descripcion_vuelo,e.nombre as nombre_empresa,e.contacto
                         FROM reservas r
                         LEFT JOIN vuelos v ON r.id_vuelos=v.id_vuelos
@@ -21,7 +22,12 @@
                         FROM reservas
                         WHERE id_vuelos='$id_vuelo'
                         GROUP BY cant_pasajeros");
-      return $this->db->fetchAll();
+
+        if ($this->db->numRows()==0) {
+          return 0;
+        }else{
+          return $this->db->fetchAll();
+        }
     }
 
     public function crearReserva($dni,$id_vuelo,$cant_pasajeros){

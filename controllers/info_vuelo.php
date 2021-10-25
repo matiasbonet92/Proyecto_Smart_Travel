@@ -1,6 +1,7 @@
 <?php
 
 //controllers/info_vuelo
+session_start();
 
 require('../fw/fw.php');
 require('../views/Informacion_Vuelo.php');

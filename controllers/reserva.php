@@ -15,7 +15,7 @@ $r = new Reservas();
 
 if (isset($_SESSION['logueado'])) {
 
-  if (count($_POST)==5) {
+  if (count($_POST)==4) {
 
     $id_vuelo = $_POST['id_vuelo'];
     $dni = $_POST['dni'];
@@ -23,8 +23,13 @@ if (isset($_SESSION['logueado'])) {
     $max_pasajeros = 200;
 
     $pasajeros_actual = $r->consultarCantidadPasajerosVuelo($id_vuelo);
-    foreach ($pasajeros_actual as $pasajeros) {
-      $cant_actual = $pasajeros['pasajeros_actual'];
+
+    if ($pasajeros_actual==0) {
+      $cant_actual = 0;
+    }else{
+      foreach ($pasajeros_actual as $pasajeros) {
+        $cant_actual = $pasajeros['pasajeros_actual'];
+      }
     }
 
     if (($cantidad_pasajeros+$cant_actual)<=$max_pasajeros) {
