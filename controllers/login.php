@@ -87,6 +87,17 @@
 
         if (is_array($login_correcto)) {
           foreach ($login_correcto as $data) {
+
+            if ($data['nombre']=='Admin' && $data['mail']=='root') {
+              $_SESSION['logueado'] = true;
+              $_SESSION['id_login'] = $data['id_login'];
+              $_SESSION['mail'] = $data['mail'];
+              $_SESSION['nombre'] = $data['nombre'];
+
+              header("Location: ../controllers/administrador.php");
+              exit;
+            }
+
             $_SESSION['logueado'] = true;
             $_SESSION['id_login'] = $data['id_login'];
             $_SESSION['mail'] = $data['mail'];
