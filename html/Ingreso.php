@@ -41,7 +41,7 @@
 					</div>
 		</nav>
 		<?php }elseif (isset($this->error)) { ?>
-			<div class="alert alert-dismissible alert-warning" style="width:100%">
+			<div class="alert alert-dismissible alert-warning m-0 w-100">
 				<button type="button" class="btn-close" data-bs-dismiss="alert"></button>
 				<h4 class="alert-heading">Aviso</h4>
 			<p class="mb-0"><?= $this->error ?></p>
