@@ -1,5 +1,7 @@
 <div class="header">
+  <a href="../controllers/principal.php">
     <img src="../media/fondo.jpg" style="max-width: 100%">
+    </a>
     <?php if (isset($_SESSION['id_login'])) { ?>
 
       <nav class="navbar navbar-expand-lg navbar-dark bg-primary">

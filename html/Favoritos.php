@@ -8,28 +8,40 @@
 	<title>SMART TRAVEL - Favoritos</title>
 	<link rel="icon" type="image/png" href="../media/logo.png">
 </head>
-<body>
+<body style="background-image: url('../media/back.jpg');background-repeat: no-repeat;background-attachment: fixed;background-size: cover;">
 
 	<?php require('../html/Header.php'); ?>
 
 	<div class="body">
 		<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
 		<h2 style="color:white">Favoritos</h2>
+	</nav>
+		<nav>
 		<?php if(isset($this->favoritos)) { ?>
 			<?php foreach($this->favoritos as $fav) { ?>
-				<h3>Destino</h3>
-	            <p><?= $fav['destino'] ?></p>
-	            <p>Saliendo desde <?= $fav['origen'] ?></p>
-	            <p>Precio <?= $fav['precio'] ?></p>
-	            <button type="button" name="button">
-	              <a href="../controllers/resultado_busqueda.php?origen=<?= $fav['origen'] ?>&destino=<?= $fav['destino'] ?>">Ver mas</a>
+				<div style="width:100%">
+				<nav class="navbar navbar-expand-lg navbar-dark bg-primary" style="width:100%">
+				<div class="izq">
+				<h3 style="color:white">Destino</h3>
+	            <p style="color:white"><?= $fav['destino'] ?></p>
+	            <p style="color:white">Saliendo desde: <?= $fav['origen'] ?></p>
+	            <p style="color:white">Precio: <?= $fav['precio'] ?></p>
+	            <button type="button" class="btn btn-secondary my-2 my-sm-0" name="button">
+	              <a class="navbar-brand" href="../controllers/resultado_busqueda.php?origen=<?= $fav['origen'] ?>&destino=<?= $fav['destino'] ?>">Ver mas</a>
 	            </button>
-	            <button type="button" name="button">
-	              <a href="../controllers/misfavoritos.php?dni=<?= $fav['dni'] ?>&id_vuelo=<?= $fav['id_vuelos'] ?>">Eliminar</a>
+	            <button type="button" class="btn btn-secondary my-2 my-sm-0" name="button">
+	              <a class="navbar-brand" href="../controllers/misfavoritos.php?dni=<?= $fav['dni'] ?>&id_vuelo=<?= $fav['id_vuelos'] ?>">Eliminar</a>
 	            </button>
+						</div>
+						</nav>
+					</div>
 			<?php } ?>
 		<?php }elseif(isset($this->mensaje)){ ?>
-			<h2 style="color:white"><?= $this->mensaje ?></h2>
+			<div class="alert alert-dismissible alert-warning" style="width:100%">
+		  	<button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+		  	<h4 class="alert-heading">Aviso</h4>
+		  	<p class="mb-0"><?= $this->mensaje ?></p>
+			</div>
 		<?php } ?>
 		</nav>
 		<nav class="navbar navbar-expand-lg navbar-dark bg-primary">

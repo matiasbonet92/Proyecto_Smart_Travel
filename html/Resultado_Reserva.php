@@ -8,15 +8,19 @@
   	<title>SMART TRAVEL - Reserva</title>
   	<link rel="icon" type="image/png" href="../media/logo.png">
   </head>
-  <body>
+  <body style="background-image: url('../media/back.jpg');background-repeat: no-repeat;background-attachment: fixed;background-size: cover;">
 
     <?php require('../html/Header.php'); ?>
 
   	<div class="body">
-  		<h1><?= $this->mensaje ?></h1>
-      <button type="button" name="button">
-        <a href="../controllers/principal.php">Volver a Principal</a>
+      <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+  		<h1 style="color:white"><?= $this->mensaje ?></h1>
+      </nav>
+      <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+      <button type="button" class="btn btn-secondary my-2 my-sm-0" name="button">
+        <a class="navbar-brand" href="../controllers/principal.php">Volver a Principal</a>
       </button>
+      </nav>
   	</div>
 
   	<?php require('../html/Footer.php'); ?>

@@ -1,5 +1,7 @@
 <div class="header">
+  <a href="../controllers/principal.php">
     <img src="../media/fondo.jpg" style="max-width: 100%">
+    </a>
     <?php if (!isset($_SESSION['id_login'])) { ?>
 
       <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
@@ -27,7 +29,7 @@
                   <div class="dropdown-divider"></div>
                   <a class="dropdown-item" href="../controllers/misviajes.php">Mis Viajes</a>
                   <div class="dropdown-divider"></div>
-                  <a class="dropdown-item" href="../controllers/misfavoritos.php">Favotitos</a>
+                  <a class="dropdown-item" href="../controllers/misfavoritos.php">Favoritos</a>
                 </div>
               </li>
             </ul>

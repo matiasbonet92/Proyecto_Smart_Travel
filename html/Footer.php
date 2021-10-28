@@ -1,5 +1,5 @@
 <div class="modal-footer">
-    <p>Cualquier consulta no dude en contactarnos al:</p>
-    <p>contacto@smarttravel.com</p>
-    <p>(+54)-9-11-22334455</p>
+    <p style="font-style:italic;color:black">Cualquier consulta no dude en contactarnos al:</p>
+    <p style="color:black">contacto@smarttravel.com</p>
+    <p style="color:black">(+54)-9-11-22334455</p>
 </div>

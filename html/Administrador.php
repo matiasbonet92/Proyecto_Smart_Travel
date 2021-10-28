@@ -8,7 +8,7 @@
     <title>SMART TRAVEL - Admin</title>
     <link rel="icon" type="image/png" href="../media/logo.png">
   </head>
-  <body>
+  <body style="background-image: url('../media/back.jpg');background-repeat: no-repeat;background-attachment: fixed;background-size: cover;">
 
     <?php require ('../html/HeaderAdmin.php'); ?>
 

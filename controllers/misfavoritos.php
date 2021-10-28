@@ -1,4 +1,4 @@
-<?php  
+<?php
 
 //controllers/misfavoritos
 
@@ -11,7 +11,7 @@ require('../models/Vuelos_favoritos.php');
 $vf = new Vuelos_favoritos();
 
 if (count($_GET)>0) {
-		
+
 		$dni = $_GET['dni'];
 		$id_vuelo = $_GET['id_vuelo'];
 
@@ -20,7 +20,7 @@ if (count($_GET)>0) {
 		$favoritos = $vf->getFavoritos($dni);
 
       if (!is_array($favoritos)) {
-	      $mensaje = 'No tenes vuelos Favoritos';
+	      $mensaje = 'No tienes vuelos Favoritos';
 	      $v = new Favoritos();
 	      $v->mensaje = $mensaje;
 	      $v->render();
@@ -40,7 +40,7 @@ if (count($_GET)>0) {
   $favoritos = $vf->getFavoritos($_SESSION['dni']);
 
   if (!is_array($favoritos)) {
-    $mensaje = 'No tenes vuelos Favoritos';
+    $mensaje = 'No tienes vuelos Favoritos';
     $v = new Favoritos();
     $v->mensaje = $mensaje;
     $v->render();
@@ -49,7 +49,7 @@ if (count($_GET)>0) {
   	$v->favoritos = $favoritos;
   	$v->render();
   }
-  
+
 }
 
 ?>

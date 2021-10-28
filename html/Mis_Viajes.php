@@ -8,30 +8,42 @@
     <title>SMART TRAVEL - Mis Viajes</title>
     <link rel="icon" type="image/png" href="../media/logo.png">
   </head>
-  <body>
+  <body style="background-image: url('../media/back.jpg');background-repeat: no-repeat;background-attachment: fixed;background-size: cover;">
 
     <?php require('../html/Header.php'); ?>
 
     <div class="body">
       <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
   		<h2 style="color:white">Mis Viajes</h2>
+  	</nav>
+      <nav>
   		<?php if(isset($this->reservas)) { ?>
   			<?php foreach($this->reservas as $res) { ?>
-  				<h3>Destino:</h3>
-          <p>Vuelo con destino a <?= $res['destino'] ?> para <?= $res['cant_pasajeros'] ?> pasajeros</p>
-          <p>Saliendo desde <?= $res['origen'] ?> el <?= $res['fecha_origen'] ?></p>
-          <p>Precio abonado <?= $res['precio'] ?></p>
-          <p>El numero de vuelo es <?= $res['nombre_vuelo'] ?> y es operado por <?= $res['nombre_empresa'] ?></p>
-          <p>Ante cualquer duda, favor de comunicarse al: <?= $res['contacto'] ?></p>
-          <h4>Consideraciones:</h4>
-          <p><?= $res['descripcion_vuelo'] ?></p>
+          <div style="width:100%">
+      		<nav class="navbar navbar-expand-lg navbar-dark bg-primary" style="width:100%">
+      		<div class="izq">
+  				<h3 style="color:white">Destino:</h3>
+          <p style="color:white">Vuelo con destino a: <?= $res['destino'] ?> para '<?= $res['cant_pasajeros'] ?>' pasajeros</p>
+          <p style="color:white">Saliendo desde: <?= $res['origen'] ?> el <?= $res['fecha_origen'] ?></p>
+          <p style="color:white">Precio abonado: <?= $res['precio'] ?></p>
+          <p style="color:white">El numero de vuelo es '<?= $res['nombre_vuelo'] ?>' y es operado por '<?= $res['nombre_empresa'] ?>'</p>
+          <p style="font-style:italic; color:white">Ante cualquer duda, favor de comunicarse al: <span style="font-style:normal"><?= $res['contacto'] ?></span></p>
+          <h4 style="color:white">Consideraciones:</h4>
+          <p style="color:white"><?= $res['descripcion_vuelo'] ?></p>
           <br>
-          <button type="button" name="button">
-    	      <a href="../controllers/misviajes.php?id_reserva=<?= $res['id_reserva'] ?>">Eliminar Reserva</a>
+          <button type="button" class="btn btn-secondary my-2 my-sm-0" name="button">
+    	      <a class="navbar-brand" href="../controllers/misviajes.php?id_reserva=<?= $res['id_reserva'] ?>">Eliminar Reserva</a>
     	    </button>
+        </div>
+        </nav>
+      </div>
   			<?php } ?>
   		<?php }elseif(isset($this->mensaje)){ ?>
-  			<h2><?= $this->mensaje ?></h2>
+        <div class="alert alert-dismissible alert-warning" style="width:100%">
+  		  	<button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+  		  	<h4 class="alert-heading">Aviso</h4>
+  		  	<p class="mb-0"><?= $this->mensaje ?></p>
+  			</div>
   		<?php } ?>
       </nav>
       <nav class="navbar navbar-expand-lg navbar-dark bg-primary">

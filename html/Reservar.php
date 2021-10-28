@@ -8,35 +8,45 @@
   	<title>SMART TRAVEL - Finalizar Reserva</title>
   	<link rel="icon" type="image/png" href="../media/logo.png">
   </head>
-  <body>
+  <body style="background-image: url('../media/back.jpg');background-repeat: no-repeat;background-attachment: fixed;background-size: cover;">
 
     <?php require ('../html/Header.php'); ?>
 
     <div class="body">
-      <h2>Tu reserva esta casi finalizada!!</h2>
-      <h3>Por favor te pedimos que revises los datos de la reserva</h3>
+      <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+      <h2 style="color:white">Tu reserva esta casi finalizada!!</h2>
+    </nav>
+    <div style="display:flex">
+		<nav class="navbar navbar-expand-lg navbar-dark bg-primary" style="width:100%">
+		<div class="izq">
+      <h3 style="color:white">Por favor te pedimos que revises los datos de la reserva</h3><br>
       <?php foreach($this->datos_vuelo as $datos) { ?>
 
-        <h3>Vuelo:</h3>
-        <p><?= $datos['nombre_vuelo'] ?> operado por <?= $datos['nombre_empresa'] ?></p>
-        <h3>Origen:</h3>
-        <p><?= $datos['origen'] ?> el <?= $datos['fecha_origen'] ?></p>
-        <h3>Destino:</h3>
-        <p><?= $datos['destino'] ?> el <?= $datos['fecha_destino'] ?></p>
-        <h3>Precio:</h3>
-        <p>Precio final <?= $datos['precio'] ?></p>
+        <h3 style="color:white">Vuelo:</h3>
+        <p style="color:white">'<?= $datos['nombre_vuelo'] ?>' operado por '<?= $datos['nombre_empresa'] ?>'</p>
+        <h3 style="color:white">Origen:</h3>
+        <p style="color:white"><?= $datos['origen'] ?> el <?= $datos['fecha_origen'] ?></p>
+        <h3 style="color:white">Destino:</h3>
+        <p style="color:white"><?= $datos['destino'] ?> el <?= $datos['fecha_destino'] ?></p>
+        <h3 style="color:white">Precio:</h3>
+        <p style="color:white">Precio final: <?= $datos['precio'] ?></p>
         <form class="" action="../controllers/reserva.php" method="post">
-          <label for="cant_pasajeros">Cantidad de Pasajeros:</label>
-          <input type="number" name="cant_pasajeros" id="cant_pasajeros" min="1" required>
-          <label for="contrato">He leido las condiciones y expreso conformidad:</label>
+          <label for="cant_pasajeros" style="color:white">Cantidad de Pasajeros:</label>
+          <input type="number" min="1" max="200" name="cant_pasajeros" id="cant_pasajeros" min="1" required>
+          <br><br>
+          <label for="contrato" style="color:white">He leido las condiciones y expreso conformidad:</label>
           <input type="checkbox" name="contrato" id="contrato" required checked>
   				<input type="text" name="id_vuelo" value="<?= $this->id_vuelo ?>" hidden>
   				<input type="text" name="dni" value="<?= $this->dni ?>" hidden>
+          <br><br>
   				<input type="submit" name="" value="Reservar">
         </form>
-        <br><br><button type="button" name="button">
-          <a href="../controllers/principal.php">Cancelar Reserva</a>
+        <br><br><button type="button" class="btn btn-secondary my-2 my-sm-0" name="button">
+          <a class="navbar-brand" href="../controllers/principal.php">Cancelar Reserva</a>
         </button>
+      </div>
+    </nav>
+  </div>
 
       <?php } ?>
     </div>

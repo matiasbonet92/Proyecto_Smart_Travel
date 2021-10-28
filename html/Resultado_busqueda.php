@@ -10,29 +10,41 @@
   	<title>SMART TRAVEL - Resultado de busqueda</title>
   	<link rel="icon" type="image/png" href="../media/logo.png">
 </head>
-<body>
+<body style="background-image: url('../media/back.jpg');background-repeat: no-repeat;background-attachment: fixed;background-size: cover;">
   <?php require '../html/Header.php'; ?>
 
   <div class="body">
-    <h2>Resultados</h2>
-    <button type="button" name="button">
-      <a href="../controllers/principal.php">Volver a Buscar</a>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <h2 style="color:white">Resultados</h2>
+
+    <div style="width:70%;float:right">
+    <button type="button" style="float:right" class="btn btn-secondary my-2 my-sm-0" name="button">
+      <a class="navbar-brand" href="../controllers/principal.php">Volver a Buscar</a>
     </button>
+  </div>
+    </nav>
     <?php if (is_array($this->resultado)) { ?>
       <?php foreach($this->resultado as $r){ ?>
-          <h3>Destino</h3>
-          <p><?= $r['destino'] ?></p>
-          <p>Saliendo desde <?= $r['origen'] ?></p>
-          <p>Precio <?= $r['precio'] ?></p>
-          <button type="button" name="button">
-            <a href="../controllers/info_vuelo.php?id_vuelo=<?= $r['id_vuelos'] ?>">Mas Informacion</a>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+          <div class="izq">
+          <h3 style="color:white">Destino</h3>
+          <p style="color:white"><?= $r['destino'] ?></p>
+          <p style="color:white">Saliendo desde: <?= $r['origen'] ?></p>
+          <p style="color:white">Precio: <?= $r['precio'] ?></p>
+          <button type="button" class="btn btn-secondary my-2 my-sm-0" name="button">
+            <a class="navbar-brand" href="../controllers/info_vuelo.php?id_vuelo=<?= $r['id_vuelos'] ?>">Mas Informacion</a>
           </button>
-          <button type="button" name="button">
-            <a href="../controllers/favorito.php?id_vuelo=<?=$r['id_vuelos']?>">Favoritos</a>
+          <button type="button" class="btn btn-secondary my-2 my-sm-0" name="button">
+            <a class="navbar-brand" href="../controllers/favorito.php?id_vuelo=<?=$r['id_vuelos']?>">Favoritos</a>
           </button>
+        </div>
+        </nav>
       <?php } ?>
     <?php }else{ ?>
-              <h1><?= $this->resultado ?></h1>
+              <div class="alert alert-dismissible alert-warning" style="width:100%">
+              <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+              <h1 class="alert-heading"><?= $this->resultado ?></h1>
+              </div>
     <?php } ?>
   </div>
 

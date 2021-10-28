@@ -8,14 +8,20 @@
 	<title>SMART TRAVEL - Mi Perfil</title>
 	<link rel="icon" type="image/png" href="../media/logo.png">
 </head>
-<body>
+<body style="background-image: url('../media/back.jpg');background-repeat: no-repeat;background-attachment: fixed;background-size: cover;">
 
 	<?php require('../html/Header.php');  ?>
 
-	<div class="body" style="display:flex">
+	<div class="body">
 		<?php if ($this->mensaje) { ?>
-			<h2><?= $this->mensaje ?></h2>
+
+			<div class="alert alert-dismissible alert-warning" style="width:100%">
+		  	<button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+		  	<h4 class="alert-heading">Aviso</h4>
+		  	<p class="mb-0"><?= $this->mensaje ?></p>
+			</div>
 		<?php } ?>
+		<div style="display:flex">
 		<nav class="navbar navbar-expand-lg navbar-dark bg-primary" style="width:50%">
 		<div class="izq">
 			<h2 style="color:white">Datos Actuales del Usuario:</h2>
@@ -66,6 +72,6 @@
 	</div>
 
 	<?php require('../html/Footer.php'); ?>
-
+</div>
 </body>
 </html>
