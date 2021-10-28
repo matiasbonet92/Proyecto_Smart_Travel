@@ -41,7 +41,11 @@
 					</div>
 		</nav>
 		<?php }elseif (isset($this->error)) { ?>
-			<h2><?= $this->error ?></h2>
+			<div class="alert alert-dismissible alert-warning" style="width:100%">
+				<button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+				<h4 class="alert-heading">Aviso</h4>
+			<p class="mb-0"><?= $this->error ?></p>
+			</div>
 			<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
 				<div class="container-fluid">
 						<form class="d-flex" action="../controllers/login.php" method="post">
