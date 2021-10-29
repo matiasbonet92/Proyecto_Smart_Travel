@@ -17,24 +17,73 @@
       <div class="row w-100 m-0 p-1">
         <?php if (isset($this->empresas)) { ?>
 
-          <div class="row w-100 m-0 mt-3 p-2 text-center">
-            <h2>Listado de Empresas</h2>
-          </div>
-
-          <?php foreach ($this->empresas as $empresa) { ?>
-
-            <div class="col-4 w-25 h-100 text-center p-5">
-              <button type="button" class="btn btn-outline-primary" name="button">
-                <a href="../controllers/administrador.php?id_empresa=<?= $empresa['id_empresa'] ?>" style="color: black; text-decoration: none;"><?= $empresa['nombre'] ?></a>
-              </button>
-            </div>
-
+          <?php if(isset($this->resultado)){ ?>
+            <div class="alert alert-dismissible alert-warning m-0 w-100">
+        				<button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        				<h4 class="alert-heading">Aviso</h4>
+      			    <p class="mb-0"><?= $this->resultado ?></p>
+      			</div>
           <?php } ?>
 
-          <div class="col-4 w-25 h-100 text-center p-5">
-            <button type="button" class="btn btn-outline-primary" name="button">
-              <a href="#" style="color: black; text-decoration: none;">Nueva Empresa</a>
-            </button>
+          <div class="row w-100 m-0 mt-3 p-2 text-center">
+            <div class="col-9">
+                <h2>Listado de Empresas</h2>
+            </div>
+            <div class="col-3">
+              <button type="button" class="btn btn-outline-success" name="button">
+                <a href="../controllers/agregarEmpresa.php" style="color: black; text-decoration: none; font-size: 16px;">Agregar Empresa
+                  <img src="../media/plus.png" alt="" width="40px" height="40px">
+                </a>
+              </button>
+            </div>
+          </div>
+          <div class="row w-100 m-0 p-0">
+            <table class="table table-hover">
+              <thead>
+                <tr>
+                  <th scope="col">ID</th>
+                  <th scope="col">Nombre</th>
+                  <th scope="col">Contacto</th>
+                  <th scope="col">Direccion</th>
+                  <th scope="col">Vuelos</th>
+                  <th scope="col">Editar</th>
+                  <th scope="col">Eliminar</th>
+                </tr>
+              </thead>
+              <?php foreach ($this->empresas as $empresa) { ?>
+
+                <tbody>
+                  <tr class="table-active">
+                    <th scope="row"><?= $empresa['id_empresa'] ?></th>
+                    <td><?= $empresa['nombre'] ?></td>
+                    <td><?= $empresa['contacto'] ?></td>
+                    <td><?= $empresa['direccion'] ?></td>
+                    <td>
+                      <button type="button" class="btn btn-outline-primary" name="button">
+                        <a href="../controllers/administrador.php?id_empresa=<?= $empresa['id_empresa'] ?>">
+                          <img src="../media/vuelo.png" alt="" width="40px" height="40px">
+                        </a>
+                      </button>
+                    </td>
+                    <td>
+                      <button type="button" class="btn btn-outline-warning" name="button">
+                        <a href="../controllers/editarEmpresa.php?id_empresa=<?= $empresa['id_empresa'] ?>">
+                          <img src="../media/boligrafo.svg" alt="" width="40px" height="40px">
+                        </a>
+                      </button>
+                    </td>
+                    <td>
+                      <button type="button" class="btn btn-outline-danger" name="button">
+                        <a href="../controllers/eliminarEmpresa.php?id_empresa=<?= $empresa['id_empresa'] ?>">
+                          <img src="../media/eliminar.svg" alt="" width="40px" height="40px">
+                        </a>
+                      </button>
+                    </td>
+                  </tr>
+                </tbody>
+
+              <?php } ?>
+            </table>
           </div>
 
         <?php }elseif (isset($this->vuelos_empresa)) { ?>
@@ -75,12 +124,12 @@
             </table>
             <div class="col-4 w-25 h-100 text-center p-5">
               <button type="button" class="btn btn-outline-primary" name="button">
-                <a href="#" style="color: black; text-decoration: none;">Agregar Vuelo</a>
+                <a href="../controllers/agregarVuelo.php" style="color: black; text-decoration: none;">Agregar Vuelo</a>
               </button>
             </div>
             <div class="col-4 w-25 h-100 text-center p-5">
               <button type="button" class="btn btn-outline-primary" name="button">
-                <a href="../controllers/administrador.php" style="color: black; text-decoration: none;">Volver a Principal</a>
+                <a href="../controllers/administrador.php" style="color: black; text-decoration: none;">Volver a Empresas</a>
               </button>
             </div>
 
