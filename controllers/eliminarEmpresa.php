@@ -6,9 +6,11 @@ session_start();
 require('../fw/fw.php');
 require('../views/Administrador.php');
 require('../models/Empresas.php');
+require('../models/Vuelos.php');
 
 
 $e = new Empresas();
+$vuelos = new Vuelos();
 
 if (isset($_SESSION['logueado'])) {
 
@@ -16,6 +18,7 @@ if (isset($_SESSION['logueado'])) {
 
     $id = $_GET['id_empresa'];
     $e->eliminarEmpresa($id);
+    $vuelos->eliminarVuelosByEmpresa($id);
 
     $datos = $e->getEmpresas();
     $resultado = 'Empresa eliminada con exito';

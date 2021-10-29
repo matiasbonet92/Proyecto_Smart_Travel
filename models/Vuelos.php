@@ -119,6 +119,11 @@
       return $this->db->fetchAll();
     }
 
+    public function eliminarVuelosByEmpresa($id){
+      $this->db->query("DELETE FROM vuelos WHERE id_empresa='$id'");
+      return;
+    }
+
   }
 
  ?>
