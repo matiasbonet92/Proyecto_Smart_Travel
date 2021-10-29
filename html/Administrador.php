@@ -37,8 +37,8 @@
               </button>
             </div>
           </div>
-          <div class="row w-100 m-0 p-0">
-            <table class="table table-hover">
+          <div class="row w-100 m-0 p-0 mt-2">
+            <table class="table table-hover table-dark">
               <thead>
                 <tr>
                   <th scope="col">ID</th>
@@ -53,7 +53,7 @@
               <?php foreach ($this->empresas as $empresa) { ?>
 
                 <tbody>
-                  <tr class="table-active">
+                  <tr class="table-primary">
                     <th scope="row"><?= $empresa['id_empresa'] ?></th>
                     <td><?= $empresa['nombre'] ?></td>
                     <td><?= $empresa['contacto'] ?></td>
@@ -61,21 +61,21 @@
                     <td>
                       <button type="button" class="btn btn-outline-primary" name="button">
                         <a href="../controllers/administrador.php?id_empresa=<?= $empresa['id_empresa'] ?>">
-                          <img src="../media/vuelo.png" alt="" width="40px" height="40px">
+                          <img src="../media/vuelo.png" alt="" width="30px" height="30px">
                         </a>
                       </button>
                     </td>
                     <td>
                       <button type="button" class="btn btn-outline-warning" name="button">
                         <a href="../controllers/editarEmpresa.php?id_empresa=<?= $empresa['id_empresa'] ?>">
-                          <img src="../media/boligrafo.svg" alt="" width="40px" height="40px">
+                          <img src="../media/boligrafo.svg" alt="" width="30px" height="30px">
                         </a>
                       </button>
                     </td>
                     <td>
                       <button type="button" class="btn btn-outline-danger" name="button">
                         <a href="../controllers/eliminarEmpresa.php?id_empresa=<?= $empresa['id_empresa'] ?>">
-                          <img src="../media/eliminar.svg" alt="" width="40px" height="40px">
+                          <img src="../media/eliminar.svg" alt="" width="30px" height="30px">
                         </a>
                       </button>
                     </td>
