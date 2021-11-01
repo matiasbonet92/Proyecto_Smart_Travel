@@ -38,10 +38,13 @@
 			<?php } ?>
 		<?php }elseif(isset($this->mensaje)){ ?>
 			<div class="alert alert-dismissible alert-warning" style="width:100%">
-		  	<button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+		  	<button type="button" id="BTN" class="btn-close" data-bs-dismiss="alert"></button>
 		  	<h4 class="alert-heading">Aviso</h4>
 		  	<p class="mb-0"><?= $this->mensaje ?></p>
 			</div>
+			<script type="text/javascript">
+			setTimeout(() => { document.getElementById("BTN").click(); }, 10000);
+			</script>
 		<?php } ?>
 		</nav>
 		<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
