@@ -12,31 +12,77 @@
 	<?php require '../html/HeaderLoginRegister.php'; ?>
 
 	<div class="body">
-		<?php if ($this->error) { ?>
-			<h2><?= $this->error ?></h2>
+		<?php if (isset($this->error)) { ?>
+			<div class="alert alert-dismissible alert-warning m-0 w-100">
+				<button type="button" id="BTN" class="btn-close" data-bs-dismiss="alert"></button>
+				<h4 class="alert-heading">Aviso</h4>
+				<p class="mb-0"><?= $this->error ?></p>
+			</div>
+			<script type="text/javascript">
+			setTimeout(() => { document.getElementById("BTN").click(); }, 2000);
+			</script>
 		<?php } ?>
-		<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-		<form action="../controllers/register.php" method="post" style="padding-top:20px; margin-left:20px;">
-			<label for="nombre" style="color:white">Nombre:</label><br>
-			<input type="text" name="nombre" id="nombre" required placeholder="Jose"><br><br>
-			<label for="mail" style="color:white">Mail:</label><br>
-			<input type="text" name="mail" id="mail" required placeholder="alguien@alguien"><br><br>
-			<label for="clave" style="color:white">Contraseña:</label><br>
-			<input type="password" name="clave" id="clave" required placeholder="********"><br><br>
-			<label for="clave_repetida" style="color:white">Repita su contraseña:</label><br>
-			<input type="password" name="clave_repetida" id="clave_repetida" required placeholder="********"><br><br>
-			<?php if ($this->id_vuelo) { ?>
-				<input type="text" name="estado" value="<?= $this->id_vuelo ?>" hidden>
-			<?php } ?>
 
-			<input type="submit" name="" value="Ingresar" class="btn btn-secondary my-2 my-sm-0">
-		</form>
-		</nav>
-		<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-		<button type="button" name="button" class="btn btn-secondary my-2 my-sm-0">
-		    <a class="navbar-brand" href="../controllers/principal.php">Volver al Principal</a>
-		</button>
-		</nav>
+		<div class=" row w-100 h-100 mb-3">
+			<div class="col-4 m-0 p-0"></div>
+			<div class="col-4 m-0 p-0">
+			<div class="container m-0 mt-3 p-3 border border-2 border-dark rounded">
+					<h3 style="text-align: center; font-style: bold;">Registro</h3>
+						<form action="../controllers/register.php" method="post">
+							<div class="form-group w-100">
+								<div class="w-100">
+									<label for="nombre" style="color:white">Nombre:</label>
+									<input type="text" name="nombre" id="nombre" placeholder="Jose" class="form-control">
+								</div>
+							</div>
+							<div class="form-group w-100 mt-1">
+								<div class="w-100">
+									<label for="mail" style="color:white">Mail:</label>
+									<input type="text" name="mail" id="mail" placeholder="alguien@alguien" class="form-control">
+								</div>
+							</div>
+							<div class="form-group w-100 mt-1">
+								<div class="w-100">
+									<label for="clave" style="color:white">Contraseña:</label>
+									<input type="password" name="clave" id="clave" placeholder="********" class="form-control">
+								</div>
+							</div>
+							<div class="form-group w-100 mt-1">
+								<div class="w-100">
+									<label for="clave_repetida" style="color:white">Repita su contraseña:</label>
+									<input type="password" name="clave_repetida" id="clave_repetida" placeholder="********" class="form-control">
+								</div>
+							</div>
+							<div class="form-group w-100">
+								<div class="w-100">
+									<?php if ($this->id_vuelo) { ?>
+										<input type="text" name="estado" value="<?= $this->id_vuelo ?>" hidden>
+									<?php } ?>
+								</div>
+							</div>
+							<div class="form-group w-100 mt-3">
+								<div class="w-100">
+									<input type="submit" name="" style=" font-size: 16px;" value="Registrarse e Ingresar" class="btn btn-success w-100">
+								</div>
+							</div>
+						</form>
+
+					<div class="row w-100 m-0 p-0 mt-4">
+						<button type="button" name="button" class="btn btn-warning">
+								<a class="navbar-brand" style="color: white; font-size: 16px;" href="../controllers/login.php">Volver al Login</a>
+						</button>
+					</div>
+					<div class="row w-100 m-0 p-0">
+						<button type="button" name="button" class="btn btn-danger">
+								<a class="navbar-brand" style="color: white; font-size: 16px;" href="../controllers/principal.php">Volver al Principal</a>
+						</button>
+					</div>
+				</div>
+			</div>
+			<div class="col-4 m-0 p-0"></div>
+		</div>
+
+
 	</div>
 
 	<?php require '../html/Footer.php'; ?>
