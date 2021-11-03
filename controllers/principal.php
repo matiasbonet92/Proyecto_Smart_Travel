@@ -28,8 +28,15 @@
 
   }else{
     $vuelos_precio_minimo = $m->getVuelosConPrecioMinimo();
-
-    $v = new Principal();
-    $v->vuelos_precio_minimo = $vuelos_precio_minimo;
-    $v->render();
+    $size_array = count($vuelos_precio_minimo);
+    if ($size_array<=4) {
+      $v = new Principal();
+      $v->vuelos_precio_minimo = $vuelos_precio_minimo;
+      $v->render();
+    }else{
+      shuffle($vuelos_precio_minimo);
+      $v = new Principal();
+      $v->vuelos_precio_minimo = $vuelos_precio_minimo;
+      $v->render();
+    }
   }

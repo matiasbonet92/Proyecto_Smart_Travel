@@ -95,15 +95,22 @@
 
 
     <?php }else{ ?>
-      <div class="d-grid gap-2" style="background-color: white">
-        <button class="btn btn-lg btn-primary"  type="button" style="font-size:50px"disabled >Destacados</button>
-      </div>
-      <div style=" display:flex;">
-        <?php foreach($this->vuelos_precio_minimo as $v){ ?>
-          <div class="card text-white bg-primary mb-3" style="margin:10px;">
-            <div class="card-header" style="text-align:center"><h3>Destino</h3></div>
 
-            <h2 class="card-title"style="text-align:center"><?= $v['destino'] ?></h2>
+      <div class="row w-100 p-2 m-0 text-center">
+        <h1>Destacados</h1>
+      </div>
+
+      <div class="row w-100 m-0 p-0">
+        <?php $cont=0; ?>
+        <?php foreach($this->vuelos_precio_minimo as $v){ ?>
+        <div class="col-3 m-0 p-1">
+          <div class="card text-white bg-primary">
+            <div class="card-header" style="text-align:center">
+              <h3>Destino</h3>
+            </div>
+            <div class="card-title" style="text-align:center">
+                <h2><?= $v['destino'] ?></h2>
+            </div>
 
             <div class="card-body">
             <p>Saliendo desde: <?= $v['origen'] ?></p>
@@ -113,9 +120,11 @@
               <a style="display:block" class="navbar-brand" href="../controllers/resultado_busqueda.php?origen=<?= $v['origen'] ?>&destino=<?= $v['destino'] ?>">Ver mas</a>
             </button>
           </div>
-          <?php } ?>
+        </div>
+        <?php $cont = $cont+1; ?>
+        <?php if ($cont == 4) break; ?>
+        <?php } ?>
       </div>
-
 
     <?php } ?>
   </div>
