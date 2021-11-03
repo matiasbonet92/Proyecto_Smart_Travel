@@ -32,7 +32,7 @@
             <div class="col-3">
               <button type="button" class="btn btn-outline-success" name="button">
                 <a href="../controllers/agregarEmpresa.php" style="color: black; text-decoration: none; font-size: 16px;">Agregar Empresa
-                  <img src="../media/plus.png" alt="" width="40px" height="40px">
+                  <img src="../media/plus.png" alt="" width="30px" height="30px">
                 </a>
               </button>
             </div>
@@ -88,11 +88,38 @@
 
         <?php }elseif (isset($this->vuelos_empresa)) { ?>
 
+          <?php if(isset($this->resultado)){ ?>
+            <div class="alert alert-dismissible alert-warning m-0 w-100">
+        				<button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        				<h4 class="alert-heading">Aviso</h4>
+      			    <p class="mb-0"><?= $this->resultado ?></p>
+      			</div>
+          <?php } ?>
+
           <div class="row w-100 m-0 mt-3 p-2 text-center">
-            <h2>Listado de Vuelos</h2>
+            <div class="col-6">
+              <?php foreach ($this->nombre_empresa as $nombre) { ?>
+                <h2>Listado de Vuelos de <?= $nombre['nombre'] ?></h2>
+              <?php } ?>
+            </div>
+            <div class="col-3">
+              <button type="button" class="btn btn-outline-success" name="button">
+                <a href="../controllers/agregarVuelo.php?id_empresa=<?= $this->id_empresa ?>" style="color: black; text-decoration: none; font-size: 16px;">Agregar Vuelo
+                  <img src="../media/plus.png" alt="" width="30px" height="30px">
+                </a>
+              </button>
+            </div>
+            <div class="col-3">
+              <button type="button" class="btn btn-outline-primary" name="button">
+                <a href="../controllers/administrador.php" style="color: black; text-decoration: none;">Volver a Empresas
+                  <img src="../media/aeropuerto.png" alt="" width="30px" height="30px">
+                </a>
+              </button>
+            </div>
           </div>
 
-            <table class="table table-hover w-100">
+          <div class="row w-100 m-0 p-0 mt-2">
+            <table class="table table-primary w-100">
               <thead>
                 <tr>
                   <th scope="col">ID</th>
@@ -103,6 +130,8 @@
                   <th scope="col">Fecha Destino</th>
                   <th scope="col">Precio</th>
                   <th scope="col">Descripcion Vuelo</th>
+                  <th scope="col">Editar</th>
+                  <th scope="col">Eliminar</th>
                 </tr>
               </thead>
               <?php foreach ($this->vuelos_empresa as $vuelos) { ?>
@@ -117,21 +146,28 @@
                     <td><?= $vuelos['fecha_destino'] ?></td>
                     <td><?= $vuelos['precio'] ?></td>
                     <td><?= $vuelos['descripcion_vuelo'] ?></td>
+
+                    <td>
+                      <button type="button" class="btn btn-outline-warning" name="button">
+                        <a href="../controllers/editarVuelo.php?id_vuelo=<?= $vuelos['id_vuelos'] ?>&id_empresa=<?= $vuelos['id_empresa'] ?>">
+                          <img src="../media/boligrafo.svg" alt="" width="30px" height="30px">
+                        </a>
+                      </button>
+                    </td>
+                    <td>
+                      <button type="button" class="btn btn-outline-danger" name="button">
+                        <a href="../controllers/eliminarVuelo.php?id_vuelo=<?= $vuelos['id_vuelos'] ?>&id_empresa=<?= $vuelos['id_empresa'] ?>">
+                          <img src="../media/eliminar.svg" alt="" width="30px" height="30px">
+                        </a>
+                      </button>
+                    </td>
+
                   </tr>
                 </tbody>
 
               <?php } ?>
             </table>
-            <div class="col-4 w-25 h-100 text-center p-5">
-              <button type="button" class="btn btn-outline-primary" name="button">
-                <a href="../controllers/agregarVuelo.php" style="color: black; text-decoration: none;">Agregar Vuelo</a>
-              </button>
-            </div>
-            <div class="col-4 w-25 h-100 text-center p-5">
-              <button type="button" class="btn btn-outline-primary" name="button">
-                <a href="../controllers/administrador.php" style="color: black; text-decoration: none;">Volver a Empresas</a>
-              </button>
-            </div>
+          </div>
 
         <?php } ?>
 
