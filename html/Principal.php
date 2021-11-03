@@ -54,45 +54,60 @@
       </nav>
 
     <?php if (isset($this->favoritos)) { ?>
-      <div class="d-grid gap-2" style="background-color: white">
-        <button class="btn btn-lg btn-primary"  type="button" style="font-size:50px"disabled >Favoritos</button>
-      </div>
-      <div style=" display:flex;">
-        <?php foreach($this->favoritos as $fav){ ?>
-          <div class="card text-white bg-primary mb-3" style="margin:10px;">
-          <div class="card-header" style="text-align:center"><h3>Destino</h3></div>
-          <h2 class="card-title" style="text-align:center"><?= $fav['destino'] ?></h2>
 
-          <div class="card-body">
-          <p>Saliendo desde: <?= $fav['origen'] ?></p>
-          <p>Precio: <?= $fav['precio'] ?></p>
+      <div class="row w-100 p-2 m-0 text-center">
+        <h1>Favoritos</h1>
+      </div>
+
+      <div class="row w-100 m-0 p-0">
+        <?php $cont=0; ?>
+        <?php foreach($this->favoritos as $fav){ ?>
+        <div class="col-3 m-0 p-4">
+          <div class="card bg-light border border-3 border-primary rounded p-1">
+            <div class="card-header bg-primary text-white" style="text-align:center">
+                <h2><strong><?= $fav['destino'] ?></strong></h2>
+            </div>
+            <div class="card-body text-black" style="text-align:center;">
+              <p><strong>Saliendo desde: <?= $fav['origen'] ?></strong></p>
+              <p><strong>Precio desde: <?= $fav['precio'] ?></strong></p>
+            </div>
+            <div class="card-footer bg-primary" style="text-align:center">
+              <button type="button" class="btn btn-outline-dark w-75 p-1" name="button">
+                <a style="text-decoration:none; color:white;" href="../controllers/resultado_busqueda.php?origen=<?= $fav['origen'] ?>&destino=<?= $fav['destino'] ?>">Ver mas</a>
+              </button>
+            </div>
           </div>
-          <button type="button" class="btn btn-primary my-2 my-sm-0" name="button">
-            <a style="display:block" href="../controllers/resultado_busqueda.php?origen=<?= $fav['origen'] ?>&destino=<?= $fav['destino'] ?>">Ver mas</a>
-          </button>
-          </div>
+        </div>
         <?php } ?>
       </div>
 
-        <div class="d-grid gap-2" style="background-color: white">
-          <button class="btn btn-lg btn-primary"  type="button" style="font-size:50px"disabled >Destacados</button>
-        </div>
-        <div style=" display:flex;">
-          <?php foreach($this->vuelos_precio_minimo as $v){ ?>
-              <div class="card text-white bg-primary mb-3" style="margin:10px;">
-              <div class="card-header" style="text-align:center"><h3>Destino</h3></div>
-              <h2 class="card-title" style="text-align:center"><?= $v['destino'] ?></h2>
-              <div class="card-body">
-              <p>Saliendo desde: <?= $v['origen'] ?></p>
-              <p>Precio desde: <?= $v['precio_minimo'] ?></p>
-              </div>
-              <button type="button" class="btn btn-primary my-2 my-sm-0" name="button">
-                <a style="display:block" class="navbar-brand" href="../controllers/resultado_busqueda.php?origen=<?= $v['origen'] ?>&destino=<?= $v['destino'] ?>">Ver mas</a>
+      <div class="row w-100 p-2 m-0 text-center">
+        <h1>Destacados</h1>
+      </div>
+
+      <div class="row w-100 m-0 p-0">
+        <?php $cont=0; ?>
+        <?php foreach($this->vuelos_precio_minimo as $v){ ?>
+        <div class="col-3 m-0 p-4">
+          <div class="card bg-light border border-3 border-primary rounded p-1">
+            <div class="card-header bg-primary text-white" style="text-align:center">
+                <h2><strong><?= $v['destino'] ?></strong></h2>
+            </div>
+            <div class="card-body text-black" style="text-align:center;">
+              <p><strong>Saliendo desde: <?= $v['origen'] ?></strong></p>
+              <p><strong>Precio desde: <?= $v['precio_minimo'] ?></strong></p>
+            </div>
+            <div class="card-footer bg-primary" style="text-align:center">
+              <button type="button" class="btn btn-outline-dark w-75 p-1" name="button">
+                <a style="text-decoration:none; color:white;" href="../controllers/resultado_busqueda.php?origen=<?= $v['origen'] ?>&destino=<?= $v['destino'] ?>">Ver mas</a>
               </button>
             </div>
-          <?php } ?>
           </div>
-
+        </div>
+        <?php $cont = $cont+1; ?>
+        <?php if ($cont == 4) break; ?>
+        <?php } ?>
+      </div>
 
     <?php }else{ ?>
 
@@ -103,22 +118,20 @@
       <div class="row w-100 m-0 p-0">
         <?php $cont=0; ?>
         <?php foreach($this->vuelos_precio_minimo as $v){ ?>
-        <div class="col-3 m-0 p-1">
-          <div class="card text-white bg-primary">
-            <div class="card-header" style="text-align:center">
-              <h3>Destino</h3>
+        <div class="col-3 m-0 p-4">
+          <div class="card bg-light border border-3 border-primary rounded p-1">
+            <div class="card-header bg-primary text-white" style="text-align:center">
+                <h2><strong><?= $v['destino'] ?></strong></h2>
             </div>
-            <div class="card-title" style="text-align:center">
-                <h2><?= $v['destino'] ?></h2>
+            <div class="card-body text-black" style="text-align:center;">
+              <p><strong>Saliendo desde: <?= $v['origen'] ?></strong></p>
+              <p><strong>Precio desde: <?= $v['precio_minimo'] ?></strong></p>
             </div>
-
-            <div class="card-body">
-            <p>Saliendo desde: <?= $v['origen'] ?></p>
-            <p>Precio desde: <?= $v['precio_minimo'] ?></p>
+            <div class="card-footer bg-primary" style="text-align:center">
+              <button type="button" class="btn btn-outline-dark w-75 p-1" name="button">
+                <a style="text-decoration:none; color:white;" href="../controllers/resultado_busqueda.php?origen=<?= $v['origen'] ?>&destino=<?= $v['destino'] ?>">Ver mas</a>
+              </button>
             </div>
-            <button type="button" class="btn btn-primary my-2 my-sm-0" name="button">
-              <a style="display:block" class="navbar-brand" href="../controllers/resultado_busqueda.php?origen=<?= $v['origen'] ?>&destino=<?= $v['destino'] ?>">Ver mas</a>
-            </button>
           </div>
         </div>
         <?php $cont = $cont+1; ?>
