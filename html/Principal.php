@@ -14,44 +14,45 @@
 
   <?php require '../html/Header.php'; ?>
 
-  <div class="d-grid gap-2" style="background-color: white">
-      <button class="btn btn-lg btn-primary"  type="button" style="font-size:40px"disabled >Busqueda de Vuelos</button>
-  </div>
-
   <div class="body">
-      <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-        <div class="container-fluid">
-            <form class="d-flex" action="../controllers/resultado_busqueda.php" method="post">
-              <div class="form-group" style="display:flex;">
-                <div class="col-sm-10" style="max-width:20%; max-height:10%;padding-left:10px;">
-                  <label for="origen" style="color:white;">Origen:</label>
-                  <input type="text" class="form-control" name="origen" placeholder="Ingrese un origen">
-                </div>
-                <div class="col-sm-10" style="max-width:20%;padding-left:10px;">
-                  <label for="destino" style="color:white;">Destino:</label>
-                  <input type="text" class="form-control" name="destino" placeholder="Ingrese un destino">
-                </div>
-                <div class="col-sm-10" style="max-width:20%;padding-left:10px;">
-                  <label for="fecha" style="color:white;">Fecha:</label>
-                  <input type="date" class="form-control" name="fecha">
-                </div>
-                <div class="col-sm-10" style="max-width:25%; padding-left:10px;">
-                  <br>
-                  <label for="no-fecha" style="color:white;">No he decidido la fecha aún:</label>
-                </div>
-                <div class="col-sm-10" style="max-width:5%;">
-                  <br>
-                  <input type="checkbox" name="no-fecha" value="" checked >
-                </div>
-                <div class="col-sm-10" style="max-width:20%;">
-                  <br>
-                  <input type="submit" class="btn btn-secondary my-2 my-sm-0" name="" value="Buscar">
-                </div>
-            </div>
 
-            </form>
+    <div class="row w-100 m-0 p-0">
+      <div class="row w-100 m-0 p-0">
+        <div class="col-12 text-center">
+          <h2><strong>Busqueda de Vuelos</strong></h2>
         </div>
-      </nav>
+      </div>
+      <div class="row w-100 m-0 p-0">
+        <form action="../controllers/resultado_busqueda.php" method="post">
+          <div class="form-group" style="display:flex;">
+            <div class="col-sm-10" style="max-width:20%; max-height:10%;padding-left:10px;">
+              <label for="origen" style="color:white;">Origen:</label>
+              <input type="text" class="form-control" name="origen" placeholder="Ingrese un origen">
+            </div>
+            <div class="col-sm-10" style="max-width:20%;padding-left:10px;">
+              <label for="destino" style="color:white;">Destino:</label>
+              <input type="text" class="form-control" name="destino" placeholder="Ingrese un destino">
+            </div>
+            <div class="col-sm-10" style="max-width:20%;padding-left:10px;">
+              <label for="fecha" style="color:white;">Fecha:</label>
+              <input type="date" class="form-control" name="fecha">
+            </div>
+            <div class="col-sm-10" style="max-width:25%; padding-left:10px;">
+              <br>
+              <label for="no-fecha" style="color:white;">No he decidido la fecha aún:</label>
+            </div>
+            <div class="col-sm-10" style="max-width:5%;">
+              <br>
+              <input type="checkbox" name="no-fecha" value="" checked >
+            </div>
+            <div class="col-sm-10" style="max-width:20%;">
+              <br>
+              <input type="submit" class="btn btn-secondary my-2 my-sm-0" name="" value="Buscar">
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
 
     <?php if (isset($this->favoritos)) { ?>
 
@@ -72,7 +73,7 @@
               <p><strong>Precio desde: <?= $fav['precio'] ?></strong></p>
             </div>
             <div class="card-footer bg-primary" style="text-align:center">
-              <button type="button" class="btn btn-outline-dark w-75 p-1" name="button">
+                <button type="button" class="btn btn-outline-dark w-75 p-1" name="button">
                 <a style="text-decoration:none; color:white;" href="../controllers/resultado_busqueda.php?origen=<?= $fav['origen'] ?>&destino=<?= $fav['destino'] ?>">Ver mas</a>
               </button>
             </div>
