@@ -9,8 +9,8 @@
           <div class="row w-100">
             <div class="col-9"></div>
             <div class="col-3 text-end">
-              <a class="navbar-brand" href="../controllers/login.php">Login</a>
-              <a class="navbar-brand" href="#">Centro de Ayuda</a>
+              <a class="navbar-brand" style="font-size: 18px;" href="../controllers/login.php">Login</a>
+              <a class="navbar-brand" style="font-size: 18px;" href="#">Centro de Ayuda</a>
             </div>
           </div>
         </div>
