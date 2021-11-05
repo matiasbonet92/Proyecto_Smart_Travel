@@ -24,21 +24,23 @@
   </div>
     </nav>
     <?php if (is_array($this->resultado)) { ?>
-      <?php foreach($this->resultado as $r){ ?>
-        <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-          <div class="izq">
-          <h3 style="color:white">Destino</h3>
-          <p style="color:white"><?= $r['destino'] ?></p>
-          <p style="color:white">Saliendo desde: <?= $r['origen'] ?></p>
-          <p style="color:white">Precio: <?= $r['precio'] ?></p>
-          <button type="button" class="btn btn-secondary my-2 my-sm-0" name="button">
-            <a class="navbar-brand" href="../controllers/info_vuelo.php?id_vuelo=<?= $r['id_vuelos'] ?>">Mas Informacion</a>
-          </button>
-          <button type="button" class="btn btn-secondary my-2 my-sm-0" name="button">
-            <a class="navbar-brand" href="../controllers/favorito.php?id_vuelo=<?=$r['id_vuelos']?>">Favoritos</a>
-          </button>
-        </div>
-        </nav>
+      <?php foreach($this->resultado as $rtotal){ ?>
+        <?php foreach($rtotal['resultado_vuelos'] as $r){ ?>
+          <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+            <div class="izq">
+              <h3 style="color:white">Destino</h3>
+              <p style="color:white"><?= $r['destino'] ?></p>
+              <p style="color:white">Saliendo desde: <?= $r['origen'] ?></p>
+              <p style="color:white">Precio: <?= $r['precio'] ?></p>
+              <button type="button" class="btn btn-secondary my-2 my-sm-0" name="button">
+                <a class="navbar-brand" href="../controllers/info_vuelo.php?id_vuelo=<?= $r['id_vuelos'] ?>">Mas Informacion</a>
+              </button>
+              <button type="button" class="btn btn-secondary my-2 my-sm-0" name="button">
+                <a class="navbar-brand" href="../controllers/favorito.php?id_vuelo=<?=$r['id_vuelos']?>">Favoritos</a>
+              </button>
+            </div>
+          </nav>
+        <?php } ?>
       <?php } ?>
     <?php }else{ ?>
               <div class="alert alert-dismissible alert-warning" style="width:100%">

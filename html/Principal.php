@@ -51,39 +51,13 @@
       </div>
     </div>
 
-    <?php if (isset($this->favoritos)) { ?>
+    <div class="row w-auto my-3 mx-5 p-0 border border-2 border-dark rounded">
 
-      <div class="row w-100 p-2 m-0 text-center">
-        <h2><strong>Favoritos</strong></h2>
+      <div class="row w-100 p-2 m-0 text-center bg-dark">
+        <h2 class="text-white"><strong>Destacados</strong></h2>
       </div>
 
-      <div class="row w-100 m-0 p-0">
-        <?php $cont=0; ?>
-        <?php foreach($this->favoritos as $fav){ ?>
-        <div class="col-3 m-0 p-4">
-          <div class="card bg-light border border-3 border-primary rounded p-1">
-            <div class="card-header bg-primary text-white" style="text-align:center">
-                <h2><strong><?= $fav['destino'] ?></strong></h2>
-            </div>
-            <div class="card-body text-black" style="text-align:center;">
-              <p><strong>Saliendo desde: <?= $fav['origen'] ?></strong></p>
-              <p><strong>Precio desde: <?= $fav['precio'] ?></strong></p>
-            </div>
-            <div class="card-footer bg-primary" style="text-align:center">
-                <button type="button" class="btn btn-outline-dark w-75 p-1" name="button">
-                <a style="text-decoration:none; color:white;" href="../controllers/resultado_busqueda.php?origen=<?= $fav['origen'] ?>&destino=<?= $fav['destino'] ?>">Ver mas</a>
-              </button>
-            </div>
-          </div>
-        </div>
-        <?php } ?>
-      </div>
-
-      <div class="row w-100 p-2 m-0 text-center">
-        <h2><strong>Destacados</strong></h2>
-      </div>
-
-      <div class="row w-100 m-0 p-0">
+      <div class="row w-100 m-0 p-1 text-center bg-light">
         <?php $cont=0; ?>
         <?php foreach($this->vuelos_precio_minimo as $v){ ?>
         <div class="col-3 m-0 p-4">
@@ -107,41 +81,7 @@
         <?php } ?>
       </div>
 
-    <?php }else{ ?>
-
-      <div class="row w-auto my-3 mx-5 p-0 border border-2 border-dark rounded">
-
-        <div class="row w-100 p-2 m-0 text-center bg-dark">
-          <h2 class="text-white"><strong>Destacados</strong></h2>
-        </div>
-
-        <div class="row w-100 m-0 p-1 text-center bg-light">
-          <?php $cont=0; ?>
-          <?php foreach($this->vuelos_precio_minimo as $v){ ?>
-          <div class="col-3 m-0 p-4">
-            <div class="card bg-light border border-3 border-primary rounded p-1">
-              <div class="card-header bg-primary text-white" style="text-align:center">
-                  <h2><strong><?= $v['destino'] ?></strong></h2>
-              </div>
-              <div class="card-body text-black" style="text-align:center;">
-                <p><strong>Saliendo desde: <?= $v['origen'] ?></strong></p>
-                <p><strong>Precio desde: <?= $v['precio_minimo'] ?></strong></p>
-              </div>
-              <div class="card-footer bg-primary" style="text-align:center">
-                <button type="button" class="btn btn-outline-dark w-75 p-1" name="button">
-                  <a style="text-decoration:none; color:white;" href="../controllers/resultado_busqueda.php?origen=<?= $v['origen'] ?>&destino=<?= $v['destino'] ?>">Ver mas</a>
-                </button>
-              </div>
-            </div>
-          </div>
-          <?php $cont = $cont+1; ?>
-          <?php if ($cont == 4) break; ?>
-          <?php } ?>
-        </div>
-
-      </div>
-
-    <?php } ?>
+    </div>
   </div>
 
   <?php require '../html/Footer.php'; ?>
