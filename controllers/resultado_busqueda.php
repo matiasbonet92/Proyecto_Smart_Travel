@@ -22,15 +22,19 @@ if (count($_GET)>0) {
 
   foreach ($resultado_vuelos as $vuelo) {
     $cant_pasajeros = $res->consultarCantidadPasajerosVuelo($vuelo['id_vuelos']);
-    $cant_restante = $max_pax - $cant_pasajeros;
+
+    if (isset($cant_pasajeros['0']['pasajeros_actual'])) {
+      $cant_restante = ($max_pax - $cant_pasajeros['0']['pasajeros_actual']);
+    }else{
+      $cant_restante = $max_pax;
+    }
+
     $res_vuelos = array(
                     "cant_restante" => $cant_restante,
-                    "resultado_vuelos" => $resultado_vuelos
+                    "resultado_vuelos" => $vuelo
                   );
     array_push($array,$res_vuelos);
   }
-
-  var_dump($res_vuelos);
 
   $v = new Resultado_busqueda();
   $v->resultado = $array;
