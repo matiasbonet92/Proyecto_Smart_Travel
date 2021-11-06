@@ -28,6 +28,8 @@
       $_SESSION['telefono'] = $data['telefono'];
     }
 
+    $id_vuelo = $_POST['id_vuelo'];
+
     if (is_array($consulta)) {
       $v = new Perfil();
       $v->id_login = $id_login;
@@ -37,6 +39,7 @@
       $v->dni = $dni;
       $v->direccion = $direccion;
       $v->telefono = $telefono;
+      $v->id_vuelo = $id_vuelo;
       $v->render();
     }else{
       $v = new Perfil();
@@ -48,12 +51,14 @@
   }elseif (count($_GET)>0) {
 
       $mensaje = $_GET['mensaje'];
+      $id_vuelo = $_GET['id_vuelo'];
 
       $v = new Perfil();
       $v->id_login = $_SESSION['id_login'];
       $v->mail = $_SESSION['mail'];
       $v->nombre = $_SESSION['nombre'];
       $v->mensaje = $mensaje;
+      $v->id_vuelo = $id_vuelo;
       $v->render();
 
   }elseif (isset($_SESSION['logueado'])) {

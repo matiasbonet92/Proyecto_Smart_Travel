@@ -13,6 +13,8 @@ if(isset($_GET['id_vuelo'])){
 
   $v = new Registro();
   $v->id_vuelo = $_GET['id_vuelo'];
+  $v->redireccion = $_GET['redireccion'];
+  $v->mensaje = $_GET['mensaje'];
   $v->render();
 
 }elseif (count($_GET)>0) {
@@ -41,8 +43,14 @@ if(isset($_GET['id_vuelo'])){
           $_SESSION['nombre'] = $data['nombre'];
         }
 
-        if ($_POST['estado']) {
-          header("Location: ../controllers/favorito.php?id_vuelo=$estado");
+        $id_vuelo = $_POST['estado'];
+        $redireccion = $_POST['redireccion'];
+
+        if ($redireccion == 'favorito') {
+          header("Location: ../controllers/favorito.php?id_vuelo=$id_vuelo");
+          exit;
+        }else{
+          header("Location: ../controllers/reserva.php?id_vuelo=$id_vuelo");
           exit;
         }
 

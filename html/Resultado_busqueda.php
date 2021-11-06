@@ -54,11 +54,11 @@
           <?php } ?>
         <?php }else{ ?>
                   <div class="alert alert-dismissible alert-warning" style="width:100%">
-                  <button type="button" id="BTN" class="btn-close" data-bs-dismiss="alert"></button>
-                  <h1 class="alert-heading"><?= $this->resultado ?></h1>
+                    <button type="button" id="BTN" class="btn-close" data-bs-dismiss="alert"></button>
+                    <h1 class="alert-heading"><?= $this->resultado ?></h1>
                   </div>
                   <script type="text/javascript">
-                  setTimeout(() => { document.getElementById("BTN").click(); }, 10000);
+                    setTimeout(() => { document.getElementById("BTN").click(); }, 10000);
                   </script>
         <?php } ?>
       </div>

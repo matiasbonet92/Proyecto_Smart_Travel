@@ -1,4 +1,4 @@
-<?php  
+<?php
 
 class Perfil extends View{
 
@@ -10,9 +10,10 @@ class Perfil extends View{
 	public $direccion;
 	public $telefono;
 	public $error;
+	public $id_vuelo;
 
 	public $mensaje;
-	
+
 }
 
 ?>

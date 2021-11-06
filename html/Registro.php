@@ -57,6 +57,8 @@
 								<div class="w-100">
 									<?php if ($this->id_vuelo) { ?>
 										<input type="text" name="estado" value="<?= $this->id_vuelo ?>" hidden>
+										<input type="text" name="redireccion" value="<?= $this->redireccion ?>" hidden>
+										<input type="text" name="mensaje" value="<?= $this->mensaje ?>" hidden>
 									<?php } ?>
 								</div>
 							</div>
