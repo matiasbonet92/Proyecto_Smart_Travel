@@ -34,8 +34,11 @@
                     <div class="dropdown-divider"></div>
                     <a class="dropdown-item" href="../controllers/misviajes.php">Mis Viajes</a>
                     <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="../controllers/misreclamos.php">Mis Reclamos</a>
+                    <div class="dropdown-divider"></div>
                     <a class="dropdown-item" href="../controllers/misfavoritos.php">Favoritos</a>
                   </div>
+
                 </li>
               </ul>
             </div>

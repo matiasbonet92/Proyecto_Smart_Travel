@@ -1,8 +1,8 @@
 <?php
 
-class Mis_Viajes extends View{
+class Mis_Reclamos extends View{
 
-  public $reservas;
+  public $reclamos;
   public $mensaje;
   public $resultado;
 
