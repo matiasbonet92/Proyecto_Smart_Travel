@@ -105,7 +105,7 @@
 			<p class="mb-0"><?= $this->error ?></p>
 			</div>
 			<script type="text/javascript">
-			setTimeout(() => { document.getElementById("BTN").click(); }, 2000);
+			setTimeout(() => { document.getElementById("BTN").click(); }, 5000);
 			</script>
 			<div class=" row w-100 h-100 mb-3">
 				<div class="col-4 m-0 p-0"></div>

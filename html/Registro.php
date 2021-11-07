@@ -19,7 +19,7 @@
 				<p class="mb-0"><?= $this->error ?></p>
 			</div>
 			<script type="text/javascript">
-			setTimeout(() => { document.getElementById("BTN").click(); }, 2000);
+			setTimeout(() => { document.getElementById("BTN").click(); }, 5000);
 			</script>
 		<?php } ?>
 

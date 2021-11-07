@@ -58,7 +58,7 @@
                     <h1 class="alert-heading"><?= $this->resultado ?></h1>
                   </div>
                   <script type="text/javascript">
-                    setTimeout(() => { document.getElementById("BTN").click(); }, 10000);
+                    setTimeout(() => { document.getElementById("BTN").click(); }, 5000);
                   </script>
         <?php } ?>
       </div>

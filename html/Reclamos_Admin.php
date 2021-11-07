@@ -51,7 +51,7 @@
     		  	<p class="mb-0"><?= $this->mensaje ?></p>
     			</div>
           <script type="text/javascript">
-          setTimeout(() => { document.getElementById("BTN").click(); }, 10000);
+          setTimeout(() => { document.getElementById("BTN").click(); }, 5000);
           </script>
     		<?php } ?>
         </nav>
