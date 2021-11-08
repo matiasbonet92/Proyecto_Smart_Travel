@@ -16,6 +16,18 @@
 
   <div class="body">
 
+    <?php if (isset($this->mensaje)){ ?>
+
+      <div class="alert alert-dismissible alert-warning" style="width:100%">
+        <button type="button" id="BTN" class="btn-close" data-bs-dismiss="alert"></button>
+        <h4 class="alert-heading">Aviso</h4>
+        <p class="mb-0"><?= $this->mensaje ?></p>
+      </div>
+      <script type="text/javascript">
+        setTimeout(() => { document.getElementById("BTN").click(); }, 5000);
+      </script>
+    <?php } ?>
+
     <div class="row w-auto my-3 mx-5 p-0 border border-2 border-dark rounded">
       <div class="row w-100 m-0 p-2 bg-dark">
         <div class="col-12 text-center">

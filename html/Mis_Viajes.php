@@ -13,61 +13,105 @@
     <?php require('../html/Header.php'); ?>
 
     <div class="body">
-      <?php if(isset($this->resultado)){ ?>
-        <div class="row w-100 m-0 p-0">
-          <div class="alert alert-dismissible alert-warning m-0 w-100">
-              <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-              <h4 class="alert-heading">Aviso</h4>
-              <p class="mb-0"><?= $this->resultado ?></p>
-          </div>
-        </div>
-      <?php } ?>
-      <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-  		<h2 style="color:white">Mis Viajes</h2>
-  	</nav>
-      <nav>
-  		<?php if(isset($this->reservas)) { ?>
-  			<?php foreach($this->reservas as $res) { ?>
-          <div style="width:100%">
-      		<nav class="navbar navbar-expand-lg navbar-dark bg-primary" style="width:100%">
-      		<div class="izq">
-  				<h3 style="color:white">Destino:</h3>
-          <p style="color:white">Vuelo con destino a: <?= $res['destino'] ?> para '<?= $res['cant_pasajeros'] ?>' pasajeros</p>
-          <p style="color:white">Saliendo desde: <?= $res['origen'] ?> el <?= $res['fecha_origen'] ?></p>
-          <p style="color:white">Precio abonado: <?= $res['precio'] ?></p>
-          <p style="color:white">El numero de vuelo es '<?= $res['nombre_vuelo'] ?>' y es operado por '<?= $res['nombre_empresa'] ?>'</p>
-          <p style="font-style:italic; color:white">Ante cualquer duda, favor de comunicarse al: <span style="font-style:normal"><?= $res['contacto'] ?></span></p>
-          <h4 style="color:white">Consideraciones:</h4>
-          <p style="color:white"><?= $res['descripcion_vuelo'] ?></p>
-          <br>
-          <button type="button" class="btn btn-secondary my-2 my-sm-0" name="button">
-    	      <a class="navbar-brand" href="../controllers/misviajes.php?id_reserva=<?= $res['id_reserva'] ?>">Eliminar Reserva</a>
-    	    </button>
-          <button type="button" class="btn btn-secondary my-2 my-sm-0" name="button">
-            <a class="navbar-brand" href="../controllers/AgregarReclamo.php?id_reserva=<?= $res['id_reserva'] ?>">Realizar Reclamo</a>
-          </button>
-        </div>
-        </nav>
-      </div>
-  			<?php } ?>
-  		<?php }elseif(isset($this->mensaje)){ ?>
-        <div class="alert alert-dismissible alert-warning" style="width:100%">
-  		  	<button type="button" id="BTN" class="btn-close" data-bs-dismiss="alert"></button>
-  		  	<h4 class="alert-heading">Aviso</h4>
-  		  	<p class="mb-0"><?= $this->mensaje ?></p>
-  			</div>
-        <script type="text/javascript">
-        setTimeout(() => { document.getElementById("BTN").click(); }, 5000);
-        </script>
-  		<?php } ?>
-      </nav>
-      <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-  		<br><br><button type="button" class="btn btn-secondary my-2 my-sm-0" name="button">
-  	      <a class="navbar-brand" href="../controllers/principal.php">Volver a Principal</a>
-  	    </button>
-        </nav>
 
-  	</div>
+        <div class="row w-100 m-0 p-0">
+
+          <?php if(isset($this->reservas)){ ?>
+
+            <div class="row w-100 m-0 mt-3 p-2 text-center">
+              <div class="col-9">
+                  <h2><strong>Mis Viajes</strong></h2>
+              </div>
+              <div class="col-3">
+                <button type="button" class="btn btn-outline-success" name="button">
+                  <a href="../controllers/principal.php" style="color: black; text-decoration: none; font-size: 16px;">Volver al Principal
+                    <img src="../media/volver.png" alt="" width="30px" height="30px">
+                  </a>
+                </button>
+              </div>
+            </div>
+
+            <table class="table table-hover table-dark">
+              <thead>
+                <tr>
+                  <th scope="col">Destino</th>
+                  <th scope="col">Cant Pasajeros</th>
+                  <th scope="col">Origen</th>
+                  <th scope="col">Fecha Origen</th>
+                  <th scope="col">Precio</th>
+                  <th scope="col">Numero Vuelo</th>
+                  <th scope="col">Operado por</th>
+                  <th scope="col">Consideraciones</th>
+                  <th scope="col">Contacto</th>
+                  <th scope="col">Cancelar</th>
+                  <th scope="col">Reclamo</th>
+                </tr>
+              </thead>
+
+              <?php foreach($this->reservas as $res) { ?>
+
+                <tbody>
+                  <tr class="table-primary">
+                    <th scope="row"><?= $res['destino'] ?></th>
+                    <td><?= $res['cant_pasajeros'] ?></td>
+                    <td><?= $res['origen'] ?></td>
+                    <td><?= $res['fecha_origen'] ?></td>
+                    <td><?= $res['precio'] ?></td>
+                    <td><?= $res['nombre_vuelo'] ?></td>
+                    <td><?= $res['nombre_empresa'] ?></td>
+                    <td><?= $res['descripcion_vuelo'] ?></td>
+                    <td><?= $res['contacto'] ?></td>
+
+                    <td>
+                      <button type="button" class="btn btn-outline-danger" name="button">
+                        <a class="navbar-brand" href="../controllers/misviajes.php?id_reserva=<?= $res['id_reserva'] ?>">
+                          <img src="../media/eliminar.svg" alt="" width="30px" height="30px">
+                        </a>
+                      </button>
+                    </td>
+                    <td>
+                      <button type="button" class="btn btn-outline-warning" name="button">
+                        <a class="navbar-brand" href="../controllers/AgregarReclamo.php?id_reserva=<?= $res['id_reserva'] ?>">
+                          <img src="../media/libro-de-reclamaciones.png" alt="" width="30px" height="30px">
+                        </a>
+                      </button>
+                    </td>
+
+                  </tr>
+                </tbody>
+
+              <?php } ?>
+            </table>
+
+        <?php }elseif (isset($this->mensaje)){ ?>
+
+          <div class="alert alert-dismissible alert-warning" style="width:100%">
+    		  	<button type="button" id="BTN" class="btn-close" data-bs-dismiss="alert"></button>
+    		  	<h4 class="alert-heading">Aviso</h4>
+    		  	<p class="mb-0"><?= $this->mensaje ?></p>
+    			</div>
+          <script type="text/javascript">
+            setTimeout(() => { document.getElementById("BTN").click(); }, 5000);
+          </script>
+
+          <div class="row w-100 m-0 mt-3 p-2 text-center">
+            <div class="col-9">
+                <h2><strong>Mis Viajes</strong></h2>
+            </div>
+            <div class="col-3">
+              <button type="button" class="btn btn-outline-success" name="button">
+                <a href="../controllers/principal.php" style="color: black; text-decoration: none; font-size: 16px;">Volver al Principal
+                  <img src="../media/volver.png" alt="" width="30px" height="30px">
+                </a>
+              </button>
+            </div>
+          </div>
+
+    		<?php } ?>
+
+      </div>
+
+    </div>
 
   	<?php require('../html/Footer.php'); ?>
 

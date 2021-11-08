@@ -13,56 +13,85 @@
     <?php require('../html/Header.php'); ?>
 
     <div class="body">
-      <?php if(isset($this->resultado)){ ?>
+
         <div class="row w-100 m-0 p-0">
-          <div class="alert alert-dismissible alert-warning m-0 w-100">
-              <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-              <h4 class="alert-heading">Aviso</h4>
-              <p class="mb-0"><?= $this->resultado ?></p>
-          </div>
-        </div>
-      <?php } ?>
-      <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-  		<h2 style="color:white">Mis Reclamos</h2>
-  	</nav>
-      <nav>
-  		<?php if(isset($this->reclamos)) { ?>
-  			<?php foreach($this->reclamos as $r) { ?>
-          <div style="width:100%">
-      		<nav class="navbar navbar-expand-lg navbar-dark bg-primary" style="width:100%">
 
-      		<div class="izq">
-  				<h3 style="color:white">Reclamo:<?= $r['id_reclamos'] ?></h3>
-          <p style="color:white">Asunto del Reclamo: <?= $r['asunto'] ?></p>
-          <p style="color:white">Descripcion del Reclamo: <?= $r['descripcion_reclamo'] ?></p>
-          <br>
-          <button type="button" class="btn btn-secondary my-2 my-sm-0" name="button">
-            <a class="navbar-brand" href="../controllers/misreclamos.php?id_reclamos=<?= $r['id_reclamos'] ?>">Cancelar Reclamo</a>
-          </button>
-          <br>
+          <?php if(isset($this->reclamos)){ ?>
+
+            <div class="row w-100 m-0 mt-3 p-2 text-center">
+              <div class="col-9">
+                  <h2><strong>Mis Reclamos</strong></h2>
+              </div>
+              <div class="col-3">
+                <button type="button" class="btn btn-outline-success" name="button">
+                  <a href="../controllers/principal.php" style="color: black; text-decoration: none; font-size: 16px;">Volver al Principal
+                    <img src="../media/volver.png" alt="" width="30px" height="30px">
+                  </a>
+                </button>
+              </div>
+            </div>
+
+            <table class="table table-hover table-dark">
+              <thead>
+                <tr>
+                  <th scope="col">ID Reclamo</th>
+                  <th scope="col">Asunto</th>
+                  <th scope="col">Descripcion</th>
+                  <th scope="col">Eliminar</th>
+                </tr>
+              </thead>
+
+              <?php foreach($this->reclamos as $r) { ?>
+
+                <tbody>
+                  <tr class="table-primary">
+                    <th scope="row"><?= $r['id_reclamos'] ?></th>
+                    <td><?= $r['asunto'] ?></td>
+                    <td><?= $r['descripcion_reclamo'] ?></td>
+
+                    <td>
+                      <button type="button" class="btn btn-outline-danger" name="button">
+                        <a class="navbar-brand" href="../controllers/misreclamos.php?id_reclamos=<?= $r['id_reclamos'] ?>">
+                          <img src="../media/eliminar.svg" alt="" width="30px" height="30px">
+                        </a>
+                      </button>
+                    </td>
+
+                  </tr>
+                </tbody>
+
+              <?php } ?>
+            </table>
+
+          <?php }elseif (isset($this->mensaje)){ ?>
+
+            <div class="alert alert-dismissible alert-warning" style="width:100%">
+      		  	<button type="button" id="BTN" class="btn-close" data-bs-dismiss="alert"></button>
+      		  	<h4 class="alert-heading">Aviso</h4>
+      		  	<p class="mb-0"><?= $this->mensaje ?></p>
+      			</div>
+            <script type="text/javascript">
+              setTimeout(() => { document.getElementById("BTN").click(); }, 5000);
+            </script>
+
+            <div class="row w-100 m-0 mt-3 p-2 text-center">
+              <div class="col-9">
+                  <h2><strong>Mis Reclamos</strong></h2>
+              </div>
+              <div class="col-3">
+                <button type="button" class="btn btn-outline-success" name="button">
+                  <a href="../controllers/principal.php" style="color: black; text-decoration: none; font-size: 16px;">Volver al Principal
+                    <img src="../media/volver.png" alt="" width="30px" height="30px">
+                  </a>
+                </button>
+              </div>
+            </div>
+
+      		<?php } ?>
 
         </div>
-        </nav>
+
       </div>
-  			<?php } ?>
-  		<?php }elseif(isset($this->mensaje)){ ?>
-        <div class="alert alert-dismissible alert-warning" style="width:100%">
-  		  	<button type="button" id="BTN" class="btn-close" data-bs-dismiss="alert"></button>
-  		  	<h4 class="alert-heading">Aviso</h4>
-  		  	<p class="mb-0"><?= $this->mensaje ?></p>
-  			</div>
-        <script type="text/javascript">
-        setTimeout(() => { document.getElementById("BTN").click(); }, 5000);
-        </script>
-  		<?php } ?>
-      </nav>
-      <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-  		<br><br><button type="button" class="btn btn-secondary my-2 my-sm-0" name="button">
-  	      <a class="navbar-brand" href="../controllers/principal.php">Volver a Principal</a>
-  	    </button>
-        </nav>
-
-  	</div>
 
   	<?php require('../html/Footer.php'); ?>
 

@@ -18,7 +18,7 @@ if (count($_GET)>0) {
 
 		$reservas = $r->getReservasByDni($_SESSION['dni']);
 
-	  if (!is_array($reservas)) {
+	  if (empty($reservas)) {
 	    $mensaje = 'No tienes vuelos reservados';
 	    $v = new Mis_Viajes();
 	    $v->mensaje = $mensaje;
@@ -39,7 +39,7 @@ if (count($_GET)>0) {
 }else{
   $reservas = $r->getReservasByDni($_SESSION['dni']);
 
-  if (!is_array($reservas)) {
+  if (empty($reservas)) {
     $mensaje = 'No tienes vuelos reservados';
     $v = new Mis_Viajes();
     $v->mensaje = $mensaje;

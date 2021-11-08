@@ -4,11 +4,13 @@
   session_start();
 
   require('../fw/fw.php');
-  require('../views/Resultado_busqueda.php');
+  require('../views/Principal.php');
   require('../views/Ingreso.php');
   require('../models/Vuelos_favoritos.php');
+  require('../models/Vuelos.php');
 
   $vf = new Vuelos_favoritos();
+  $m = new Vuelos();
 
   if (count($_GET)>0) {
 
@@ -27,9 +29,22 @@
 
         $resultado = $vf->createFavorito($dni,$id_vuelo);
 
-        $v = new Resultado_busqueda();
-        $v->resultado = $resultado;
-        $v->render();
+        $vuelos_precio_minimo = $m->getVuelosConPrecioMinimo();
+        $size_array = count($vuelos_precio_minimo);
+
+        if ($size_array<=4) {
+          $v = new Principal();
+          $v->mensaje = $resultado;
+          $v->vuelos_precio_minimo = $vuelos_precio_minimo;
+          $v->render();
+        }else{
+          shuffle($vuelos_precio_minimo);
+          $v = new Principal();
+          $v->mensaje = $resultado;
+          $v->vuelos_precio_minimo = $vuelos_precio_minimo;
+          $v->render();
+        }
+
       }
 
     }else{

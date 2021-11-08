@@ -13,46 +13,100 @@
 	<?php require('../html/Header.php'); ?>
 
 	<div class="body">
-		<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-		<h2 style="color:white">Favoritos</h2>
-	</nav>
-		<nav>
-		<?php if(isset($this->favoritos)) { ?>
-			<?php foreach($this->favoritos as $fav) { ?>
-				<div style="width:100%">
-				<nav class="navbar navbar-expand-lg navbar-dark bg-primary" style="width:100%">
-				<div class="izq">
-				<h3 style="color:white">Destino</h3>
-	            <p style="color:white"><?= $fav['destino'] ?></p>
-	            <p style="color:white">Saliendo desde: <?= $fav['origen'] ?></p>
-	            <p style="color:white">Precio: <?= $fav['precio'] ?></p>
-	            <button type="button" class="btn btn-secondary my-2 my-sm-0" name="button">
-	              <a class="navbar-brand" href="../controllers/resultado_busqueda.php?origen=<?= $fav['origen'] ?>&destino=<?= $fav['destino'] ?>">Ver mas</a>
-	            </button>
-	            <button type="button" class="btn btn-secondary my-2 my-sm-0" name="button">
-	              <a class="navbar-brand" href="../controllers/misfavoritos.php?dni=<?= $fav['dni'] ?>&id_vuelo=<?= $fav['id_vuelos'] ?>">Eliminar</a>
-	            </button>
+
+			<div class="row w-100 m-0 p-0">
+
+				<?php if(isset($this->favoritos)){ ?>
+
+					<div class="row w-100 m-0 mt-3 p-2 text-center">
+						<div class="col-9">
+								<h2><strong>Mis Favoritos</strong></h2>
 						</div>
-						</nav>
+						<div class="col-3">
+							<button type="button" class="btn btn-outline-success" name="button">
+								<a href="../controllers/principal.php" style="color: black; text-decoration: none; font-size: 16px;">Volver al Principal
+									<img src="../media/volver.png" alt="" width="30px" height="30px">
+								</a>
+							</button>
+						</div>
 					</div>
-			<?php } ?>
-		<?php }elseif(isset($this->mensaje)){ ?>
-			<div class="alert alert-dismissible alert-warning" style="width:100%">
-		  	<button type="button" id="BTN" class="btn-close" data-bs-dismiss="alert"></button>
-		  	<h4 class="alert-heading">Aviso</h4>
-		  	<p class="mb-0"><?= $this->mensaje ?></p>
+
+					<table class="table table-hover table-dark">
+						<thead>
+							<tr>
+								<th scope="col">Destino</th>
+								<th scope="col">Origen</th>
+								<th scope="col">Fecha Origen</th>
+								<th scope="col">Destino</th>
+								<th scope="col">Fecha Destino</th>
+								<th scope="col">Precio</th>
+								<th scope="col">Mas Informacion</th>
+								<th scope="col">Eliminar</th>
+							</tr>
+						</thead>
+
+						<?php foreach($this->favoritos as $fav) { ?>
+
+							<tbody>
+								<tr class="table-primary">
+									<th scope="row"><?= $fav['destino'] ?></th>
+									<td><?= $fav['origen'] ?></td>
+									<td><?= $fav['fecha_origen'] ?></td>
+									<td><?= $fav['destino'] ?></td>
+									<td><?= $fav['fecha_destino'] ?></td>
+									<td><?= $fav['precio'] ?></td>
+
+									<td>
+										<button type="button" class="btn btn-outline-info" name="button">
+											<a href="../controllers/resultado_busqueda.php?origen=<?= $fav['origen'] ?>&destino=<?= $fav['destino'] ?>">
+												<img src="../media/vuelo.png" alt="" width="30px" height="30px">
+											</a>
+										</button>
+									</td>
+
+									<td>
+										<button type="button" class="btn btn-outline-danger" name="button">
+											<a href="../controllers/misfavoritos.php?dni=<?= $fav['dni'] ?>&id_vuelo=<?= $fav['id_vuelos'] ?>">
+												<img src="../media/eliminar.svg" alt="" width="30px" height="30px">
+											</a>
+										</button>
+									</td>
+
+								</tr>
+							</tbody>
+
+						<?php } ?>
+					</table>
+
+				<?php }elseif (isset($this->mensaje)){ ?>
+
+					<div class="alert alert-dismissible alert-warning" style="width:100%">
+						<button type="button" id="BTN" class="btn-close" data-bs-dismiss="alert"></button>
+						<h4 class="alert-heading">Aviso</h4>
+						<p class="mb-0"><?= $this->mensaje ?></p>
+					</div>
+					<script type="text/javascript">
+						setTimeout(() => { document.getElementById("BTN").click(); }, 5000);
+					</script>
+
+					<div class="row w-100 m-0 mt-3 p-2 text-center">
+						<div class="col-9">
+								<h2><strong>Mis Favoritos</strong></h2>
+						</div>
+						<div class="col-3">
+							<button type="button" class="btn btn-outline-success" name="button">
+								<a href="../controllers/principal.php" style="color: black; text-decoration: none; font-size: 16px;">Volver al Principal
+									<img src="../media/volver.png" alt="" width="30px" height="30px">
+								</a>
+							</button>
+						</div>
+					</div>
+
+				<?php } ?>
+
 			</div>
-			<script type="text/javascript">
-			setTimeout(() => { document.getElementById("BTN").click(); }, 5000);
-			</script>
-		<?php } ?>
-		</nav>
-		<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-		<br><br><button type="button" class="btn btn-secondary my-2 my-sm-0" name="button">
-				<a class="navbar-brand" href="../controllers/principal.php">Volver a Principal</a>
-			</button>
-			</nav>
-	</div>
+
+		</div>
 
 	<?php require('../html/Footer.php'); ?>
 
