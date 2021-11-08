@@ -20,7 +20,7 @@
 				<p class="mb-0"><?= $this->resultado ?></p>
 			</div>
 			<script type="text/javascript">
-			setTimeout(() => { document.getElementById("BTN").click(); }, 2000);
+				setTimeout(() => { document.getElementById("BTN").click(); }, 2000);
 			</script>
 
 			<div class=" row w-100 h-100 mb-3">
@@ -50,7 +50,7 @@
 									</div>
 								</div>
 							</form>
-							<?php if (isset($this->estado) && isset($this->redireccion) && isset($this->mensaje)) { ?>
+							<?php if (isset($this->estado) && isset($this->redireccion) && isset($this->mensaje) ) { ?>
 								<div class="row w-100 m-0 p-0 mt-4">
 									<button type="button" name="button" class="btn btn-primary">
 									    <a class="navbar-brand" style="color: white; font-size: 16px; " href="../controllers/register.php?id_vuelo=<?= $this->estado ?>&redireccion=<?= $this->redireccion ?>&mensaje=<?= $this->mensaje ?>">Registrarse</a>

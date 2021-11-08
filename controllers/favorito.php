@@ -49,7 +49,7 @@
 
     }else{
       $v = new Ingreso();
-      $v->resultado = 'Por favor, debe ingresar con su usuario para guardar en favoritos';
+      $v->mensaje = 'Por favor, debe ingresar con su usuario para guardar en favoritos';
       $v->redireccion = 'favorito';
       $v->estado = $_GET['id_vuelo'];
       $v->render();

@@ -73,9 +73,7 @@ if (count($_POST)>0) {
       $v->render();
     }
 
-  }
-
-  if (is_array($resultado_vuelos)) {
+  }elseif (is_array($resultado_vuelos)) {
 
     $max_pax = 200;
     $array = array();
