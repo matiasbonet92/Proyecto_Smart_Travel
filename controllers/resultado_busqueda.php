@@ -5,6 +5,7 @@ session_start();
 
 require('../fw/fw.php');
 require('../views/Resultado_busqueda.php');
+require('../views/Principal.php');
 require('../models/Vuelos.php');
 require('../models/Reservas.php');
 
@@ -53,9 +54,72 @@ if (count($_POST)>0) {
     $resultado_vuelos = $m->getVuelosDesdeBuscadorConFecha($origen,$destino,$fecha);
   }
 
-  $v = new Resultado_busqueda();
-  $v->resultado = $resultado_vuelos;
-  $v->render();
+  if (empty($resultado_vuelos)) {
+    $mensaje = 'No existen vuelos que se correspondan con la busqueda';
+
+    $vuelos_precio_minimo = $m->getVuelosConPrecioMinimo();
+    $size_array = count($vuelos_precio_minimo);
+
+    if ($size_array<=4) {
+      $v = new Principal();
+      $v->mensaje = $mensaje;
+      $v->vuelos_precio_minimo = $vuelos_precio_minimo;
+      $v->render();
+    }else{
+      shuffle($vuelos_precio_minimo);
+      $v = new Principal();
+      $v->mensaje = $mensaje;
+      $v->vuelos_precio_minimo = $vuelos_precio_minimo;
+      $v->render();
+    }
+
+  }
+
+  if (is_array($resultado_vuelos)) {
+
+    $max_pax = 200;
+    $array = array();
+
+    foreach ($resultado_vuelos as $vuelo) {
+      $cant_pasajeros = $res->consultarCantidadPasajerosVuelo($vuelo['id_vuelos']);
+
+      if (isset($cant_pasajeros['0']['pasajeros_actual'])) {
+        $cant_restante = ($max_pax - $cant_pasajeros['0']['pasajeros_actual']);
+      }else{
+        $cant_restante = $max_pax;
+      }
+
+      $res_vuelos = array(
+                      "cant_restante" => $cant_restante,
+                      "resultado_vuelos" => $vuelo
+                    );
+      array_push($array,$res_vuelos);
+    }
+
+    $v = new Resultado_busqueda();
+    $v->resultado = $array;
+    $v->render();
+
+  }else{
+
+    $vuelos_precio_minimo = $m->getVuelosConPrecioMinimo();
+    $size_array = count($vuelos_precio_minimo);
+
+    if ($size_array<=4) {
+      $v = new Principal();
+      $v->mensaje = $resultado_vuelos;
+      $v->vuelos_precio_minimo = $vuelos_precio_minimo;
+      $v->render();
+    }else{
+      shuffle($vuelos_precio_minimo);
+      $v = new Principal();
+      $v->mensaje = $resultado_vuelos;
+      $v->vuelos_precio_minimo = $vuelos_precio_minimo;
+      $v->render();
+    }
+
+  }
+
 }
 
 
