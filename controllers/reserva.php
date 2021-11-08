@@ -6,7 +6,7 @@ session_start();
 require('../fw/fw.php');
 require('../views/Reservar.php');
 require('../views/Ingreso.php');
-require('../views/Resultado_Reserva.php');
+require('../views/Principal.php');
 require ('../models/Vuelos.php');
 require ('../models/Reservas.php');
 
@@ -34,11 +34,24 @@ if (isset($_SESSION['logueado'])) {
 
     if (($cantidad_pasajeros+$cant_actual)<=$max_pasajeros) {
 
-      $creacion = $r->crearReserva($dni,$id_vuelo,$cantidad_pasajeros);
+      $resultado = $r->crearReserva($dni,$id_vuelo,$cantidad_pasajeros);
 
-      $v = new Resultado_Reserva();
-      $v->mensaje = $creacion;
-      $v->render();
+      $vuelos_precio_minimo = $m->getVuelosConPrecioMinimo();
+      $size_array = count($vuelos_precio_minimo);
+
+      if ($size_array<=4) {
+        $v = new Principal();
+        $v->mensaje = $resultado;
+        $v->vuelos_precio_minimo = $vuelos_precio_minimo;
+        $v->render();
+      }else{
+        shuffle($vuelos_precio_minimo);
+        $v = new Principal();
+        $v->mensaje = $resultado;
+        $v->vuelos_precio_minimo = $vuelos_precio_minimo;
+        $v->render();
+      }
+
     }else{
       $error = 'No quedan suficientes lugares para los pasajeros';
 

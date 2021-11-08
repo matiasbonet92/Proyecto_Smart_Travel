@@ -13,42 +13,56 @@
     <?php require ('../html/Header.php'); ?>
 
     <div class="body">
-      <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-      <h2 style="color:white">Tu reserva esta casi finalizada!!</h2>
-    </nav>
-    <div style="display:flex">
-		<nav class="navbar navbar-expand-lg navbar-dark bg-primary" style="width:100%">
-		<div class="izq">
-      <h3 style="color:white">Por favor te pedimos que revises los datos de la reserva</h3><br>
-      <?php foreach($this->datos_vuelo as $datos) { ?>
+      <div class="row w-auto my-3 mx-5 p-0 border border-2 border-dark rounded">
 
-        <h3 style="color:white">Vuelo:</h3>
-        <p style="color:white">'<?= $datos['nombre_vuelo'] ?>' operado por '<?= $datos['nombre_empresa'] ?>'</p>
-        <h3 style="color:white">Origen:</h3>
-        <p style="color:white"><?= $datos['origen'] ?> el <?= $datos['fecha_origen'] ?></p>
-        <h3 style="color:white">Destino:</h3>
-        <p style="color:white"><?= $datos['destino'] ?> el <?= $datos['fecha_destino'] ?></p>
-        <h3 style="color:white">Precio:</h3>
-        <p style="color:white">Precio final: <?= $datos['precio'] ?></p>
-        <form class="" action="../controllers/reserva.php" method="post">
-          <label for="cant_pasajeros" style="color:white">Cantidad de Pasajeros:</label>
-          <input type="number" min="1" max="200" name="cant_pasajeros" id="cant_pasajeros" min="1" required>
-          <br><br>
-          <label for="contrato" style="color:white">He leido las condiciones y expreso conformidad:</label>
-          <input type="checkbox" name="contrato" id="contrato" required checked>
-  				<input type="text" name="id_vuelo" value="<?= $this->id_vuelo ?>" hidden>
-  				<input type="text" name="dni" value="<?= $this->dni ?>" hidden>
-          <br><br>
-  				<input type="submit" name="" value="Reservar">
-        </form>
-        <br><br><button type="button" class="btn btn-secondary my-2 my-sm-0" name="button">
-          <a class="navbar-brand" href="../controllers/principal.php">Cancelar Reserva</a>
-        </button>
+        <div class="row w-100 p-2 m-0 text-center bg-dark">
+          <h2 class="text-white"><strong>Tu reserva esta casi finalizada!</strong></h2>
+        </div>
+
+        <div class="row w-100 m-0 p-1 text-center bg-light">
+
+          <h3 class="mt-3"><strong>Por favor, te pedimos que revises los datos del vuelo antes de reservar</strong></h3><hr>
+
+          <?php foreach($this->datos_vuelo as $datos) { ?>
+
+                <div class="row w-100 m-0 p-0 mb-3">
+                   <div class="col-6 m-0 p-0">
+                     <h4 class="mt-3"><strong>Vuelo:</strong></h4>
+                     <p>'<?= $datos['nombre_vuelo'] ?>' operado por '<?= $datos['nombre_empresa'] ?>'</p>
+                     <h4 class="mt-3"><strong>Origen:</strong></h4>
+                     <p><?= $datos['origen'] ?> partiendo el <?= $datos['fecha_origen'] ?></p>
+                   </div>
+                   <div class="col-6 m-0 p-0">
+                     <h4 class="mt-3"><strong>Destino:</strong></h4>
+                     <p><?= $datos['destino'] ?> arribando el <?= $datos['fecha_destino'] ?></p>
+                     <h4 class="mt-3"><strong>Precio:</strong></h4>
+                     <p>$ <?= $datos['precio'] ?></p>
+                   </div>
+                </div><hr>
+
+                <form class="" action="../controllers/reserva.php" method="post">
+                  <label for="cant_pasajeros"><strong>Cantidad de Pasajeros:</strong></label>
+                  <input type="number" min="1" max="200" name="cant_pasajeros" id="cant_pasajeros" min="1" required>
+                  <br><br>
+                  <label for="contrato"><strong>He leido las condiciones y expreso conformidad:</strong></label>
+                  <input type="checkbox" name="contrato" id="contrato" required checked>
+          				<input type="text" name="id_vuelo" value="<?= $this->id_vuelo ?>" hidden>
+          				<input type="text" name="dni" value="<?= $this->dni ?>" hidden>
+                  <br><br>
+          				<input type="submit" class="btn btn-success w-25" name="" value="Reservar">
+                </form>
+
+                <div class="col">
+                  <button type="button" class="btn btn-danger w-25" name="button">
+                    <a style="color:white; text-decoration: none;" href="../controllers/principal.php">Cancelar Reserva</a>
+                  </button>
+                </div>
+
+            <?php } ?>
+
+        </div>
+
       </div>
-    </nav>
-  </div>
-
-      <?php } ?>
     </div>
 
     <?php require ('../html/Footer.php'); ?>
