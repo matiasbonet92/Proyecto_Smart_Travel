@@ -55,7 +55,7 @@ if(isset($_GET['id_vuelo'])){
         }
 
         $mensaje = 'Complete sus datos personales ya que son obligatorios para reservar vuelos y guardar favoritos';
-        header("Location: ../controllers/perfil.php?mensaje=$mensaje");
+        header("Location: ../controllers/perfil.php?mensaje=$mensaje&id_vuelo=$id_vuelo&redireccion=$redireccion");
         exit;
 
       }else{

@@ -13,6 +13,7 @@ class Perfil extends View{
 	public $id_vuelo;
 
 	public $mensaje;
+	public $redireccion;
 
 }
 

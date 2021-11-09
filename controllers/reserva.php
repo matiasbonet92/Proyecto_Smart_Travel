@@ -85,10 +85,9 @@ if (isset($_SESSION['logueado'])) {
 }else{
 
   $v = new Ingreso();
-  $v->resultado = 'Por favor, debe ingresar con su usuario para reservar el vuelo';
+  $v->mensaje = 'Por favor, debe ingresar con su usuario para reservar el vuelo';
   $v->estado = $_GET['id_vuelo'];
   $v->redireccion = 'reserva';
-  $v->mensaje = 'reserva';
   $v->render();
 
 }

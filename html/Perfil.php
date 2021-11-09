@@ -40,6 +40,30 @@
 		      </div>
 
 			    <div class="row w-100 m-0 pt-5 pb-5 ps-5 p-0 bg-light">
+						<div class="row w-100 my-3 p-2">
+							<?php if (isset($this->dni) && isset($this->id_vuelo)) { ?>
+
+								<?php if ($this->redireccion == 'reserva'){ ?>
+									<div class="col-6 p-0 m-0">
+										<button type="button" class="btn btn-success" name="button">
+											<a style="text-decoration:none; color:white;" href="../controllers/reserva.php?id_vuelo=<?= $this->id_vuelo ?>">Finalizar Reserva</a>
+										</button>
+									</div>
+								<?php }elseif ($this->redireccion == 'favorito'){ ?>
+									<div class="col-6 p-0 m-0">
+										<button type="button" class="btn btn-success" name="button">
+											<a style="text-decoration:none; color:white;" href="../controllers/favorito.php?id_vuelo=<?= $this->id_vuelo ?>">Guardar Favorito</a>
+										</button>
+									</div>
+								<?php } ?>
+
+							<?php } ?>
+								<div class="col-6 p-0 m-0">
+									<button type="button" class="btn btn-danger" name="button">
+										<a style="text-decoration:none; color:white;" href="../controllers/principal.php">Volver a Principal</a>
+									</button>
+								</div>
+						</div>
 						<div class="col-12 m-0 p-0">
 							<h4 class="mt-3"><strong>Nombre:</strong> <?= $this->nombre ?></h4>
 							<h4 class="mt-3"><strong>Apellido:</strong> <?= $this->apellido ?></h4>
@@ -49,20 +73,7 @@
 							<?php } ?>
 							<h4 class="mt-3"><strong>Direccion:</strong> <?= $this->direccion ?></h4>
 							<h4 class="mt-3"><strong>Telefono:</strong> <?= $this->telefono ?></h4>
-							<div class="row w-100 my-3 p-2">
-								<?php if (isset($this->dni) && isset($this->id_vuelo)) { ?>
-									<div class="col-6 p-0 m-0">
-										<button type="button" class="btn btn-success" name="button">
-											<a style="text-decoration:none; color:white;" href="../controllers/reserva.php?id_vuelo=<?= $this->id_vuelo ?>">Finalizar Reserva</a>
-										</button>
-									</div>
-								<?php } ?>
-									<div class="col-6 p-0 m-0">
-										<button type="button" class="btn btn-danger" name="button">
-											<a style="text-decoration:none; color:white;" href="../controllers/principal.php">Volver a Principal</a>
-										</button>
-									</div>
-							</div>
+
 						</div>
 					</div>
 
@@ -84,6 +95,7 @@
 						<div class="col-12 m-0 p-0">
 							<form action="../controllers/perfil.php" method="post">
 								<input type="text" name="id_vuelo" value="<?= $this->id_vuelo ?>" hidden>
+								<input type="text" name="redireccion" value="<?= $this->redireccion ?>" hidden>
 								<div class="form-group w-100 my-2">
 									<label for="nombre" style="color: black;"><strong>Nombre:</strong></label>
 									<input type="text" class="form-control" name="nombre" id="nombre" value="<?= $this->nombre ?>">

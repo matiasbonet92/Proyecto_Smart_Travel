@@ -29,6 +29,7 @@
     }
 
     $id_vuelo = $_POST['id_vuelo'];
+    $redireccion = $_POST['redireccion'];
 
     if (is_array($consulta)) {
       $v = new Perfil();
@@ -40,6 +41,7 @@
       $v->direccion = $direccion;
       $v->telefono = $telefono;
       $v->id_vuelo = $id_vuelo;
+      $v->redireccion = $redireccion;
       $v->render();
     }else{
       $v = new Perfil();

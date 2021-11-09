@@ -11,8 +11,15 @@
 
   if (count($_GET)>0) {
 
+    $id_vuelo = $_GET['id_vuelo'];
+    $mensaje = $_GET['mensaje'];
+    $redireccion = $_GET['redireccion'];
+
     $v = new Ingreso();
     $v->error = $_GET['error'];
+    $v->estado = $id_vuelo;
+    $v->mensaje = $mensaje;
+    $v->redireccion = $redireccion;
     $v->render();
 
   }elseif (count($_POST)==5) {
@@ -22,6 +29,8 @@
     $login_correcto = $m->getUsuarios($mail,$clave);
     $id_vuelo = $_POST['estado'];
     $mensaje = $_POST['mensaje'];
+    $redireccion = $_POST['redireccion'];
+    var_dump($redireccion);
 
     if (is_array($login_correcto)) {
 
@@ -35,8 +44,6 @@
         $_SESSION['direccion'] = $data['direccion'];
       }
 
-      $redireccion = $_POST['redireccion'];
-
       if ($redireccion == 'favorito') {
         header("Location: ../controllers/favorito.php?id_vuelo=$id_vuelo");
         exit;
@@ -47,7 +54,7 @@
       /*ver si viene por el lado de reserva o favorito*/
 
     }else{
-      header("Location: ../controllers/login.php?error=$login_correcto");
+      header("Location: ../controllers/login.php?error=$login_correcto&id_vuelo=$id_vuelo&mensaje=$mensaje&redireccion=$redireccion");
       exit;
     }
 
