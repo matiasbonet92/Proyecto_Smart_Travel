@@ -55,7 +55,7 @@
 							</div>
 							<div class="form-group w-100">
 								<div class="w-100">
-									<?php if ($this->id_vuelo) { ?>
+									<?php if (isset($this->id_vuelo)) { ?>
 										<input type="text" name="estado" value="<?= $this->id_vuelo ?>" hidden>
 										<input type="text" name="redireccion" value="<?= $this->redireccion ?>" hidden>
 										<input type="text" name="mensaje" value="<?= $this->mensaje ?>" hidden>

@@ -30,7 +30,6 @@
     $id_vuelo = $_POST['estado'];
     $mensaje = $_POST['mensaje'];
     $redireccion = $_POST['redireccion'];
-    var_dump($redireccion);
 
     if (is_array($login_correcto)) {
 
@@ -45,10 +44,10 @@
       }
 
       if ($redireccion == 'favorito') {
-        header("Location: ../controllers/favorito.php?id_vuelo=$id_vuelo");
+        header("Location: ../controllers/favorito.php?id_vuelo=$id_vuelo&redireccion=$redireccion");
         exit;
       }else{
-        header("Location: ../controllers/reserva.php?id_vuelo=$id_vuelo");
+        header("Location: ../controllers/reserva.php?id_vuelo=$id_vuelo&redireccion=$redireccion");
         exit;
       }
       /*ver si viene por el lado de reserva o favorito*/
@@ -58,35 +57,7 @@
       exit;
     }
 
-}elseif (count($_POST)==3) {
-
-    $mail = $_POST['mail'];
-    $clave = $_POST['clave'];
-    $login_correcto = $m->getUsuarios($mail,$clave);
-    $id_vuelo = $_POST['estado'];
-    $mensaje = $_POST['mensaje'];
-
-    if (is_array($login_correcto)) {
-
-      foreach ($login_correcto as $data) {
-        $_SESSION['logueado'] = true;
-        $_SESSION['id_login'] = $data['id_login'];
-        $_SESSION['mail'] = $data['mail'];
-        $_SESSION['dni'] = $data['dni'];
-        $_SESSION['nombre'] = $data['nombre'];
-        $_SESSION['apellido'] = $data['apellido'];
-        $_SESSION['direccion'] = $data['direccion'];
-      }
-
-      header("Location: ../controllers/favorito.php?id_vuelo=$id_vuelo");
-      exit;
-
-    }else{
-      header("Location: ../controllers/login.php?error=$login_correcto");
-      exit;
-    }
-
-    }elseif (count($_POST)>0) {
+}elseif (count($_POST)>0) {
 
         $mail = $_POST['mail'];
         $clave = $_POST['clave'];
@@ -117,8 +88,9 @@
             exit;
           }
         }else{
-          header("Location: ../controllers/login.php?error=$login_correcto");
-          exit;
+          $v = new Ingreso();
+          $v->error = $login_correcto;
+          $v->render();
         }
     }else{
         $v = new Ingreso();

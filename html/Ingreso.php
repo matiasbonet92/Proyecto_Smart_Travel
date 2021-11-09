@@ -72,31 +72,6 @@
 				</div>
 				<div class="col-4 m-0 p-0"></div>
 			</div>
-			<!-- <div class="w-100 h-100">
-				<div class="container-fluid">
-						<form class="d-flex" action="../controllers/login.php" method="post">
-							<div class="form-group" style="display:flex;">
-								<div class="col-sm-10" style="max-width:30%; max-height:10%;padding-left:10px;">
-									<label for="origen" style="color:white;">Mail:</label>
-									<input type="text" class="form-control" name="mail" placeholder="alguien@alguien.com">
-								</div>
-								<div class="col-sm-10" style="max-width:30%;padding-left:10px;">
-									<label for="destino" style="color:white;">Contraseña:</label>
-									<input type="text" class="form-control" name="clave" placeholder="********">
-								</div>
-								<div class="col-sm-10" style="max-width:30%;">
-									<br>
-									<input type="submit" class="btn btn-secondary my-2 my-sm-0" name="" value="Ingresar">
-								</div>
-							</div>
-						</form>
-						<button type="button" class="btn btn-secondary my-2 my-sm-0" name="button">
-						    <a class="navbar-brand" href="../controllers/register.php?id_vuelo=<?= $this->estado ?>">Registrarse</a>
-						</button>
-						<button type="button" name="button" class="btn btn-secondary my-2 my-sm-0" >
-						    <a class="navbar-brand" href="../controllers/principal.php">Volver al Principal</a>
-						</button>
-						</div> -->
 
 		<?php }elseif (isset($this->error)) { ?>
 

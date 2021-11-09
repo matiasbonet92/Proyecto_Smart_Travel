@@ -63,12 +63,15 @@ if (isset($_SESSION['logueado'])) {
   }elseif (count($_GET)>0 ) {
 
     $id_vuelo = $_GET['id_vuelo'];
+    if (isset($_GET['redireccion'])) {
+      $redireccion = $_GET['redireccion'];
+    }
     $dni = $_SESSION['dni'];
 
     if (!isset($dni)) {
       $mensaje = 'Debe completar sus datos personales para poder guardar favoritos y realizar reservas';
 
-      header("Location: ../controllers/perfil.php?mensaje=$mensaje&id_vuelo=$id_vuelo");
+      header("Location: ../controllers/perfil.php?mensaje=$mensaje&id_vuelo=$id_vuelo&redireccion=$redireccion");
       exit;
     }else{
       $datos_vuelo = $m->getVueloById($id_vuelo);

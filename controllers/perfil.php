@@ -54,6 +54,7 @@
 
       $mensaje = $_GET['mensaje'];
       $id_vuelo = $_GET['id_vuelo'];
+      $redireccion = $_GET['redireccion'];
 
       $v = new Perfil();
       $v->id_login = $_SESSION['id_login'];
@@ -61,6 +62,7 @@
       $v->nombre = $_SESSION['nombre'];
       $v->mensaje = $mensaje;
       $v->id_vuelo = $id_vuelo;
+      $v->redireccion = $redireccion;
       $v->render();
 
   }elseif (isset($_SESSION['logueado'])) {

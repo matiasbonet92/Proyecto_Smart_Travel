@@ -14,6 +14,7 @@ if(isset($_GET['id_vuelo'])){
   $v = new Registro();
   $v->id_vuelo = $_GET['id_vuelo'];
   $v->redireccion = $_GET['redireccion'];
+  var_dump($_GET['redireccion']);
   $v->mensaje = $_GET['mensaje'];
   $v->render();
 
@@ -45,14 +46,7 @@ if(isset($_GET['id_vuelo'])){
 
         $id_vuelo = $_POST['estado'];
         $redireccion = $_POST['redireccion'];
-
-        if ($redireccion == 'favorito') {
-          header("Location: ../controllers/favorito.php?id_vuelo=$id_vuelo");
-          exit;
-        }else{
-          header("Location: ../controllers/reserva.php?id_vuelo=$id_vuelo");
-          exit;
-        }
+        var_dump($redireccion);
 
         $mensaje = 'Complete sus datos personales ya que son obligatorios para reservar vuelos y guardar favoritos';
         header("Location: ../controllers/perfil.php?mensaje=$mensaje&id_vuelo=$id_vuelo&redireccion=$redireccion");
