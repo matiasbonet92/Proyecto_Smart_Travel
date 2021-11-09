@@ -9,7 +9,7 @@
 	<link rel="icon" type="image/png" href="../media/logo.png">
 </head>
 <body style="background-image: url('../media/back.jpg');background-repeat: no-repeat;background-attachment: fixed;background-size: cover;">
-	<?php require '../html/HeaderAdmin.php'; ?>
+	<?php require '../html/Header.php'; ?>
 
 	<div class="body">
 
