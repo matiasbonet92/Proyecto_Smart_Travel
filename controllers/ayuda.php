@@ -11,10 +11,10 @@ require('../models/Empresas.php');
 $e = new Empresas();
 
 
-    $empresas = $e->getEmpresas();
+$empresas = $e->getEmpresas();
 
-    $v = new Ayuda();
-    $v->empresas = $empresas;
-    $v->render();
-  
+$v = new Ayuda();
+$v->empresas = $empresas;
+$v->render();
+
 ?>
