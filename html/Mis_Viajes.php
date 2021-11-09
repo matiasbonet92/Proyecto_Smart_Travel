@@ -64,14 +64,14 @@
 
                     <td>
                       <button type="button" class="btn btn-outline-danger" name="button">
-                        <a class="navbar-brand" href="../controllers/misviajes.php?id_reserva=<?= $res['id_reserva'] ?>">
+                        <a href="../controllers/misviajes.php?id_reserva=<?= $res['id_reserva'] ?>">
                           <img src="../media/eliminar.svg" alt="" width="30px" height="30px">
                         </a>
                       </button>
                     </td>
                     <td>
                       <button type="button" class="btn btn-outline-warning" name="button">
-                        <a class="navbar-brand" href="../controllers/AgregarReclamo.php?id_reserva=<?= $res['id_reserva'] ?>">
+                        <a href="../controllers/AgregarReclamo.php?id_reserva=<?= $res['id_reserva'] ?>">
                           <img src="../media/libro-de-reclamaciones.png" alt="" width="30px" height="30px">
                         </a>
                       </button>

@@ -119,7 +119,7 @@
           </div>
 
           <div class="row w-100 m-0 p-0 mt-2">
-            <table class="table table-primary w-100">
+            <table class="table table-hover table-dark w-100">
               <thead>
                 <tr>
                   <th scope="col">ID</th>
@@ -137,7 +137,7 @@
               <?php foreach ($this->vuelos_empresa as $vuelos) { ?>
 
                 <tbody>
-                  <tr class="table-active">
+                  <tr class="table-active table-light">
                     <th scope="row"><?= $vuelos['id_vuelos'] ?></th>
                     <td><?= $vuelos['nombre'] ?></td>
                     <td><?= $vuelos['origen'] ?></td>

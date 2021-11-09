@@ -40,7 +40,7 @@
 								<th scope="col">Destino</th>
 								<th scope="col">Fecha Destino</th>
 								<th scope="col">Precio</th>
-								<th scope="col">Mas Informacion</th>
+								<th scope="col">Ver Mas</th>
 								<th scope="col">Eliminar</th>
 							</tr>
 						</thead>

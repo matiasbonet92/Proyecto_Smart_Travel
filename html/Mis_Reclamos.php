@@ -51,7 +51,7 @@
 
                     <td>
                       <button type="button" class="btn btn-outline-danger" name="button">
-                        <a class="navbar-brand" href="../controllers/misreclamos.php?id_reclamos=<?= $r['id_reclamos'] ?>">
+                        <a href="../controllers/misreclamos.php?id_reclamos=<?= $r['id_reclamos'] ?>">
                           <img src="../media/eliminar.svg" alt="" width="30px" height="30px">
                         </a>
                       </button>

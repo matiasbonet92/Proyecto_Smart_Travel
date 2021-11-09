@@ -14,7 +14,6 @@ if(isset($_GET['id_vuelo'])){
   $v = new Registro();
   $v->id_vuelo = $_GET['id_vuelo'];
   $v->redireccion = $_GET['redireccion'];
-  var_dump($_GET['redireccion']);
   $v->mensaje = $_GET['mensaje'];
   $v->render();
 
@@ -26,7 +25,10 @@ if(isset($_GET['id_vuelo'])){
 
 }elseif (count($_POST)>0) {
 
-    $mail = $_POST['mail'];
+    if ($_POST['mail'] != 'root') {
+      $mail = $_POST['mail'];
+    }
+
     $clave = $_POST['clave'];
     $nombre = $_POST['nombre'];
     $clave_repetida = $_POST['clave_repetida'];
@@ -46,7 +48,6 @@ if(isset($_GET['id_vuelo'])){
 
         $id_vuelo = $_POST['estado'];
         $redireccion = $_POST['redireccion'];
-        var_dump($redireccion);
 
         $mensaje = 'Complete sus datos personales ya que son obligatorios para reservar vuelos y guardar favoritos';
         header("Location: ../controllers/perfil.php?mensaje=$mensaje&id_vuelo=$id_vuelo&redireccion=$redireccion");
@@ -54,8 +55,14 @@ if(isset($_GET['id_vuelo'])){
 
       }else{
 
-        header("Location: ../controllers/register.php?error=$datos_login");
-        exit;
+        if (!isset($mail)) {
+          $datos_login = 'El mail root no puede ser dado de alta como usuario';
+          header("Location: ../controllers/register.php?error=$datos_login");
+          exit;
+        }else{
+          header("Location: ../controllers/register.php?error=$datos_login");
+          exit;
+        }
 
       }
 

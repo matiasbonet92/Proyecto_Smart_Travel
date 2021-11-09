@@ -52,7 +52,7 @@
           				<input type="submit" class="btn btn-success w-25" name="" value="Reservar">
                 </form>
 
-                <div class="col">
+                <div class="col mt-1 mb-3">
                   <button type="button" class="btn btn-danger w-25" name="button">
                     <a style="color:white; text-decoration: none;" href="../controllers/principal.php">Cancelar Reserva</a>
                   </button>

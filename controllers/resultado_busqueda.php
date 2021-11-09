@@ -70,7 +70,7 @@ if (count($_POST)>0) {
       $v = new Principal();
       $v->mensaje = $mensaje;
       $v->vuelos_precio_minimo = $vuelos_precio_minimo;
-      $v->render(); 
+      $v->render();
     }
 
   }elseif (is_array($resultado_vuelos)) {
