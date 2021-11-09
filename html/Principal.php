@@ -79,7 +79,7 @@
             </div>
             <div class="card-body text-black" style="text-align:center;">
               <p><strong>Saliendo desde: <?= $v['origen'] ?></strong></p>
-              <p><strong>Precio desde: <?= $v['precio_minimo'] ?></strong></p>
+              <p><strong>Precio desde: $<?= $v['precio_minimo'] ?></strong></p>
             </div>
             <div class="card-footer bg-primary" style="text-align:center">
               <button type="button" class="btn btn-outline-dark w-75 p-1" name="button">

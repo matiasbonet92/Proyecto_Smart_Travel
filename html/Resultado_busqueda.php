@@ -30,7 +30,7 @@
                 </div>
                 <div class="card-body text-black" style="text-align:center;">
                   <p><strong>Saliendo desde: <?= $r['resultado_vuelos']['origen'] ?></strong></p>
-                  <p><strong>Precio: <?= $r['resultado_vuelos']['precio'] ?></strong></p>
+                  <p><strong>Precio: $<?= $r['resultado_vuelos']['precio'] ?></strong></p>
                   <p><strong>Quedan <?= $r['cant_restante'] ?> lugares disponibles!</strong></p>
                 </div>
                 <div class="card-footer bg-primary" style="text-align:center">
