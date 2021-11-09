@@ -10,7 +10,7 @@
             <div class="col-9"></div>
             <div class="col-3 text-end">
               <button type="button" class="btn btn-info m-0 p-1 px-4" name="button">
-                <a class="navbar-brand m-0 p-0" style="font-size: 18px;" href="#">Centro de Ayuda</a>
+                <a class="navbar-brand m-0 p-0" style="font-size: 18px;" href="../controllers/ayuda.php">Centro de Ayuda</a>
               </button>
               <button type="button" class="btn btn-success m-0 p-1 px-4" name="button">
                 <a class="navbar-brand m-0 p-0" style="font-size: 18px;" href="../controllers/login.php">Login</a>
@@ -49,7 +49,7 @@
 
             <div class="col-3 m-0 p-0 ps-5">
               <button type="button" class="btn btn-info m-0 p-1 px-4" name="button">
-                <a class="navbar-brand m-0 p-0" style="font-size: 18px;" href="#">Centro de Ayuda</a>
+                <a class="navbar-brand m-0 p-0" style="font-size: 18px;" href="../controllers/ayuda.php">Centro de Ayuda</a>
               </button>
               <button type="button" class="btn btn-danger m-0 p-1 px-4" name="button">
                 <a class="navbar-brand m-0 p-0" style="font-size: 18px;" href="../controllers/logout.php">Salir</a>
