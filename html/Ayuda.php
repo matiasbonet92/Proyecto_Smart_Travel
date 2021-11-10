@@ -169,7 +169,7 @@
               <h3 style="color:white;">Centro de Ayuda Aerolíneas</h3>
             </div>
 
-            <div class="p-3 border bg-light">
+            <div class="p-3 border bg-light" style="overflow:auto; height:400px;">
               <table class="table table-hover table-dark">
                 <thead>
                   <tr>
