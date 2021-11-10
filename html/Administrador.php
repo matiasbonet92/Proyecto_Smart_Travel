@@ -18,11 +18,14 @@
         <?php if (isset($this->empresas)) { ?>
 
           <?php if(isset($this->resultado)){ ?>
-            <div class="alert alert-dismissible alert-warning m-0 w-100">
-        				<button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-        				<h4 class="alert-heading">Aviso</h4>
-      			    <p class="mb-0"><?= $this->resultado ?></p>
-      			</div>
+            <div class="alert alert-dismissible alert-warning" style="width:100%">
+              <button type="button" id="BTN" class="btn-close" data-bs-dismiss="alert"></button>
+              <h4 class="alert-heading">Aviso</h4>
+              <p class="mb-0"><?= $this->resultado ?></p>
+            </div>
+            <script type="text/javascript">
+              setTimeout(() => { document.getElementById("BTN").click(); }, 5000);
+            </script>
           <?php } ?>
 
           <div class="row w-100 m-0 mt-3 p-2 text-center">
@@ -89,11 +92,14 @@
         <?php }elseif (isset($this->vuelos_empresa)) { ?>
 
           <?php if(isset($this->resultado)){ ?>
-            <div class="alert alert-dismissible alert-warning m-0 w-100">
-        				<button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-        				<h4 class="alert-heading">Aviso</h4>
-      			    <p class="mb-0"><?= $this->resultado ?></p>
-      			</div>
+            <div class="alert alert-dismissible alert-warning" style="width:100%">
+              <button type="button" id="BTN" class="btn-close" data-bs-dismiss="alert"></button>
+              <h4 class="alert-heading">Aviso</h4>
+              <p class="mb-0"><?= $this->resultado ?></p>
+            </div>
+            <script type="text/javascript">
+              setTimeout(() => { document.getElementById("BTN").click(); }, 5000);
+            </script>
           <?php } ?>
 
           <div class="row w-100 m-0 mt-3 p-2 text-center">

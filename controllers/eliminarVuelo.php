@@ -8,7 +8,7 @@ require('../views/Administrador.php');
 require('../models/Empresas.php');
 require('../models/Vuelos.php');
 
-
+$emp = new Empresas();
 $vuelos = new Vuelos();
 
 if (isset($_SESSION['logueado'])) {
@@ -20,10 +20,12 @@ if (isset($_SESSION['logueado'])) {
     $vuelos->eliminarVuelo($id_vuelo);
 
     $datos = $vuelos->getVuelosByEmpresa($id_empresa);
+    $nombre_empresa = $emp->getEmpresaById($id_empresa);
     $resultado = 'Vuelo eliminado con exito';
 
     $v = new Administrador();
     $v->vuelos_empresa = $datos;
+    $v->nombre_empresa = $nombre_empresa;
     $v->resultado = $resultado;
     $v->render();
 

@@ -7,11 +7,10 @@ require('../fw/fw.php');
 require('../views/EditarEmpresa.php');
 require('../views/Administrador.php');
 require('../models/Empresas.php');
-
 require('../views/EditarVuelo.php');
 require('../models/Vuelos.php');
 
-
+$emp = new Empresas();
 $e = new Vuelos();
 
 if (isset($_SESSION['logueado'])) {
@@ -51,10 +50,12 @@ if (isset($_SESSION['logueado'])) {
     }else{
       $resultado = 'Vuelo ' . $nombre . ' modificado con exito';
       $vuelos_empresa = $e->getVuelosByEmpresa($id_empresa);
+      $nombre_empresa = $emp->getEmpresaById($id_empresa);
 
       $v = new Administrador();
       $v->vuelos_empresa = $vuelos_empresa;
       $v->resultado = $resultado;
+      $v->nombre_empresa = $nombre_empresa;
       $v->render();
     }
 
