@@ -15,7 +15,7 @@ $r = new Reservas();
 
 if (isset($_SESSION['logueado'])) {
 
-  if (count($_POST)==4) {
+  if (count($_POST)>0) {
 
     $id_vuelo = $_POST['id_vuelo'];
     $dni = $_POST['dni'];

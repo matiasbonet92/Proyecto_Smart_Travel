@@ -36,7 +36,7 @@
 
       $this->db->query("SELECT * FROM reservas WHERE dni='$dni' AND id_vuelos='$id_vuelo'");
 
-      if ($this->db->numRows()>1) {
+      if ($this->db->numRows()>0) {
         return 'Reserva realizada con exito! Buen Viaje!';
       }
 
