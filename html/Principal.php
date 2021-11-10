@@ -47,7 +47,7 @@
             </div>
             <div class="col-sm-2 p-1 me-2">
               <label for="fecha" class="text-black">Fecha:</label>
-              <input type="date" class="form-control" name="fecha">
+              <input type="date" min=<?php $hoy = date("Y-m-d"); echo $hoy; ?> class="form-control" name="fecha">
             </div>
             <div class="col-3 p-1 pt-2 ps-4 me-2">
               <br>

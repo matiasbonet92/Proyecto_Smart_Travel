@@ -93,6 +93,10 @@
       if(!checkdate($mes_ok, $dia_ok, $anio_ok)) throw new Exception('La fecha es incorrecta');
       $fecha_destino = $anio_ok.'-'.$mes_ok.'-'.$dia_ok;
 
+      $forigen = new DateTime($fecha_origen);
+      $fdestino = new DateTime($fecha_destino);
+
+      if($forigen > $fdestino) throw new Exception('La fecha de destino no puede ser posterior a la de origen');
 
       if(!isset($precio)) throw new Exception('El precio no puede estar vacio');
       if(!is_numeric($precio)) throw new Exception('El precio debe ser numerico');
@@ -182,6 +186,11 @@
 
       if(!checkdate($mes_ok, $dia_ok, $anio_ok)) throw new Exception('La fecha es incorrecta');
       $fecha_destino = $anio_ok.'-'.$mes_ok.'-'.$dia_ok;
+
+      $forigen = new DateTime($fecha_origen);
+      $fdestino = new DateTime($fecha_destino);
+
+      if($forigen > $fdestino) throw new Exception('La fecha de destino no puede ser posterior a la de origen');
 
       if(!isset($precio)) throw new Exception('El precio no puede estar vacio');
       if(!is_numeric($precio)) throw new Exception('El precio debe ser numerico');

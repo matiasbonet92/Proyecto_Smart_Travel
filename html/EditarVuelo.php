@@ -56,7 +56,7 @@
 										<div class="form-group w-100 mt-1">
 											<div class="w-100">
 												<label for="fecha_origen" style="color:black;">Fecha Origen:</label>
-												<input type="date" class="form-control" name="fecha_origen" value="<?= $datos['fecha_origen'] ?>">
+												<input type="date" min=<?php $hoy = date("Y-m-d"); echo $hoy; ?> class="form-control" name="fecha_origen" value="<?= $datos['fecha_origen'] ?>">
 											</div>
 										</div>
 									</div>
@@ -74,7 +74,7 @@
 										<div class="form-group w-100 mt-1">
 											<div class="w-100">
 												<label for="fecha_destino" style="color:black;">Fecha Destino:</label>
-												<input type="date" class="form-control" name="fecha_destino" value="<?= $datos['fecha_destino'] ?>">
+												<input type="date" min=<?php $hoy = date("Y-m-d"); echo $hoy; ?> class="form-control" name="fecha_destino" value="<?= $datos['fecha_destino'] ?>">
 											</div>
 										</div>
 									</div>
