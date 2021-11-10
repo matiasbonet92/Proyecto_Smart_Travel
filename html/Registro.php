@@ -62,14 +62,14 @@
 									<?php } ?>
 								</div>
 							</div>
-							<div class="form-group w-100 mt-3">
+							<div class="form-group w-100 mt-3 mb-1">
 								<div class="w-100">
 									<input type="submit" name="" style=" font-size: 16px;" value="Registrarse e Ingresar" class="btn btn-success w-100">
 								</div>
 							</div>
 						</form>
 
-					<div class="row w-100 m-0 p-0 mt-4">
+					<div class="row w-100 m-0 p-0 mb-1">
 						<button type="button" name="button" class="btn btn-warning">
 								<a class="navbar-brand" style="color: white; font-size: 16px;" href="../controllers/login.php">Volver al Login</a>
 						</button>

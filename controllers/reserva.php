@@ -55,9 +55,21 @@ if (isset($_SESSION['logueado'])) {
     }else{
       $error = 'No quedan suficientes lugares para los pasajeros';
 
-      $v = new Resultado_Reserva();
-      $v->mensaje = $error;
-      $v->render();
+      $vuelos_precio_minimo = $m->getVuelosConPrecioMinimo();
+      $size_array = count($vuelos_precio_minimo);
+
+      if ($size_array<=4) {
+        $v = new Principal();
+        $v->mensaje = $error;
+        $v->vuelos_precio_minimo = $vuelos_precio_minimo;
+        $v->render();
+      }else{
+        shuffle($vuelos_precio_minimo);
+        $v = new Principal();
+        $v->mensaje = $error;
+        $v->vuelos_precio_minimo = $vuelos_precio_minimo;
+        $v->render();
+      }
     }
 
   }elseif (count($_GET)>0 ) {
@@ -76,9 +88,20 @@ if (isset($_SESSION['logueado'])) {
     }else{
       $datos_vuelo = $m->getVueloById($id_vuelo);
 
+      $max_pax = 200;
+
+      $cant_pasajeros = $r->consultarCantidadPasajerosVuelo($id_vuelo);
+
+      if (isset($cant_pasajeros['0']['pasajeros_actual'])) {
+        $cant_restante = $max_pax - $cant_pasajeros['0']['pasajeros_actual'];
+      }else{
+        $cant_restante = $max_pax;
+      }
+
       $v = new Reservar();
       $v->id_vuelo = $id_vuelo;
       $v->datos_vuelo = $datos_vuelo;
+      $v->cant_restante = $cant_restante;
       $v->dni = $dni;
       $v->render();
     }

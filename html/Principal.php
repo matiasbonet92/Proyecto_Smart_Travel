@@ -56,7 +56,7 @@
             </div>
             <div class="col-1 p-1">
               <br>
-              <input type="submit" class="btn btn-secondary my-2 my-sm-0" name="" value="Buscar">
+              <input type="submit" class="btn btn-outline-success my-2 my-sm-0" name="" value="Buscar">
             </div>
           </div>
         </form>

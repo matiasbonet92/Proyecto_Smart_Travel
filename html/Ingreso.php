@@ -51,13 +51,13 @@
 								</div>
 							</form>
 							<?php if (isset($this->estado) && isset($this->redireccion) && isset($this->mensaje) ) { ?>
-								<div class="row w-100 m-0 p-0 mt-4">
+								<div class="row w-100 m-0 p-0 mt-3 mb-1">
 									<button type="button" name="button" class="btn btn-primary">
 									    <a class="navbar-brand" style="color: white; font-size: 16px; " href="../controllers/register.php?id_vuelo=<?= $this->estado ?>&redireccion=<?= $this->redireccion ?>&mensaje=<?= $this->mensaje ?>">Registrarse</a>
 									</button>
 								</div>
 							<?php }else{ ?>
-								<div class="row w-100 m-0 p-0 mt-4">
+								<div class="row w-100 m-0 p-0 mb-1">
 									<button type="button" name="button" class="btn btn-primary">
 									    <a class="navbar-brand" style="color: white; font-size: 16px; " href="../controllers/register.php">Registrarse</a>
 									</button>
@@ -109,13 +109,13 @@
 									</div>
 								</form>
 								<?php if (isset($this->estado) && isset($this->redireccion) && isset($this->mensaje)) { ?>
-									<div class="row w-100 m-0 p-0 mt-4">
+									<div class="row w-100 m-0 p-0 mt-3 mb-1">
 										<button type="button" name="button" class="btn btn-primary">
 										    <a class="navbar-brand" style="color: white; font-size: 16px; " href="../controllers/register.php?id_vuelo=<?= $this->estado ?>&redireccion=<?= $this->redireccion ?>&mensaje=<?= $this->mensaje ?>">Registrarse</a>
 										</button>
 									</div>
 								<?php }else{ ?>
-									<div class="row w-100 m-0 p-0 mt-4">
+									<div class="row w-100 m-0 p-0 mb-1">
 										<button type="button" name="button" class="btn btn-primary">
 										    <a class="navbar-brand" style="color: white; font-size: 16px; " href="../controllers/register.php">Registrarse</a>
 										</button>
@@ -150,13 +150,13 @@
 										<input type="text" class="form-control" name="clave" placeholder="********">
 									</div>
 								</div>
-								<div class="form-group w-100 mt-3">
+								<div class="form-group w-100 mt-3 mb-1">
 									<div class="w-100">
 										<input type="submit" class="btn btn-success w-100" name="" style=" font-size: 16px;" value="Ingresar">
 									</div>
 								</div>
 							</form>
-							<div class="row w-100 m-0 p-0 mt-4">
+							<div class="row w-100 m-0 p-0 mb-1">
 								<button type="button" name="button" class="btn btn-primary">
 								    <a class="navbar-brand" style="color: white; font-size: 16px; " href="../controllers/register.php">Registrarse</a>
 								</button>

@@ -16,6 +16,21 @@
 
         <div class="row w-100 m-0 mt-2 p-2">
 
+          <div class="row w-100 m-0 mt-2 mb-2 p-2 text-center">
+
+            <div class="col-9">
+                <h2><strong>Centro de Ayuda</strong></h2>
+            </div>
+            <div class="col-3">
+              <button type="button" class="btn btn-outline-success" name="button">
+                <a href="../controllers/principal.php" style="color: black; text-decoration: none; font-size: 16px;">Volver al Principal
+                  <img src="../media/volver.png" alt="" width="30px" height="30px">
+                </a>
+              </button>
+            </div>
+
+          </div>
+
           <div class="col-6">
 
               <div class="p-3 border bg-dark text-center"><h3 style="color:white;">Preguntas Frecuentes</h3></div>

@@ -41,11 +41,12 @@
                 </div><hr>
 
                 <form class="" action="../controllers/reserva.php" method="post">
+                  <p><strong>Apurate! Quedan <?= $this->cant_restante ?> asientos libres en el vuelo!</strong></p>
                   <label for="cant_pasajeros"><strong>Cantidad de Pasajeros:</strong></label>
                   <input type="number" min="1" max="200" name="cant_pasajeros" id="cant_pasajeros" min="1" required>
                   <br><br>
                   <label for="contrato"><strong>He leido las condiciones y expreso conformidad:</strong></label>
-                  <input type="checkbox" name="contrato" id="contrato" required checked>
+                  <input type="checkbox" name="contrato" id="contrato" required>
           				<input type="text" name="id_vuelo" value="<?= $this->id_vuelo ?>" hidden>
           				<input type="text" name="dni" value="<?= $this->dni ?>" hidden>
                   <br><br>

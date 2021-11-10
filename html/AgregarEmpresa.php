@@ -46,7 +46,7 @@
 									<input type="text" class="form-control" name="direccion" placeholder="Direccion de la empresa">
 								</div>
 							</div>
-							<div class="form-group w-100 mt-3">
+							<div class="form-group w-100 mt-3 mb-1">
 								<div class="w-100">
 									<input type="submit" class="btn btn-success w-100" name="" style=" font-size: 16px;" value="Crear">
 								</div>

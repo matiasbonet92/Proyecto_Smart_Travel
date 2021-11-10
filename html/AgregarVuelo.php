@@ -28,58 +28,80 @@
 				<div class="container m-0 mt-3 p-3 border border-2 border-dark rounded">
 						<h3 style="text-align: center; font-style: bold;">Agregar Vuelo</h3>
 						<form action="../controllers/agregarVuelo.php" method="post">
-							<div class="form-group w-100">
-								<div class="w-100">
-									<input type="text" class="form-control" name="id_empresa" hidden value="<?= $this->id_empresa?>">
+
+							<div class="row">
+								<div class="col-6">
+									<div class="form-group w-100 mt-1">
+										<div class="w-100">
+											<label for="nombre" style="color:black;">Nombre del Vuelo:</label>
+											<input type="text" class="form-control" name="nombre_vuelo" placeholder="Nombre del Vuelo:">
+										</div>
+									</div>
+								</div>
+								<div class="col-6">
+									<div class="form-group w-100 mt-1">
+										<div class="w-100">
+											<label for="origen" style="color:black;">Origen:</label>
+											<input type="text" class="form-control" name="origen" placeholder="Origen:">
+										</div>
+									</div>
 								</div>
 							</div>
-							<div class="form-group w-100">
-								<div class="w-100">
-									<label for="nombre" style="color:black;">Nombre del Vuelo:</label>
-									<input type="text" class="form-control" name="nombre_vuelo" placeholder="Nombre del Vuelo:">
+							<div class="row">
+								<div class="col-6">
+									<div class="form-group w-100 mt-1">
+										<div class="w-100">
+											<label for="fecha_origen" style="color:black;">Fecha Origen:</label>
+											<input type="date" class="form-control" name="fecha_origen" placeholder="Fecha de Origen:" >
+										</div>
+									</div>
+								</div>
+								<div class="col-6">
+									<div class="form-group w-100 mt-1">
+										<div class="w-100">
+											<label for="destino" style="color:black;">Destino:</label>
+											<input type="text" class="form-control" name="destino" placeholder="Destino:" >
+										</div>
+									</div>
 								</div>
 							</div>
-							<div class="form-group w-100 mt-1">
-								<div class="w-100">
-									<label for="origen" style="color:black;">Origen:</label>
-									<input type="text" class="form-control" name="origen" placeholder="Origen:">
+							<div class="row">
+								<div class="col-6">
+									<div class="form-group w-100 mt-1">
+										<div class="w-100">
+											<label for="fecha_destino" style="color:black;">Fecha Destino:</label>
+											<input type="date" class="form-control" name="fecha_destino" placeholder="Fecha Destino:" >
+										</div>
+									</div>
+								</div>
+								<div class="col-6">
+									<div class="form-group w-100 mt-1">
+										<div class="w-100">
+											<label for="precio" style="color:black;">Precio:</label>
+											<input type="number" class="form-control" name="precio" placeholder="Precio:" >
+										</div>
+									</div>
 								</div>
 							</div>
-							<div class="form-group w-100 mt-1">
-								<div class="w-100">
-									<label for="fecha_origen" style="color:black;">Fecha Origen:</label>
-									<input type="date" class="form-control" name="fecha_origen" placeholder="Fecha de Origen:" >
+							<div class="row">
+								<div class="col">
+									<div class="form-group w-100 mt-1">
+										<div class="w-100">
+											<label for="descripcion_vuelo" style="color:black;">Descripcion Vuelo:</label>
+											<textarea rows="5" type="text" class="form-control" name="descripcion_vuelo" placeholder="Descripción:" ></textarea>
+										</div>
+									</div>
 								</div>
 							</div>
-							<div class="form-group w-100 mt-1">
-								<div class="w-100">
-									<label for="destino" style="color:black;">Destino:</label>
-									<input type="text" class="form-control" name="destino" placeholder="Destino:" >
-								</div>
-							</div>
-							<div class="form-group w-100 mt-1">
-								<div class="w-100">
-									<label for="fecha_destino" style="color:black;">Fecha Destino:</label>
-									<input type="date" class="form-control" name="fecha_destino" placeholder="Fecha Destino:" >
-								</div>
-							</div>
-							<div class="form-group w-100 mt-1">
-								<div class="w-100">
-									<label for="precio" style="color:black;">Precio:</label>
-									<input type="number" class="form-control" name="precio" placeholder="Precio:" >
-								</div>
-							</div>
-							<div class="form-group w-100 mt-1">
-								<div class="w-100">
-									<label for="descripcion_vuelo" style="color:black;">Descripcion Vuelo:</label>
-									<input type="text" class="form-control" name="descripcion_vuelo" placeholder="Descripción:" >
-								</div>
-							</div>
-							<div class="form-group w-100 mt-3">
+
+						<div class="form-group w-100 mt-3 mb-1">
 								<div class="w-100">
 									<input type="submit" class="btn btn-success w-100" name="" style=" font-size: 16px;" value="Crear">
 								</div>
 							</div>
+
+							<input type="text" class="form-control" name="id_empresa" hidden value="<?= $this->id_empresa?>">
+
 						</form>
 
 						<div class="row w-100 m-0 p-0">
