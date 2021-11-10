@@ -60,7 +60,7 @@
 
       if(!isset($anio)) throw new Exception('La fecha es incorrecta');
       if(!ctype_digit($anio)) throw new Exception('La fecha es incorrecta');
-      if($anio > date("Y") ) throw new Exception('La fecha es incorrecta');
+      if($anio > date("Y")+5 ) throw new Exception('No se pueden crear vuelos con fecha de origen posterior a 5 años');
       if($anio < (date("Y")-100) ) throw new Exception('La fecha es incorrecta');
       $anio_ok = $anio;
 
@@ -86,7 +86,7 @@
 
       if(!isset($anio)) throw new Exception('La fecha es incorrecta');
       if(!ctype_digit($anio)) throw new Exception('La fecha es incorrecta');
-      if($anio > date("Y") ) throw new Exception('La fecha es incorrecta');
+      if($anio > date("Y")+5 ) throw new Exception('No se pueden crear vuelos con fecha de destino posterior 5 años');
       if($anio < (date("Y")-100) ) throw new Exception('La fecha es incorrecta');
       $anio_ok = $anio;
 
@@ -150,7 +150,7 @@
 
       if(!isset($anio)) throw new Exception('La fecha es incorrecta');
       if(!ctype_digit($anio)) throw new Exception('La fecha es incorrecta');
-      if($anio > date("Y") ) throw new Exception('La fecha es incorrecta');
+      if($anio > date("Y")+5 ) throw new Exception('No se pueden editar vuelos con fecha de origen posterior a 5 años');
       if($anio < (date("Y")-100) ) throw new Exception('La fecha es incorrecta');
       $anio_ok = $anio;
 
@@ -176,7 +176,7 @@
 
       if(!isset($anio)) throw new Exception('La fecha es incorrecta');
       if(!ctype_digit($anio)) throw new Exception('La fecha es incorrecta');
-      if($anio > date("Y") ) throw new Exception('La fecha es incorrecta');
+      if($anio > date("Y")+5 ) throw new Exception('No se pueden editar vuelos con fecha de destino posterior a 5 años');
       if($anio < (date("Y")-100) ) throw new Exception('La fecha es incorrecta');
       $anio_ok = $anio;
 
@@ -279,7 +279,7 @@
 
         if(!isset($anio)) throw new Exception('La fecha es incorrecta');
         if(!ctype_digit($anio)) throw new Exception('La fecha es incorrecta');
-        if($anio > date("Y") ) throw new Exception('La fecha es incorrecta');
+        if($anio > date("Y")+5 ) throw new Exception('No se pueden buscar vuelos con fecha de origen posterior a 5 años');
         if($anio < (date("Y")-100) ) throw new Exception('La fecha es incorrecta');
         $anio_ok = $anio;
 
