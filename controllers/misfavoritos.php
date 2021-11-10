@@ -19,7 +19,7 @@ if (count($_GET)>0) {
 
 		$favoritos = $vf->getFavoritos($dni);
 
-      if (!is_array($favoritos)) {
+      if (empty($favoritos)) {
 	      $mensaje = 'No tienes vuelos Favoritos';
 	      $v = new Favoritos();
 	      $v->mensaje = $mensaje;
@@ -39,7 +39,7 @@ if (count($_GET)>0) {
 }else{
   $favoritos = $vf->getFavoritos($_SESSION['dni']);
 
-  if (!is_array($favoritos)) {
+  if (empty($favoritos)) {
     $mensaje = 'No tienes vuelos Favoritos';
     $v = new Favoritos();
     $v->mensaje = $mensaje;

@@ -1,10 +1,10 @@
-<?php  
+<?php
 
 class Usuarios extends Model{
 
   public function getUsuariobyId($id_login){
 
-      $this->db->query("SELECT * FROM usuarios 
+      $this->db->query("SELECT * FROM usuarios
                           WHERE id_login='$id_login'");
 
       return $this->db->fetchAll();
@@ -17,21 +17,24 @@ class Usuarios extends Model{
       try{
         if(!isset($mail)) throw new Exception('El campo mail no puede estar vacio');
         if(strlen($mail)<1) throw new Exception('El campo mail no puede estar vacio');
+        if(strlen($mail)>100) throw new Exception('El campo mail es muy largo');
         $mail = $this->db->escape($mail);
         $mail = $this->db->escapeWildcards($mail);
 
         if(!isset($clave)) throw new Exception('El campo clave no puede estar vacio');
         if(strlen($clave)<1) throw new Exception('El campo clave no puede estar vacio');
+        if(strlen($clave)>40) throw new Exception('El campo clave es muy largo');
         $clave = $this->db->escape($clave);
         $clave = $this->db->escapeWildcards($clave);
         $clave = sha1($clave);
+
       }catch(Exception $e){
         $error = true;
         $error_mensaje= $e->getMessage();
       }
 
       if (!$error) {
-        $this->db->query("SELECT * FROM usuarios 
+        $this->db->query("SELECT * FROM usuarios
                           WHERE mail LIKE '%$mail%' AND clave LIKE '%$clave%'");
 
         if ($this->db->numRows()==0) {
@@ -39,11 +42,11 @@ class Usuarios extends Model{
         }else{
           return $this->db->fetchAll();
         }
-        
+
       }else{
         return $error_mensaje;
       }
-      
+
     }
 
     public function createUsuarios($mail,$clave,$nombre){
@@ -60,11 +63,13 @@ class Usuarios extends Model{
 
         if(!isset($mail)) throw new Exception('El campo mail no puede estar vacio');
         if(strlen($mail)<1) throw new Exception('El campo mail no puede estar vacio');
+        if(strlen($mail)>100) throw new Exception('El campo mail es muy grande');
         $mail = $this->db->escape($mail);
         $mail = $this->db->escapeWildcards($mail);
 
         if(!isset($clave)) throw new Exception('El campo clave no puede estar vacio');
         if(strlen($clave)<1) throw new Exception('El campo clave no puede estar vacio');
+        if(strlen($clave)>40) throw new Exception('El campo clave es muy largo');
         $clave = $this->db->escape($clave);
         $clave = $this->db->escapeWildcards($clave);
         $clave = sha1($clave);
@@ -83,10 +88,10 @@ class Usuarios extends Model{
           return 'El mail ya existe en la base de datos';
         }else{
 
-            $this->db->query("INSERT INTO usuarios (mail,clave,nombre) 
+            $this->db->query("INSERT INTO usuarios (mail,clave,nombre)
                               VALUES ('$mail','$clave','$nombre')");
 
-            $this->db->query("SELECT * FROM usuarios 
+            $this->db->query("SELECT * FROM usuarios
                                           WHERE mail LIKE '%$mail%' AND clave LIKE '%$clave%'");
 
             return $this->db->fetchAll();
@@ -95,7 +100,7 @@ class Usuarios extends Model{
       }else{
         return $error_mensaje;
       }
-      
+
     }
 
 
@@ -119,28 +124,25 @@ class Usuarios extends Model{
 
         if(!isset($mail)) throw new Exception('El campo mail no puede estar vacio');
         if(strlen($mail)<1) throw new Exception('El campo mail no puede estar vacio');
+        if(strlen($mail)>100) throw new Exception('El campo mail es muy grande');
         $mail = $this->db->escape($mail);
         $mail = $this->db->escapeWildcards($mail);
 
         if(!isset($dni)) throw new Exception('El campo dni no puede estar vacio');
-        if(!is_numeric($dni)) throw new Exception('El campo dni debe ser numerico');
+        if(!ctype_digit($dni)) throw new Exception('El campo dni debe ser numerico');
         if(strlen($dni)<1) throw new Exception('El campo dni es muy corto');
         if(strlen($dni)>10) throw new Exception('El campo dni es muy largo');
-        $dni = $this->db->escape($dni);
-        $dni = $this->db->escapeWildcards($dni);
 
         if(!isset($direccion)) throw new Exception('El campo direccion no puede estar vacio');
         if(strlen($direccion)<1) throw new Exception('El campo direccion no puede estar vacio');
-        if(strlen($direccion)>100) throw new Exception('El campo direccion es muy grande');
+        if(strlen($direccion)>200) throw new Exception('El campo direccion es muy grande');
         $direccion = $this->db->escape($direccion);
         $direccion = $this->db->escapeWildcards($direccion);
 
         if(!isset($telefono)) throw new Exception('El campo telefono no puede estar vacio');
-        if(!is_numeric($telefono)) throw new Exception('El campo telefono debe ser numerico');
+        if(!ctype_digit($telefono)) throw new Exception('El campo telefono debe ser numerico');
         if(strlen($telefono)<1) throw new Exception('El campo telefono es muy corto');
-        if(strlen($telefono)>10) throw new Exception('El campo telefono es muy largo');
-        $telefono = $this->db->escape($telefono);
-        $telefono = $this->db->escapeWildcards($telefono);
+        if(strlen($telefono)>15) throw new Exception('El campo telefono es muy largo');
 
       }catch(Exception $e){
         $error = true;
@@ -149,7 +151,7 @@ class Usuarios extends Model{
 
       if (!$error) {
 
-        $this->db->query("UPDATE usuarios 
+        $this->db->query("UPDATE usuarios
                           SET mail='$mail', nombre='$nombre', apellido='$apellido', dni='$dni', direccion='$direccion', telefono='$telefono' WHERE id_login='$id_login'");
 
         $this->db->query("SELECT * FROM usuarios WHERE id_login='$id_login'");
@@ -158,7 +160,7 @@ class Usuarios extends Model{
         if ($cantidad==1) {
           return $this->db->fetchAll();
         }
-        
+
       }else{
         return $error_mensaje;
       }

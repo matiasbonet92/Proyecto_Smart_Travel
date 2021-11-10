@@ -13,13 +13,13 @@
                         WHERE id_vuelos='$id_vuelo'");
       return $this->db->fetchAll();
     }
-    
+
     public function createVuelo($id_empresa,$nombre,$origen,$fecha_origen,$destino,
     $fecha_destino,$precio,$descripcion_vuelo){
 
       if(!isset($nombre)) throw new Exception('El campo nombre no puede estar vacio');
       if(strlen($nombre)<1) throw new Exception('El campo nombre no puede estar vacio');
-      if(strlen($nombre)>100) throw new Exception('El campo nombre es muy grande');
+      if(strlen($nombre)>50) throw new Exception('El campo nombre es muy grande');
       $nombre = $this->db->escape($nombre);
       $nombre = $this->db->escapeWildcards($nombre);
 
@@ -93,7 +93,10 @@
       if(!checkdate($mes_ok, $dia_ok, $anio_ok)) throw new Exception('La fecha es incorrecta');
       $fecha_destino = $anio_ok.'-'.$mes_ok.'-'.$dia_ok;
 
-      // falta validar precios
+
+      if(!isset($precio)) throw new Exception('El precio no puede estar vacio');
+      if(!is_numeric($precio)) throw new Exception('El precio debe ser numerico');
+      if(strlen($precio)<0) throw new Exception('El precio no puede ser menor a 0');
 
       $this->db->query("INSERT INTO vuelos (nombre,origen,fecha_origen,destino,fecha_destino,precio,descripcion_vuelo,id_empresa)
                         VALUES ('$nombre','$origen','$fecha_origen','$destino','$fecha_destino','$precio','$descripcion_vuelo','$id_empresa' )");
@@ -180,7 +183,9 @@
       if(!checkdate($mes_ok, $dia_ok, $anio_ok)) throw new Exception('La fecha es incorrecta');
       $fecha_destino = $anio_ok.'-'.$mes_ok.'-'.$dia_ok;
 
-      // falta validar precios
+      if(!isset($precio)) throw new Exception('El precio no puede estar vacio');
+      if(!is_numeric($precio)) throw new Exception('El precio debe ser numerico');
+      if(strlen($precio)<0) throw new Exception('El precio no puede ser menor a 0');
 
       $this->db->query("UPDATE vuelos
                         SET nombre='$nombre',origen='$origen',fecha_origen='$fecha_origen',
