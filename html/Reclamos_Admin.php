@@ -26,8 +26,22 @@
 
       <?php if(isset($this->reclamos)) { ?>
         <div class="row w-100 m-0 mt-3 p-2 text-center">
-          <div class="col-9">
+          <div class="col-8">
               <h2><strong>Listado de Recalmos</strong></h2>
+          </div>
+          <div class="col-1">
+            <ul class="navbar-nav border border-1 border-dark rounded">
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle text-black" data-bs-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Filtrar</a>
+                <div class="dropdown-menu">
+                  <a class="dropdown-item" href="../controllers/reclamos.php?filtro=asignado">Asignados</a>
+                  <div class="dropdown-divider"></div>
+                  <a class="dropdown-item" href="../controllers/reclamos.php?filtro=resuelto">Resueltos</a>
+                  <div class="dropdown-divider"></div>
+                  <a class="dropdown-item" href="../controllers/reclamos.php?filtro=todo">Todos</a>
+                </div>
+              </li>
+            </ul>
           </div>
           <div class="col-3">
             <button type="button" class="btn btn-outline-success" name="button">

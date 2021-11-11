@@ -7,6 +7,11 @@
       return $this->db->fetchAll();
     }
 
+    public function getReclamosByEstado($estado){
+      $this->db->query("SELECT * FROM reclamos WHERE estado='$estado' ");
+      return $this->db->fetchAll();
+    }
+
     public function createReclamo($id_reserva,$descripcion,$asunto){
 
       if(!isset($descripcion)) throw new Exception('El campo descripcion no puede estar vacio');
