@@ -31,7 +31,7 @@
 										<label for="descripcion" style="color:black;">Descripción:</label>
 										<textarea class="form-control" aria-label="With textarea" name="descripcion" placeholder="Descripción del reclamo"></textarea>
 									</div>
-									<div class="form-group w-100 mt-3">
+									<div class="form-group w-100 mt-3 mb-1">
 									<div class="w-100">
 										<input type="submit" class="btn btn-success w-100" name="" style=" font-size: 16px;" value="Enviar">
 									</div>

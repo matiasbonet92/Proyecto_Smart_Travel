@@ -38,12 +38,14 @@
           </div>
         </div>
 
-        <table class="table table-hover table-dark">
+        <table class="table table-dark align-middle text-center">
           <thead>
             <tr>
               <th scope="col">ID Reclamo</th>
               <th scope="col">Asunto</th>
               <th scope="col">Descripcion</th>
+              <th scope="col">Estado</th>
+              <th scope="col">Resolver</th>
               <th scope="col">Eliminar</th>
             </tr>
           </thead>
@@ -55,6 +57,19 @@
                 <th scope="row"><?= $r['id_reclamos'] ?></th>
                 <td><?= $r['asunto'] ?></td>
                 <td><?= $r['descripcion_reclamo'] ?></td>
+                <?php if ($r['estado']=='A'){ ?>
+                  <th class="p-0 m-0 bg-warning">Asignado</th>
+                  <td>
+                    <button type="button" class="btn btn-outline-success" name="button">
+                      <a href="../controllers/reclamos.php?resolver=<?= $r['id_reclamos'] ?>">
+                        <img src="../media/garrapata.png" alt="" width="30px" height="30px">
+                      </a>
+                    </button>
+                  </td>
+                <?php }else{ ?>
+                  <th class="p-0 m-0 bg-success">Resuelto</th>
+                  <td></td>
+                <?php } ?>
 
                 <td>
                   <button type="button" class="btn btn-outline-danger" name="button">

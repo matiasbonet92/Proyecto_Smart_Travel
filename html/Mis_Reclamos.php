@@ -31,12 +31,13 @@
               </div>
             </div>
 
-            <table class="table table-hover table-dark">
+            <table class="table table-dark text-center align-middle">
               <thead>
                 <tr>
                   <th scope="col">ID Reclamo</th>
                   <th scope="col">Asunto</th>
                   <th scope="col">Descripcion</th>
+                  <th scope="col">Estado</th>
                   <th scope="col">Eliminar</th>
                 </tr>
               </thead>
@@ -48,6 +49,11 @@
                     <th scope="row"><?= $r['id_reclamos'] ?></th>
                     <td><?= $r['asunto'] ?></td>
                     <td><?= $r['descripcion_reclamo'] ?></td>
+                    <?php if ($r['estado']=='A'){ ?>
+                      <th class="p-0 m-0 bg-warning">Asignado</th>
+                    <?php }else{ ?>
+                      <th class="p-0 m-0 bg-success">Resuelto</th>
+                    <?php } ?>
 
                     <td>
                       <button type="button" class="btn btn-outline-danger" name="button">

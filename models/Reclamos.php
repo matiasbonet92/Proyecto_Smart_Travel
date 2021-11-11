@@ -23,8 +23,8 @@
       $asuntoOk = $this->db->escapeWildcards($asunto);
 
 
-      $this->db->query("INSERT INTO reclamos (id_reserva, descripcion_reclamo, asunto)
-                        VALUES ('$id_reserva','$descripcionOk','$asuntoOk ')");
+      $this->db->query("INSERT INTO reclamos (id_reserva, descripcion_reclamo, asunto, estado)
+                        VALUES ('$id_reserva','$descripcionOk','$asuntoOk', 'A')");
       return;
     }
 
@@ -34,13 +34,17 @@
     }
 
     public function getReclamosByDni($dni){
-      $this->db->query("SELECT id_reclamos, rec.id_reserva, descripcion_reclamo, asunto FROM reclamos rec, reservas re
+      $this->db->query("SELECT id_reclamos, rec.id_reserva, descripcion_reclamo, asunto, estado FROM reclamos rec, reservas re
       WHERE rec.id_reserva = re.id_reserva and re.dni = '$dni'");
 
         if ($this->db->numRows()>0) {
           return $this->db->fetchAll();
         }
+    }
 
+    public function updateEstado($id){
+      $this->db->query("UPDATE reclamos SET estado='R' WHERE id_reclamos='$id' ");
+      return;
     }
 
   }

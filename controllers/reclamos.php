@@ -29,21 +29,39 @@ if(isset($_GET['id_reclamos'])){
 		$v->render();
 	}
 
+}elseif(isset($_GET['resolver'])){
+
+	$id_reclamos = $_GET['resolver'];
+
+	$r->updateEstado($id_reclamos);
+
+	$reclamos = $r->getReclamos();
+
+	if (!is_array($reclamos)) {
+		$mensaje = 'No tienes reclamos';
+		$v = new Reclamos_Admin();
+		$v->mensaje = $mensaje;
+		$v->render();
+	}else{
+		$v = new Reclamos_Admin();
+		$v->reclamos = $reclamos;
+		$v->render();
+	}
+
 }else{
 
-		$reclamos = $r->getReclamos();
+	$reclamos = $r->getReclamos();
 
-	  if (!is_array($reclamos)) {
-	    $mensaje = 'No tienes reclamos';
-	    $v = new Reclamos_Admin();
-	    $v->mensaje = $mensaje;
-	    $v->render();
-	  }else{
-	  	$v = new Reclamos_Admin();
-	  	$v->reclamos = $reclamos;
-	  	$v->render();
-	  }
-
+  if (!is_array($reclamos)) {
+    $mensaje = 'No tienes reclamos';
+    $v = new Reclamos_Admin();
+    $v->mensaje = $mensaje;
+    $v->render();
+  }else{
+  	$v = new Reclamos_Admin();
+  	$v->reclamos = $reclamos;
+  	$v->render();
+  }
 
 }
 ?>
