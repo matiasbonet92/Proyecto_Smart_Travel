@@ -4,7 +4,7 @@
 
     public function getFavoritos($dni){
 
-      $this->db->query("SELECT dni,vf.id_vuelos as id_vuelos,descripcion,nombre,origen,destino,fecha_origen,fecha_destino,precio,descripcion_vuelo,id_empresa FROM vuelos_favoritos vf
+      $this->db->query("SELECT dni,vf.id_vuelos as id_vuelos,nombre,origen,destino,fecha_origen,fecha_destino,precio,descripcion_vuelo,id_empresa FROM vuelos_favoritos vf
                           LEFT JOIN vuelos v ON vf.id_vuelos=v.id_vuelos
                           WHERE dni='$dni'");
 
