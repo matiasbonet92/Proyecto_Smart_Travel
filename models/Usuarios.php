@@ -64,7 +64,6 @@ class Usuarios extends Model{
         if(strlen($nombre)<1) throw new Exception('El campo nombre no puede estar vacio');
         if(strlen($nombre)>100) throw new Exception('El campo nombre es muy grande');
         $nombre = $this->db->escape($nombre);
-        $nombre = $this->db->escapeWildcards($nombre);
 
         if(!isset($mail)) throw new Exception('El campo mail no puede estar vacio');
         if(strlen($mail)<1) throw new Exception('El campo mail no puede estar vacio');
@@ -124,19 +123,16 @@ class Usuarios extends Model{
         if(strlen($nombre)<1) throw new Exception('El campo nombre no puede estar vacio');
         if(strlen($nombre)>100) throw new Exception('El campo nombre es muy grande');
         $nombre = $this->db->escape($nombre);
-        $nombre = $this->db->escapeWildcards($nombre);
 
         if(!isset($apellido)) throw new Exception('El campo apellido no puede estar vacio');
         if(strlen($apellido)<1) throw new Exception('El campo apellido no puede estar vacio');
         if(strlen($apellido)>100) throw new Exception('El campo apellido es muy grande');
         $apellido = $this->db->escape($apellido);
-        $apellido = $this->db->escapeWildcards($apellido);
 
         if(!isset($mail)) throw new Exception('El campo mail no puede estar vacio');
         if(strlen($mail)<1) throw new Exception('El campo mail no puede estar vacio');
         if(strlen($mail)>100) throw new Exception('El campo mail es muy grande');
         $mail = $this->db->escape($mail);
-        $mail = $this->db->escapeWildcards($mail);
 
         if(!isset($dni)) throw new Exception('El campo dni no puede estar vacio');
         if(!ctype_digit($dni)) throw new Exception('El campo dni debe ser numerico');
@@ -147,7 +143,6 @@ class Usuarios extends Model{
         if(strlen($direccion)<1) throw new Exception('El campo direccion no puede estar vacio');
         if(strlen($direccion)>200) throw new Exception('El campo direccion es muy grande');
         $direccion = $this->db->escape($direccion);
-        $direccion = $this->db->escapeWildcards($direccion);
 
         if(!isset($telefono)) throw new Exception('El campo telefono no puede estar vacio');
         if(!ctype_digit($telefono)) throw new Exception('El campo telefono debe ser numerico');

@@ -32,25 +32,21 @@
       if(strlen($nombre)<1) throw new Exception('El campo nombre no puede estar vacio');
       if(strlen($nombre)>50) throw new Exception('El campo nombre es muy grande');
       $nombre = $this->db->escape($nombre);
-      $nombre = $this->db->escapeWildcards($nombre);
 
       if(!isset($origen)) throw new Exception('El campo origen no puede estar vacio');
       if(strlen($origen)<1) throw new Exception('El campo origen no puede estar vacio');
       if(strlen($origen)>100) throw new Exception('El campo origen es muy grande');
       $origen = $this->db->escape($origen);
-      $origen = $this->db->escapeWildcards($origen);
 
       if(!isset($destino)) throw new Exception('El campo destino no puede estar vacio');
       if(strlen($destino)<1) throw new Exception('El campo destino no puede estar vacio');
       if(strlen($destino)>100) throw new Exception('El campo destino es muy grande');
       $destino = $this->db->escape($destino);
-      $destino = $this->db->escapeWildcards($destino);
 
       if(!isset($descripcion_vuelo)) throw new Exception('El campo descripcion no puede estar vacio');
       if(strlen($descripcion_vuelo)<1) throw new Exception('El campo descripcion no puede estar vacio');
       if(strlen($descripcion_vuelo)>1000) throw new Exception('El campo descripcion es muy grande');
       $descripcion_vuelo = $this->db->escape($descripcion_vuelo);
-      $descripcion_vuelo = $this->db->escapeWildcards($descripcion_vuelo);
 
       //Validacion fecha origen
       $anio = substr($fecha_origen, 0, 4);
@@ -132,25 +128,21 @@
       if(strlen($nombre)<1) throw new Exception('El campo nombre no puede estar vacio');
       if(strlen($nombre)>100) throw new Exception('El campo nombre es muy grande');
       $nombre = $this->db->escape($nombre);
-      $nombre = $this->db->escapeWildcards($nombre);
 
       if(!isset($origen)) throw new Exception('El campo origen no puede estar vacio');
       if(strlen($origen)<1) throw new Exception('El campo origen no puede estar vacio');
       if(strlen($origen)>100) throw new Exception('El campo origen es muy grande');
       $origen = $this->db->escape($origen);
-      $origen = $this->db->escapeWildcards($origen);
 
       if(!isset($destino)) throw new Exception('El campo destino no puede estar vacio');
       if(strlen($destino)<1) throw new Exception('El campo destino no puede estar vacio');
       if(strlen($destino)>100) throw new Exception('El campo destino es muy grande');
       $destino = $this->db->escape($destino);
-      $destino = $this->db->escapeWildcards($destino);
 
       if(!isset($descripcion_vuelo)) throw new Exception('El campo descripcion no puede estar vacio');
       if(strlen($descripcion_vuelo)<1) throw new Exception('El campo descripcion no puede estar vacio');
       if(strlen($descripcion_vuelo)>1000) throw new Exception('El campo descripcion es muy grande');
       $descripcion_vuelo = $this->db->escape($descripcion_vuelo);
-      $descripcion_vuelo = $this->db->escapeWildcards($descripcion_vuelo);
 
       //Validacion fecha origen
       $anio = substr($fecha_origen, 0, 4);
@@ -350,7 +342,7 @@
       if(!ctype_digit($id)) throw new Exception('El campo id debe ser numerico');
       if(strlen($id)<1) throw new Exception('El campo id es muy corto');
       if(strlen($id)>11) throw new Exception('El campo id es muy largo');
-      
+
       $this->db->query("DELETE FROM vuelos WHERE id_vuelos='$id'");
       return;
     }

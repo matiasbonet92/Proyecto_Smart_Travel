@@ -23,7 +23,6 @@
       if(strlen($descripcion)<1) throw new Exception('El campo descripcion no puede estar vacio');
       if(strlen($descripcion)>500) throw new Exception('El campo descripcion es muy grande');
       $descripcionOk = $this->db->escape($descripcion);
-      $descripcionOk = $this->db->escapeWildcards($descripcion);
 
 
       if(!isset($asunto)) throw new Exception('El campo asunto no puede estar vacio');
