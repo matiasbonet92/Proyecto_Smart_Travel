@@ -8,6 +8,12 @@
     }
 
     public function getVueloById($id_vuelo){
+
+      if(!isset($id_vuelo)) throw new Exception('El campo id_vuelo no puede estar vacio');
+      if(!ctype_digit($id_vuelo)) throw new Exception('El campo id_vuelo debe ser numerico');
+      if(strlen($id_vuelo)<1) throw new Exception('El campo id_vuelo es muy corto');
+      if(strlen($id_vuelo)>10) throw new Exception('El campo id_vuelo es muy largo');
+
       $this->db->query("SELECT id_vuelos,v.nombre as nombre_vuelo, origen,fecha_origen,destino,fecha_destino,precio,descripcion_vuelo,v.id_empresa as id_empresa,e.nombre as nombre_empresa,contacto,direccion
                         FROM vuelos v LEFT JOIN empresa e ON v.id_empresa=e.id_empresa
                         WHERE id_vuelos='$id_vuelo'");
@@ -16,6 +22,11 @@
 
     public function createVuelo($id_empresa,$nombre,$origen,$fecha_origen,$destino,
     $fecha_destino,$precio,$descripcion_vuelo){
+
+      if(!isset($id_empresa)) throw new Exception('El campo id_empresa no puede estar vacio');
+      if(!ctype_digit($id_empresa)) throw new Exception('El campo id_empresa debe ser numerico');
+      if(strlen($id_empresa)<1) throw new Exception('El campo id_empresa es muy corto');
+      if(strlen($id_empresa)>11) throw new Exception('El campo id_empresa es muy largo');
 
       if(!isset($nombre)) throw new Exception('El campo nombre no puede estar vacio');
       if(strlen($nombre)<1) throw new Exception('El campo nombre no puede estar vacio');
@@ -111,6 +122,12 @@
     public function editarVuelo($id_empresa,$id_vuelos,$nombre,$origen,$fecha_origen,$destino,
     $fecha_destino,$precio,$descripcion_vuelo){
 
+      if(!isset($id_empresa)) throw new Exception('El campo id_empresa no puede estar vacio');
+      if(!ctype_digit($id_empresa)) throw new Exception('El campo id_empresa debe ser numerico');
+      if(strlen($id_empresa)<1) throw new Exception('El campo id_empresa es muy corto');
+      if(strlen($id_empresa)>11) throw new Exception('El campo id_empresa es muy largo');
+
+
       if(!isset($nombre)) throw new Exception('El campo nombre no puede estar vacio');
       if(strlen($nombre)<1) throw new Exception('El campo nombre no puede estar vacio');
       if(strlen($nombre)>100) throw new Exception('El campo nombre es muy grande');
@@ -205,6 +222,13 @@
     }
 
     public function getVuelosByEmpresa($id){
+
+      if(!isset($id)) throw new Exception('El campo id no puede estar vacio');
+      if(!ctype_digit($id)) throw new Exception('El campo id debe ser numerico');
+      if(strlen($id)<1) throw new Exception('El campo id es muy corto');
+      if(strlen($id)>11) throw new Exception('El campo id es muy largo');
+
+
       $this->db->query("SELECT * FROM vuelos where id_empresa='$id'");
       return $this->db->fetchAll();
     }
@@ -310,11 +334,23 @@
     }
 
     public function eliminarVuelosByEmpresa($id){
+
+      if(!isset($id)) throw new Exception('El campo id no puede estar vacio');
+      if(!ctype_digit($id)) throw new Exception('El campo id debe ser numerico');
+      if(strlen($id)<1) throw new Exception('El campo id es muy corto');
+      if(strlen($id)>11) throw new Exception('El campo id es muy largo');
+
       $this->db->query("DELETE FROM vuelos WHERE id_empresa='$id'");
       return;
     }
 
     public function eliminarVuelo($id){
+
+      if(!isset($id)) throw new Exception('El campo id no puede estar vacio');
+      if(!ctype_digit($id)) throw new Exception('El campo id debe ser numerico');
+      if(strlen($id)<1) throw new Exception('El campo id es muy corto');
+      if(strlen($id)>11) throw new Exception('El campo id es muy largo');
+      
       $this->db->query("DELETE FROM vuelos WHERE id_vuelos='$id'");
       return;
     }

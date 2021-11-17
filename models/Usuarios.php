@@ -4,6 +4,11 @@ class Usuarios extends Model{
 
   public function getUsuariobyId($id_login){
 
+    if(!isset($id_login)) throw new Exception('El campo id_login no puede estar vacio');
+    if(!ctype_digit($id_login)) throw new Exception('El campo id_login debe ser numerico');
+    if(strlen($id_login)<1) throw new Exception('El campo id_login es muy corto');
+    if(strlen($id_login)>10) throw new Exception('El campo id_login es muy largo');
+
       $this->db->query("SELECT * FROM usuarios
                           WHERE id_login='$id_login'");
 
@@ -109,6 +114,11 @@ class Usuarios extends Model{
       $error = false;
       //validacion datos del usuario
       try{
+
+        if(!isset($id_login)) throw new Exception('El campo id_login no puede estar vacio');
+        if(!ctype_digit($id_login)) throw new Exception('El campo id_login debe ser numerico');
+        if(strlen($id_login)<1) throw new Exception('El campo id_login es muy corto');
+        if(strlen($id_login)>10) throw new Exception('El campo id_login es muy largo');
 
         if(!isset($nombre)) throw new Exception('El campo nombre no puede estar vacio');
         if(strlen($nombre)<1) throw new Exception('El campo nombre no puede estar vacio');

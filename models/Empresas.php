@@ -8,6 +8,12 @@
     }
 
     public function getEmpresaById($id){
+
+      if(!isset($id)) throw new Exception('El campo id no puede estar vacio');
+      if(!ctype_digit($id)) throw new Exception('El campo id debe ser numerico');
+      if(strlen($id)<1) throw new Exception('El campo id es muy corto');
+      if(strlen($id)>11) throw new Exception('El campo id es muy largo');
+
       $this->db->query("SELECT * FROM empresa WHERE id_empresa='$id'");
       return $this->db->fetchAll();
     }
@@ -40,6 +46,11 @@
 
     public function editarEmpresa($id,$nombre,$contacto,$direccion){
 
+      if(!isset($id)) throw new Exception('El campo id no puede estar vacio');
+      if(!ctype_digit($id)) throw new Exception('El campo id debe ser numerico');
+      if(strlen($id)<1) throw new Exception('El campo id es muy corto');
+      if(strlen($id)>11) throw new Exception('El campo id es muy largo');
+
       if(!isset($nombre)) throw new Exception('El campo nombre no puede estar vacio');
       if(strlen($nombre)<1) throw new Exception('El campo nombre no puede estar vacio');
       if(strlen($nombre)>100) throw new Exception('El campo nombre es muy grande');
@@ -66,6 +77,12 @@
     }
 
     public function eliminarEmpresa($id){
+      
+      if(!isset($id)) throw new Exception('El campo id no puede estar vacio');
+      if(!ctype_digit($id)) throw new Exception('El campo id debe ser numerico');
+      if(strlen($id)<1) throw new Exception('El campo id es muy corto');
+      if(strlen($id)>11) throw new Exception('El campo id es muy largo');
+
       $this->db->query("DELETE FROM empresa WHERE id_empresa='$id'");
       return;
     }
