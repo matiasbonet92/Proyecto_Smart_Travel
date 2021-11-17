@@ -16,7 +16,7 @@
 			<div class="alert alert-dismissible alert-warning m-0 w-100">
 				<button type="button" id="BTN" class="btn-close" data-bs-dismiss="alert"></button>
 				<h4 class="alert-heading">Aviso</h4>
-				<p class="mb-0"><?= $this->error ?></p>
+				<p class="mb-0"><?= htmlentities($this->error) ?></p>
 			</div>
 			<script type="text/javascript">
 			setTimeout(() => { document.getElementById("BTN").click(); }, 5000);
@@ -56,9 +56,9 @@
 							<div class="form-group w-100">
 								<div class="w-100">
 									<?php if (isset($this->id_vuelo)) { ?>
-										<input type="text" name="estado" value="<?= $this->id_vuelo ?>" hidden>
-										<input type="text" name="redireccion" value="<?= $this->redireccion ?>" hidden>
-										<input type="text" name="mensaje" value="<?= $this->mensaje ?>" hidden>
+										<input type="text" name="estado" value="<?= htmlentities($this->id_vuelo) ?>" hidden>
+										<input type="text" name="redireccion" value="<?= htmlentities($this->redireccion) ?>" hidden>
+										<input type="text" name="mensaje" value="<?= htmlentities($this->mensaje) ?>" hidden>
 									<?php } ?>
 								</div>
 							</div>

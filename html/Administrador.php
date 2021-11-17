@@ -21,7 +21,7 @@
             <div class="alert alert-dismissible alert-warning" style="width:100%">
               <button type="button" id="BTN" class="btn-close" data-bs-dismiss="alert"></button>
               <h4 class="alert-heading">Aviso</h4>
-              <p class="mb-0"><?= $this->resultado ?></p>
+              <p class="mb-0"><?= htmlentities($this->resultado) ?></p>
             </div>
             <script type="text/javascript">
               setTimeout(() => { document.getElementById("BTN").click(); }, 5000);
@@ -57,27 +57,27 @@
 
                 <tbody>
                   <tr class="table-primary">
-                    <th scope="row"><?= $empresa['id_empresa'] ?></th>
-                    <td><?= $empresa['nombre'] ?></td>
-                    <td><?= $empresa['contacto'] ?></td>
-                    <td><?= $empresa['direccion'] ?></td>
+                    <th scope="row"><?= htmlentities($empresa['id_empresa'] ?></th>
+                    <td><?= htmlentities($empresa['nombre']) ?></td>
+                    <td><?= htmlentities($empresa['contacto']) ?></td>
+                    <td><?= htmlentities($empresa['direccion']) ?></td>
                     <td>
                       <button type="button" class="btn btn-outline-primary" name="button">
-                        <a href="../controllers/administrador.php?id_empresa=<?= $empresa['id_empresa'] ?>">
+                        <a href="../controllers/administrador.php?id_empresa=<?= htmlentities($empresa['id_empresa']) ?>">
                           <img src="../media/vuelo.png" alt="" width="30px" height="30px">
                         </a>
                       </button>
                     </td>
                     <td>
                       <button type="button" class="btn btn-outline-warning" name="button">
-                        <a href="../controllers/editarEmpresa.php?id_empresa=<?= $empresa['id_empresa'] ?>">
+                        <a href="../controllers/editarEmpresa.php?id_empresa=<?= htmlentities($empresa['id_empresa']) ?>">
                           <img src="../media/boligrafo.svg" alt="" width="30px" height="30px">
                         </a>
                       </button>
                     </td>
                     <td>
                       <button type="button" class="btn btn-outline-danger" name="button">
-                        <a href="../controllers/eliminarEmpresa.php?id_empresa=<?= $empresa['id_empresa'] ?>">
+                        <a href="../controllers/eliminarEmpresa.php?id_empresa=<?= htmlentities($empresa['id_empresa']) ?>">
                           <img src="../media/eliminar.svg" alt="" width="30px" height="30px">
                         </a>
                       </button>
@@ -95,7 +95,7 @@
             <div class="alert alert-dismissible alert-warning" style="width:100%">
               <button type="button" id="BTN" class="btn-close" data-bs-dismiss="alert"></button>
               <h4 class="alert-heading">Aviso</h4>
-              <p class="mb-0"><?= $this->resultado ?></p>
+              <p class="mb-0"><?= htmlentities($this->resultado) ?></p>
             </div>
             <script type="text/javascript">
               setTimeout(() => { document.getElementById("BTN").click(); }, 5000);
@@ -105,12 +105,12 @@
           <div class="row w-100 m-0 mt-3 p-2 text-center">
             <div class="col-6">
               <?php foreach ($this->nombre_empresa as $nombre) { ?>
-                <h2>Listado de Vuelos de <?= $nombre['nombre'] ?></h2>
+                <h2>Listado de Vuelos de <?= htmlentities($nombre['nombre']) ?></h2>
               <?php } ?>
             </div>
             <div class="col-3">
               <button type="button" class="btn btn-outline-success" name="button">
-                <a href="../controllers/agregarVuelo.php?id_empresa=<?= $this->id_empresa ?>" style="color: black; text-decoration: none; font-size: 16px;">Agregar Vuelo
+                <a href="../controllers/agregarVuelo.php?id_empresa=<?= htmlentities($this->id_empresa) ?>" style="color: black; text-decoration: none; font-size: 16px;">Agregar Vuelo
                   <img src="../media/plus.png" alt="" width="30px" height="30px">
                 </a>
               </button>
@@ -144,25 +144,25 @@
 
                 <tbody>
                   <tr class="table-active table-light">
-                    <th scope="row"><?= $vuelos['id_vuelos'] ?></th>
-                    <td><?= $vuelos['nombre'] ?></td>
-                    <td><?= $vuelos['origen'] ?></td>
-                    <td><?= $vuelos['fecha_origen'] ?></td>
-                    <td><?= $vuelos['destino'] ?></td>
-                    <td><?= $vuelos['fecha_destino'] ?></td>
-                    <td><?= $vuelos['precio'] ?></td>
-                    <td><?= $vuelos['descripcion_vuelo'] ?></td>
+                    <th scope="row"><?= htmlentities($vuelos['id_vuelos']) ?></th>
+                    <td><?= htmlentities($vuelos['nombre']) ?></td>
+                    <td><?= htmlentities($vuelos['origen']) ?></td>
+                    <td><?= htmlentities($vuelos['fecha_origen']) ?></td>
+                    <td><?= htmlentities($vuelos['destino']) ?></td>
+                    <td><?= htmlentities($vuelos['fecha_destino']) ?></td>
+                    <td><?= htmlentities($vuelos['precio']) ?></td>
+                    <td><?= htmlentities($vuelos['descripcion_vuelo']) ?></td>
 
                     <td>
                       <button type="button" class="btn btn-outline-warning" name="button">
-                        <a href="../controllers/editarVuelo.php?id_vuelo=<?= $vuelos['id_vuelos'] ?>&id_empresa=<?= $vuelos['id_empresa'] ?>">
+                        <a href="../controllers/editarVuelo.php?id_vuelo=<?= htmlentities($vuelos['id_vuelos']) ?>&id_empresa=<?= htmlentities($vuelos['id_empresa']) ?>">
                           <img src="../media/boligrafo.svg" alt="" width="30px" height="30px">
                         </a>
                       </button>
                     </td>
                     <td>
                       <button type="button" class="btn btn-outline-danger" name="button">
-                        <a href="../controllers/eliminarVuelo.php?id_vuelo=<?= $vuelos['id_vuelos'] ?>&id_empresa=<?= $vuelos['id_empresa'] ?>">
+                        <a href="../controllers/eliminarVuelo.php?id_vuelo=<?= htmlentities($vuelos['id_vuelos']) ?>&id_empresa=<?= htmlentities($vuelos['id_empresa']) ?>">
                           <img src="../media/eliminar.svg" alt="" width="30px" height="30px">
                         </a>
                       </button>

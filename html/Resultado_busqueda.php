@@ -26,23 +26,23 @@
             <div class="col-4 m-0 p-4">
               <div class="card bg-light border border-3 border-primary rounded p-1">
                 <div class="card-header bg-primary text-white" style="text-align:center">
-                    <h2><strong><?= $r['resultado_vuelos']['destino'] ?></strong></h2>
+                    <h2><strong><?= htmlentities($r['resultado_vuelos']['destino']) ?></strong></h2>
                 </div>
                 <div class="card-body text-black" style="text-align:center;">
-                  <p><strong>Saliendo desde: <?= $r['resultado_vuelos']['origen'] ?></strong></p>
-                  <p><strong>Precio: $<?= $r['resultado_vuelos']['precio'] ?></strong></p>
-                  <p><strong>Quedan <?= $r['cant_restante'] ?> lugares disponibles!</strong></p>
+                  <p><strong>Saliendo desde: <?= htmlentities($r['resultado_vuelos']['origen']) ?></strong></p>
+                  <p><strong>Precio: $<?= htmlentities($r['resultado_vuelos']['precio']) ?></strong></p>
+                  <p><strong>Quedan <?= htmlentities($r['cant_restante']) ?> lugares disponibles!</strong></p>
                 </div>
                 <div class="card-footer bg-primary" style="text-align:center">
                   <div class="row w-100 m-0 p-0">
                     <div class="col-10 m-0 p-1">
                       <button type="button" class="btn btn-outline-dark w-75 p-1" name="button">
-                        <a style="text-decoration:none; color:white;" href="../controllers/info_vuelo.php?id_vuelo=<?= $r['resultado_vuelos']['id_vuelos'] ?>">Mas Informacion</a>
+                        <a style="text-decoration:none; color:white;" href="../controllers/info_vuelo.php?id_vuelo=<?= htmlentities($r['resultado_vuelos']['id_vuelos']) ?>">Mas Informacion</a>
                       </button>
                     </div>
                     <div class="col-2 m-0 p-0">
                       <button type="button" class="btn btn-warning w-75 p-1" name="button">
-                        <a style="text-decoration:none; color:white;" href="../controllers/favorito.php?id_vuelo=<?=$r['resultado_vuelos']['id_vuelos']?>">
+                        <a style="text-decoration:none; color:white;" href="../controllers/favorito.php?id_vuelo=<?= htmlentities($r['resultado_vuelos']['id_vuelos']) ?>">
                           <img src="../media/favoritos.png" alt="" width="30px" height="30px">
                         </a>
                       </button>
@@ -55,7 +55,7 @@
         <?php }else{ ?>
                   <div class="alert alert-dismissible alert-warning" style="width:100%">
                     <button type="button" id="BTN" class="btn-close" data-bs-dismiss="alert"></button>
-                    <h1 class="alert-heading"><?= $this->resultado ?></h1>
+                    <h1 class="alert-heading"><?= htmlentities($this->resultado) ?></h1>
                   </div>
                   <script type="text/javascript">
                     setTimeout(() => { document.getElementById("BTN").click(); }, 5000);

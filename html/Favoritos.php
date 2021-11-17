@@ -49,16 +49,16 @@
 
 							<tbody>
 								<tr class="table-primary">
-									<th scope="row"><?= $fav['destino'] ?></th>
-									<td><?= $fav['origen'] ?></td>
-									<td><?= $fav['fecha_origen'] ?></td>
-									<td><?= $fav['destino'] ?></td>
-									<td><?= $fav['fecha_destino'] ?></td>
-									<td><?= $fav['precio'] ?></td>
+									<th scope="row"><?= htmlentities($fav['destino']) ?></th>
+									<td><?= htmlentities($fav['origen']) ?></td>
+									<td><?= htmlentities($fav['fecha_origen']) ?></td>
+									<td><?= htmlentities($fav['destino']) ?></td>
+									<td><?= htmlentities($fav['fecha_destino']) ?></td>
+									<td><?= htmlentities($fav['precio']) ?></td>
 
 									<td>
 										<button type="button" class="btn btn-outline-info" name="button">
-											<a href="../controllers/resultado_busqueda.php?origen=<?= $fav['origen'] ?>&destino=<?= $fav['destino'] ?>">
+											<a href="../controllers/resultado_busqueda.php?origen=<?= htmlentities($fav['origen']) ?>&destino=<?= htmlentities($fav['destino']) ?>">
 												<img src="../media/vuelo.png" alt="" width="30px" height="30px">
 											</a>
 										</button>
@@ -66,7 +66,7 @@
 
 									<td>
 										<button type="button" class="btn btn-outline-danger" name="button">
-											<a href="../controllers/misfavoritos.php?dni=<?= $fav['dni'] ?>&id_vuelo=<?= $fav['id_vuelos'] ?>">
+											<a href="../controllers/misfavoritos.php?dni=<?= htmlentities($fav['dni']) ?>&id_vuelo=<?= htmlentities($fav['id_vuelos']) ?>">
 												<img src="../media/eliminar.svg" alt="" width="30px" height="30px">
 											</a>
 										</button>
@@ -83,7 +83,7 @@
 					<div class="alert alert-dismissible alert-warning" style="width:100%">
 						<button type="button" id="BTN" class="btn-close" data-bs-dismiss="alert"></button>
 						<h4 class="alert-heading">Aviso</h4>
-						<p class="mb-0"><?= $this->mensaje ?></p>
+						<p class="mb-0"><?= htmlentities($this->mensaje) ?></p>
 					</div>
 					<script type="text/javascript">
 						setTimeout(() => { document.getElementById("BTN").click(); }, 5000);

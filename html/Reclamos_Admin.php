@@ -19,7 +19,7 @@
           <div class="alert alert-dismissible alert-warning m-0 w-100">
               <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
               <h4 class="alert-heading">Aviso</h4>
-              <p class="mb-0"><?= $this->resultado ?></p>
+              <p class="mb-0"><?= htmlentities($this->resultado) ?></p>
           </div>
         </div>
       <?php } ?>
@@ -68,14 +68,14 @@
 
             <tbody>
               <tr class="table-primary">
-                <th scope="row"><?= $r['id_reclamos'] ?></th>
-                <td><?= $r['asunto'] ?></td>
-                <td><?= $r['descripcion_reclamo'] ?></td>
-                <?php if ($r['estado']=='A'){ ?>
+                <th scope="row"><?= htmlentities($r['id_reclamos']) ?></th>
+                <td><?= htmlentities($r['asunto']) ?></td>
+                <td><?= htmlentities($r['descripcion_reclamo']) ?></td>
+                <?php if (htmlentities($r['estado'])=='A'){ ?>
                   <th class="p-0 m-0 bg-warning">Asignado</th>
                   <td>
                     <button type="button" class="btn btn-outline-success" name="button">
-                      <a href="../controllers/reclamos.php?resolver=<?= $r['id_reclamos'] ?>">
+                      <a href="../controllers/reclamos.php?resolver=<?= htmlentities($r['id_reclamos']) ?>">
                         <img src="../media/garrapata.png" alt="" width="30px" height="30px">
                       </a>
                     </button>
@@ -87,7 +87,7 @@
 
                 <td>
                   <button type="button" class="btn btn-outline-danger" name="button">
-                    <a href="../controllers/reclamos.php?id_reclamos=<?= $r['id_reclamos'] ?>">
+                    <a href="../controllers/reclamos.php?id_reclamos=<?= htmlentities($r['id_reclamos']) ?>">
                       <img src="../media/eliminar.svg" alt="" width="30px" height="30px">
                     </a>
                   </button>
@@ -104,7 +104,7 @@
         <div class="alert alert-dismissible alert-warning" style="width:100%">
           <button type="button" id="BTN" class="btn-close" data-bs-dismiss="alert"></button>
           <h4 class="alert-heading">Aviso</h4>
-          <p class="mb-0"><?= $this->mensaje ?></p>
+          <p class="mb-0"><?= htmlentities($this->mensaje) ?></p>
         </div>
         <script type="text/javascript">
           setTimeout(() => { document.getElementById("BTN").click(); }, 5000);

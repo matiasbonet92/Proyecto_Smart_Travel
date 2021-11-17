@@ -19,7 +19,7 @@
 			<div class="alert alert-dismissible alert-warning" style="width:100%">
 		  	<button type="button" id="BTN" class="btn-close" data-bs-dismiss="alert"></button>
 		  	<h4 class="alert-heading">Aviso</h4>
-		  	<p class="mb-0"><?= $this->mensaje ?></p>
+		  	<p class="mb-0"><?= htmlentities($this->mensaje) ?></p>
 			</div>
 			<script type="text/javascript">
 			setTimeout(() => { document.getElementById("BTN").click(); }, 5000);
@@ -39,11 +39,11 @@
 					<?php if (isset($this->dni) && isset($this->id_vuelo)) { ?>
 						<?php if ($this->redireccion == 'reserva'){ ?>
 								<button type="button" class="btn btn-outline-success" name="button">
-									<a style="text-decoration:none; color:white;" href="../controllers/reserva.php?id_vuelo=<?= $this->id_vuelo ?>">Finalizar Reserva</a>
+									<a style="text-decoration:none; color:white;" href="../controllers/reserva.php?id_vuelo=<?= htmlentities($this->id_vuelo) ?>">Finalizar Reserva</a>
 								</button>
 						<?php }elseif ($this->redireccion == 'favorito'){ ?>
 								<button type="button" class="btn btn-outline-success" name="button">
-									<a style="text-decoration:none; color:white;" href="../controllers/favorito.php?id_vuelo=<?= $this->id_vuelo ?>">Guardar Favorito</a>
+									<a style="text-decoration:none; color:white;" href="../controllers/favorito.php?id_vuelo=<?= htmlentities($this->id_vuelo) ?>">Guardar Favorito</a>
 								</button>
 						<?php } ?>
 
@@ -71,12 +71,12 @@
 
 					<tbody>
 						<tr class="table-primary">
-							<th scope="row"><?= $this->nombre ?></th>
-							<td><?= $this->apellido ?></td>
-							<td><?= $this->mail ?></td>
-							<td><?= $this->dni ?></td>
-							<td><?= $this->direccion ?></td>
-							<td><?= $this->telefono ?></td>
+							<th scope="row"><?= htmlentities($this->nombre) ?></th>
+							<td><?= htmlentities($this->apellido) ?></td>
+							<td><?= htmlentities($this->mail) ?></td>
+							<td><?= htmlentities($this->dni) ?></td>
+							<td><?= htmlentities($this->direccion) ?></td>
+							<td><?= htmlentities($this->telefono) ?></td>
 						</tr>
 					</tbody>
 				</table>
@@ -96,19 +96,19 @@
 					<div class="row w-100 m-0 p-3 bg-light">
 						<div class="col-12 m-0 p-0">
 							<form action="../controllers/perfil.php" method="post">
-								<input type="text" name="id_vuelo" value="<?= $this->id_vuelo ?>" hidden>
-								<input type="text" name="redireccion" value="<?= $this->redireccion ?>" hidden>
+								<input type="text" name="id_vuelo" value="<?= htmlentities($this->id_vuelo) ?>" hidden>
+								<input type="text" name="redireccion" value="<?= htmlentities($this->redireccion) ?>" hidden>
 								<div class="row">
 									<div class="col-6">
 										<div class="form-group w-75 my-2">
 											<label for="nombre" style="color: black;"><strong>Nombre:</strong></label>
-											<input type="text" class="form-control" name="nombre" id="nombre" value="<?= $this->nombre ?>">
+											<input type="text" class="form-control" name="nombre" id="nombre" value="<?= htmlentities($this->nombre) ?>">
 										</div>
 									</div>
 									<div class="col-6">
 										<div class="form-group w-75 my-2">
 											<label for="apellido" style="color: black;"><strong>Apellido:</strong></label>
-											<input type="text" class="form-control" name="apellido" id="apellido" value="<?= $this->apellido ?>">
+											<input type="text" class="form-control" name="apellido" id="apellido" value="<?= htmlentities($this->apellido) ?>">
 										</div>
 									</div>
 								</div>
@@ -116,7 +116,7 @@
 									<div class="col-6">
 										<div class="form-group w-75 my-2">
 											<label for="mail" style="color: black;"><strong>Mail:</strong></label>
-											<input type="text" class="form-control" name="mail" id="mail" value="<?= $this->mail ?>">
+											<input type="text" class="form-control" name="mail" id="mail" value="<?= htmlentities($this->mail) ?>">
 										</div>
 									</div>
 									<div class="col-6">
@@ -126,7 +126,7 @@
 												<input type="number" class="form-control" name="dni" id="dni" maxlength="10">
 											<?php }else{ ?>
 												<label for="dni" style="color: black;"><strong>Dni:</strong></label>
-												<input type="number" class="form-control" name="dni" id="dni" maxlength="10" value="<?= $this->dni ?>">
+												<input type="number" class="form-control" name="dni" id="dni" maxlength="10" value="<?= htmlentities($this->dni) ?>">
 											<?php } ?>
 										</div>
 									</div>
@@ -135,13 +135,13 @@
 									<div class="col-6">
 										<div class="form-group w-75 my-2">
 											<label for="direccion" style="color: black;"><strong>Direccion:</strong></label>
-											<input type="text" class="form-control" name="direccion" id="direccion" value="<?= $this->direccion ?>">
+											<input type="text" class="form-control" name="direccion" id="direccion" value="<?= htmlentities($this->direccion) ?>">
 										</div>
 									</div>
 									<div class="col-6">
 										<div class="form-group w-75 my-2">
 											<label for="telefono" style="color: black;"><strong>Telefono:</strong></label>
-											<input type="text" class="form-control" name="telefono" id="telefono" value="<?= $this->telefono ?>">
+											<input type="text" class="form-control" name="telefono" id="telefono" value="<?= htmlentities($this->telefono) ?>">
 										</div>
 									</div>
 								</div>

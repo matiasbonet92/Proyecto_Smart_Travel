@@ -28,27 +28,27 @@
                 <div class="row w-100 m-0 p-0 mb-3">
                    <div class="col-6 m-0 p-0">
                      <h4 class="mt-3"><strong>Vuelo:</strong></h4>
-                     <p>'<?= $datos['nombre_vuelo'] ?>' operado por '<?= $datos['nombre_empresa'] ?>'</p>
+                     <p>'<?= htmlentities($datos['nombre_vuelo']) ?>' operado por '<?= htmlentities($datos['nombre_empresa']) ?>'</p>
                      <h4 class="mt-3"><strong>Origen:</strong></h4>
-                     <p><?= $datos['origen'] ?> partiendo el <?= $datos['fecha_origen'] ?></p>
+                     <p><?= htmlentities($datos['origen']) ?> partiendo el <?= htmlentities($datos['fecha_origen']) ?></p>
                    </div>
                    <div class="col-6 m-0 p-0">
                      <h4 class="mt-3"><strong>Destino:</strong></h4>
-                     <p><?= $datos['destino'] ?> arribando el <?= $datos['fecha_destino'] ?></p>
+                     <p><?= htmlentities($datos['destino']) ?> arribando el <?= htmlentities($datos['fecha_destino']) ?></p>
                      <h4 class="mt-3"><strong>Precio:</strong></h4>
-                     <p>$ <?= $datos['precio'] ?></p>
+                     <p>$ <?= htmlentities($datos['precio']) ?></p>
                    </div>
                 </div><hr>
 
                 <form class="" action="../controllers/reserva.php" method="post">
-                  <p><strong>Apurate! Quedan <?= $this->cant_restante ?> asientos libres en el vuelo!</strong></p>
+                  <p><strong>Apurate! Quedan <?= htmlentities($this->cant_restante) ?> asientos libres en el vuelo!</strong></p>
                   <label for="cant_pasajeros"><strong>Cantidad de Pasajeros:</strong></label>
                   <input type="number" min="1" max="200" name="cant_pasajeros" id="cant_pasajeros" min="1" required>
                   <br><br>
                   <label for="contrato"><strong>He leido las condiciones y expreso conformidad:</strong></label>
                   <input type="checkbox" name="contrato" id="contrato" required>
-          				<input type="text" name="id_vuelo" value="<?= $this->id_vuelo ?>" hidden>
-          				<input type="text" name="dni" value="<?= $this->dni ?>" hidden>
+          				<input type="text" name="id_vuelo" value="<?= htmlentities($this->id_vuelo) ?>" hidden>
+          				<input type="text" name="dni" value="<?= htmlentities($this->dni) ?>" hidden>
                   <br><br>
           				<input type="submit" class="btn btn-success w-25" name="" value="Reservar">
                 </form>

@@ -19,7 +19,7 @@
 				<div class="container m-0 mt-3 p-3 border border-2 border-dark rounded">
 						<h3 style="text-align: center; font-style: bold;">Generar Reclamo</h3>
 						<form action="../controllers/AgregarReclamo.php" method="post">
-							<input type="text" class="form-control" name="id_reserva" hidden value="<?= $this->id_reserva?>">
+							<input type="text" class="form-control" name="id_reserva" hidden value="<?= htmlentities($this->id_reserva) ?>">
 								<div class="form-group w-100">
 									<div class="w-100">
 										<label for="asunto" style="color:black;">Asunto:</label>

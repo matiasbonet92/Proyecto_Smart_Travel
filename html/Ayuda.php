@@ -182,17 +182,17 @@
                 <?php foreach ($this->empresas as $empresa) { ?>
                   <tbody>
                     <tr class="table-primary">
-                      <td><?= $empresa['nombre'] ?></td>
+                      <td><?= htmlentities($empresa['nombre']) ?></td>
                       <td>
                         <button type="button" class="btn btn-outline-primary" name="button">
-                          <a href="mailto:<?= $empresa['contacto'] ?>">
+                          <a href="mailto:<?= htmlentities($empresa['contacto']) ?>">
                             <img src="../media/mail.png" alt="" width="30px" height="30px">
                           </a>
                         </button>
                       </td>
                       <td>
-                        <a target="_blank" href="https://maps.google.com/?q=<?= $empresa['direccion'] ?>">
-                          <?= $empresa['direccion'] ?>
+                        <a target="_blank" href="https://maps.google.com/?q=<?= htmlentities($empresa['direccion']) ?>">
+                          <?= htmlentities($empresa['direccion']) ?>
                         </a>
                       </td>
                     </tr>

@@ -52,26 +52,26 @@
 
                 <tbody>
                   <tr class="table-primary">
-                    <th scope="row"><?= $res['destino'] ?></th>
-                    <td><?= $res['cant_pasajeros'] ?></td>
-                    <td><?= $res['origen'] ?></td>
-                    <td><?= $res['fecha_origen'] ?></td>
-                    <td><?= $res['precio'] ?></td>
-                    <td><?= $res['nombre_vuelo'] ?></td>
-                    <td><?= $res['nombre_empresa'] ?></td>
-                    <td><?= $res['descripcion_vuelo'] ?></td>
-                    <td><?= $res['contacto'] ?></td>
+                    <th scope="row"><?= htmlentities($res['destino']) ?></th>
+                    <td><?= htmlentities($res['cant_pasajeros']) ?></td>
+                    <td><?= htmlentities($res['origen']) ?></td>
+                    <td><?= htmlentities($res['fecha_origen']) ?></td>
+                    <td><?= htmlentities($res['precio']) ?></td>
+                    <td><?= htmlentities($res['nombre_vuelo']) ?></td>
+                    <td><?= htmlentities($res['nombre_empresa']) ?></td>
+                    <td><?= htmlentities($res['descripcion_vuelo']) ?></td>
+                    <td><?= htmlentities($res['contacto']) ?></td>
 
                     <td>
                       <button type="button" class="btn btn-outline-danger" name="button">
-                        <a href="../controllers/misviajes.php?id_reserva=<?= $res['id_reserva'] ?>">
+                        <a href="../controllers/misviajes.php?id_reserva=<?= htmlentities($res['id_reserva']) ?>">
                           <img src="../media/eliminar.svg" alt="" width="30px" height="30px">
                         </a>
                       </button>
                     </td>
                     <td>
                       <button type="button" class="btn btn-outline-warning" name="button">
-                        <a href="../controllers/AgregarReclamo.php?id_reserva=<?= $res['id_reserva'] ?>">
+                        <a href="../controllers/AgregarReclamo.php?id_reserva=<?= htmlentities($res['id_reserva']) ?>">
                           <img src="../media/libro-de-reclamaciones.png" alt="" width="30px" height="30px">
                         </a>
                       </button>
@@ -88,7 +88,7 @@
           <div class="alert alert-dismissible alert-warning" style="width:100%">
     		  	<button type="button" id="BTN" class="btn-close" data-bs-dismiss="alert"></button>
     		  	<h4 class="alert-heading">Aviso</h4>
-    		  	<p class="mb-0"><?= $this->mensaje ?></p>
+    		  	<p class="mb-0"><?= htmlentities($this->mensaje) ?></p>
     			</div>
           <script type="text/javascript">
             setTimeout(() => { document.getElementById("BTN").click(); }, 5000);

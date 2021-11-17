@@ -46,7 +46,7 @@
             </div>
 
             <div class="col-8 m-0 pt-1 p-0">
-              <h4 style="color:white; text-align: center; align-content: center;">Bienvenido/a <?= $_SESSION['nombre'] ?></h4>
+              <h4 style="color:white; text-align: center; align-content: center;">Bienvenido/a <?= htmlentities($_SESSION['nombre']) ?></h4>
             </div>
 
             <div class="col-3 m-0 pt-1 p-0">

@@ -16,7 +16,7 @@
 			<div class="alert alert-dismissible alert-warning" style="width:100%">
         <button type="button" id="BTN" class="btn-close" data-bs-dismiss="alert"></button>
         <h4 class="alert-heading">Aviso</h4>
-        <p class="mb-0"><?= $this->resultado ?></p>
+        <p class="mb-0"><?= htmlentities($this->resultado) ?></p>
       </div>
       <script type="text/javascript">
         setTimeout(() => { document.getElementById("BTN").click(); }, 5000);
@@ -100,7 +100,7 @@
 								</div>
 							</div>
 
-							<input type="text" class="form-control" name="id_empresa" hidden value="<?= $this->id_empresa?>">
+							<input type="text" class="form-control" name="id_empresa" hidden value="<?= htmlentities($this->id_empresa) ?>">
 
 						</form>
 

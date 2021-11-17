@@ -24,18 +24,18 @@
           <?php foreach($this->datos_vuelo as $datos) { ?>
                 <h4 class="mt-3"><strong>Descripcion general del vuelo:</strong></h4>
                 <p>
-                  El vuelo '<?= $datos['nombre_vuelo'] ?>' es operado por '<?= $datos['nombre_empresa'] ?>'.
-                  Partiendo desde <?= $datos['origen'] ?> el <?= $datos['fecha_origen'] ?> y arribando a <?= $datos['destino'] ?> el <?= $datos['fecha_destino'] ?>.
+                  El vuelo '<?= htmlentities($datos['nombre_vuelo']) ?>' es operado por '<?= htmlentities($datos['nombre_empresa']) ?>'.
+                  Partiendo desde <?= htmlentities($datos['origen']) ?> el <?= htmlentities($datos['fecha_origen']) ?> y arribando a <?= htmlentities($datos['destino']) ?> el <?= htmlentities($datos['fecha_destino']) ?>.
                 </p>
-                <h4 class="my-3"><strong>Precio Final: $</strong><?= $datos['precio'] ?></h4><hr>
+                <h4 class="my-3"><strong>Precio Final: $</strong><?= htmlentities($datos['precio']) ?></h4><hr>
                 <h4 class="mt-3"><strong>Aclaraciones generales:</strong></h4>
-                <p><?= $datos['descripcion_vuelo'] ?></p><hr>
-                <p  class="mt-3" style="font-style:italic">Por dudas, favor de comunicarse al mail de la empresa: <span style="font-style:normal"><?= $datos['contacto'] ?></span> </p> <!-- Es muy util el uso de span -->
+                <p><?= htmlentities($datos['descripcion_vuelo']) ?></p><hr>
+                <p  class="mt-3" style="font-style:italic">Por dudas, favor de comunicarse al mail de la empresa: <span style="font-style:normal"><?= htmlentities($datos['contacto']) ?></span> </p> <!-- Es muy util el uso de span -->
                 <div class="row w-100 my-3 p-2">
                   <div class="col-3 p-0 m-0"></div>
                   <div class="col-3 p-0 m-0">
                     <button type="button" class="btn btn-success" name="button">
-                      <a style="text-decoration:none; color:white;" href="../controllers/reserva.php?id_vuelo=<?= $datos['id_vuelos'] ?>">Reservar</a>
+                      <a style="text-decoration:none; color:white;" href="../controllers/reserva.php?id_vuelo=<?= htmlentities($datos['id_vuelos']) ?>">Reservar</a>
                     </button>
                   </div>
                   <div class="col-3 p-0 m-0">

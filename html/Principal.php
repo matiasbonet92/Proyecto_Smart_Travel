@@ -21,7 +21,7 @@
       <div class="alert alert-dismissible alert-warning" style="width:100%">
         <button type="button" id="BTN" class="btn-close" data-bs-dismiss="alert"></button>
         <h4 class="alert-heading">Aviso</h4>
-        <p class="mb-0"><?= $this->mensaje ?></p>
+        <p class="mb-0"><?= htmlentities($this->mensaje) ?></p>
       </div>
       <script type="text/javascript">
         setTimeout(() => { document.getElementById("BTN").click(); }, 5000);
@@ -75,15 +75,15 @@
         <div class="col-3 m-0 p-4">
           <div class="card bg-light border border-3 border-primary rounded p-1">
             <div class="card-header bg-primary text-white" style="text-align:center">
-                <h2><strong><?= $v['destino'] ?></strong></h2>
+                <h2><strong><?= htmlentities($v['destino']) ?></strong></h2>
             </div>
             <div class="card-body text-black" style="text-align:center;">
-              <p><strong>Saliendo desde: <?= $v['origen'] ?></strong></p>
-              <p><strong>Precio desde: $<?= $v['precio_minimo'] ?></strong></p>
+              <p><strong>Saliendo desde: <?= htmlentities($v['origen']) ?></strong></p>
+              <p><strong>Precio desde: $<?= htmlentities($v['precio_minimo']) ?></strong></p>
             </div>
             <div class="card-footer bg-primary" style="text-align:center">
               <button type="button" class="btn btn-outline-dark w-75 p-1" name="button">
-                <a style="text-decoration:none; color:white;" href="../controllers/resultado_busqueda.php?origen=<?= $v['origen'] ?>&destino=<?= $v['destino'] ?>">Ver mas</a>
+                <a style="text-decoration:none; color:white;" href="../controllers/resultado_busqueda.php?origen=<?= htmlentities($v['origen']) ?>&destino=<?= htmlentities($v['destino']) ?>">Ver mas</a>
               </button>
             </div>
           </div>

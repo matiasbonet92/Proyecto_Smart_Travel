@@ -16,7 +16,7 @@
 			<div class="alert alert-dismissible alert-warning" style="width:100%">
         <button type="button" id="BTN" class="btn-close" data-bs-dismiss="alert"></button>
         <h4 class="alert-heading">Aviso</h4>
-        <p class="mb-0"><?= $this->resultado ?></p>
+        <p class="mb-0"><?= htmlentities($this->resultado) ?></p>
       </div>
       <script type="text/javascript">
         setTimeout(() => { document.getElementById("BTN").click(); }, 5000);
@@ -29,23 +29,23 @@
   				<div class="container m-0 mt-3 p-3 border border-2 border-dark rounded">
   						<h3 style="text-align: center; font-style: bold;">Agregar Empresa</h3>
   						<form action="../controllers/editarEmpresa.php" method="post">
-                <input type="text" name="id_empresa" value="<?= $datos['id_empresa'] ?>" hidden>
+                <input type="text" name="id_empresa" value="<?= htmlentities($datos['id_empresa']) ?>" hidden>
   							<div class="form-group w-100">
   								<div class="w-100">
   									<label for="nombre" style="color:black;">Nombre:</label>
-  									<input type="text" class="form-control" name="nombre" value="<?= $datos['nombre'] ?>">
+  									<input type="text" class="form-control" name="nombre" value="<?= htmlentities($datos['nombre']) ?>">
   								</div>
   							</div>
   							<div class="form-group w-100 mt-1">
   								<div class="w-100">
   									<label for="contacto" style="color:black;">Contacto:</label>
-  									<input type="text" class="form-control" name="contacto" value="<?= $datos['contacto'] ?>">
+  									<input type="text" class="form-control" name="contacto" value="<?= htmlentities($datos['contacto']) ?>">
   								</div>
   							</div>
                 <div class="form-group w-100 mt-1">
   								<div class="w-100">
   									<label for="direccion" style="color:black;">Direccion:</label>
-  									<input type="text" class="form-control" name="direccion" value="<?= $datos['direccion'] ?>">
+  									<input type="text" class="form-control" name="direccion" value="<?= htmlentities($datos['direccion']) ?>">
   								</div>
   							</div>
   							<div class="form-group w-100 mt-3 mb-1">
