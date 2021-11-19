@@ -14,22 +14,46 @@ $dni = $_SESSION['dni'];
 
 if (count($_GET)>0) {
 
-		$id_reclamos = $_GET['id_reclamos'];
+		$error = false;
 
-		$r->eliminarReclamo($id_reclamos);
+		try {
+			if(!isset($_GET['id_reclamos'])) throw new Exception('El campo id_reclamos no puede estar vacio');
+			$id_reclamos = $_GET['id_reclamos'];
 
-		$reclamos = $r->getReclamosByDni($dni);
+			$r->eliminarReclamo($id_reclamos);
 
-	  if (!is_array($reclamos)) {
-	    $mensaje = 'No tienes reclamos realizados';
-	    $v = new Mis_Reclamos();
-	    $v->mensaje = $mensaje;
-	    $v->render();
-	  }else{
-	  	$v = new Mis_Reclamos();
-	  	$v->reclamos = $reclamos;
-	  	$v->render();
-	  }
+			$reclamos = $r->getReclamosByDni($dni);
+			if (!is_array($reclamos)) {
+		    $mensaje = 'No tienes reclamos realizados';
+		    $v = new Mis_Reclamos();
+		    $v->mensaje = $mensaje;
+		    $v->render();
+		  }else{
+		  	$v = new Mis_Reclamos();
+		  	$v->reclamos = $reclamos;
+		  	$v->render();
+		  }
+
+		} catch (Exception $err) {
+			$error = true;
+			$resultado = $err->getMessage();
+		}
+
+		if ($error) {
+			$reclamos = $r->getReclamosByDni($dni);
+
+		  if (!is_array($reclamos)) {
+		    $mensaje = 'No tienes reclamos realizados';
+		    $v = new Mis_Reclamos();
+		    $v->mensaje = $mensaje;
+		    $v->render();
+		  }else{
+		  	$v = new Mis_Reclamos();
+		  	$v->reclamos = $reclamos;
+				$v->mensaje = $resultado;
+		  	$v->render();
+		  }
+		}
 
 }elseif ($_SESSION['dni']==0) {
 
@@ -38,7 +62,7 @@ if (count($_GET)>0) {
   header("Location: ../controllers/perfil.php?mensaje=$mensaje");
   exit;
 
-}else{
+}elseif(isset($dni)){
   $reclamos = $r->getReclamosByDni($dni);
 
   if (!is_array($reclamos)) {

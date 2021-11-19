@@ -11,43 +11,64 @@
 
   if (count($_POST)>0) {
 
-    $nombre = $_POST['nombre'];
-    $apellido = $_POST['apellido'];
-    $mail = $_POST['mail'];
-    $dni = $_POST['dni'];
-    $direccion = $_POST['direccion'];
-    $telefono = $_POST['telefono'];
-    $id_login = $_SESSION['id_login'];
+    $error = false;
 
-    $consulta = $u->updateUsuarios($id_login,$nombre,$apellido,$mail,$dni,$direccion,$telefono);
+    try {
 
-    foreach ($consulta as $data) {
-      $_SESSION['apellido'] = $data['apellido'];
-      $_SESSION['dni'] = $data['dni'];
-      $_SESSION['direccion'] = $data['direccion'];
-      $_SESSION['telefono'] = $data['telefono'];
+      if(!isset($_POST['nombre'])) throw new Exception('El campo nombre no puede estar vacio');
+      if(!isset($_POST['apellido'])) throw new Exception('El campo apellido no puede estar vacio');
+      if(!isset($_POST['mail'])) throw new Exception('El campo mail no puede estar vacio');
+      if(!isset($_POST['dni'])) throw new Exception('El dni descripcion no puede estar vacio');
+      if(!isset($_POST['direccion'])) throw new Exception('El campo direccion no puede estar vacio');
+      if(!isset($_POST['telefono'])) throw new Exception('El campo telefono no puede estar vacio');
+      $nombre = $_POST['nombre'];
+      $apellido = $_POST['apellido'];
+      $mail = $_POST['mail'];
+      $dni = $_POST['dni'];
+      $direccion = $_POST['direccion'];
+      $telefono = $_POST['telefono'];
+      $id_login = $_SESSION['id_login'];
+
+      $consulta = $u->updateUsuarios($id_login,$nombre,$apellido,$mail,$dni,$direccion,$telefono);
+
+      foreach ($consulta as $data) {
+        $_SESSION['apellido'] = $data['apellido'];
+        $_SESSION['dni'] = $data['dni'];
+        $_SESSION['direccion'] = $data['direccion'];
+        $_SESSION['telefono'] = $data['telefono'];
+      }
+
+      $id_vuelo = $_POST['id_vuelo'];
+      $redireccion = $_POST['redireccion'];
+
+      if (is_array($consulta)) {
+        $v = new Perfil();
+        $v->id_login = $id_login;
+        $v->mail = $mail;
+        $v->nombre = $nombre;
+        $v->apellido = $apellido;
+        $v->dni = $dni;
+        $v->direccion = $direccion;
+        $v->telefono = $telefono;
+        $v->id_vuelo = $id_vuelo;
+        $v->redireccion = $redireccion;
+        $v->render();
+      }
+
+    } catch (Exception $err) {
+
+      $error = true;
+      $resultado = $err->getMessage();
+
     }
 
-    $id_vuelo = $_POST['id_vuelo'];
-    $redireccion = $_POST['redireccion'];
+    if($error){
 
-    if (is_array($consulta)) {
       $v = new Perfil();
-      $v->id_login = $id_login;
-      $v->mail = $mail;
-      $v->nombre = $nombre;
-      $v->apellido = $apellido;
-      $v->dni = $dni;
-      $v->direccion = $direccion;
-      $v->telefono = $telefono;
-      $v->id_vuelo = $id_vuelo;
-      $v->redireccion = $redireccion;
+      $v->error = $resultado;
       $v->render();
-    }else{
-      $v = new Perfil();
-      $v->error = $consulta;
-      $v->render();
-    }
+
+    }/*TERMINA*/
 
 
   }elseif (count($_GET)>0) {

@@ -9,11 +9,10 @@
 
     public function getReservasByDni($dni){
 
-      if(!isset($dni)) throw new Exception('El campo dni no puede estar vacio');
       if(!ctype_digit($dni)) throw new Exception('El campo dni debe ser numerico');
       if(strlen($dni)<1) throw new Exception('El campo dni es muy corto');
       if(strlen($dni)>10) throw new Exception('El campo dni es muy largo');
-      
+
       $this->db->query("SELECT id_reserva,r.dni as dni,r.id_vuelos as id_vuelos,cant_pasajeros,v.nombre as nombre_vuelo,v.origen,v.fecha_origen,v.destino,v.fecha_destino,v.precio,v.descripcion_vuelo,e.nombre as nombre_empresa,e.contacto
                         FROM reservas r
                         LEFT JOIN vuelos v ON r.id_vuelos=v.id_vuelos
@@ -24,7 +23,6 @@
 
     public function consultarCantidadPasajerosVuelo($id_vuelo){
 
-      if(!isset($id_vuelo)) throw new Exception('El campo id_vuelo no puede estar vacio');
       if(!ctype_digit($id_vuelo)) throw new Exception('El campo id_vuelo debe ser numerico');
       if(strlen($id_vuelo)<1) throw new Exception('El campo id_vuelo es muy corto');
       if(strlen($id_vuelo)>10) throw new Exception('El campo id_vuelo es muy largo');
@@ -42,17 +40,14 @@
 
     public function crearReserva($dni,$id_vuelo,$cant_pasajeros){
 
-      if(!isset($id_vuelo)) throw new Exception('El campo id_vuelo no puede estar vacio');
       if(!ctype_digit($id_vuelo)) throw new Exception('El campo id_vuelo debe ser numerico');
       if(strlen($id_vuelo)<1) throw new Exception('El campo id_vuelo es muy corto');
       if(strlen($id_vuelo)>10) throw new Exception('El campo id_vuelo es muy largo');
 
-      if(!isset($dni)) throw new Exception('El campo dni no puede estar vacio');
       if(!ctype_digit($dni)) throw new Exception('El campo dni debe ser numerico');
       if(strlen($dni)<1) throw new Exception('El campo dni es muy corto');
       if(strlen($dni)>10) throw new Exception('El campo dni es muy largo');
 
-      if(!isset($cant_pasajeros)) throw new Exception('El campo cant_pasajeros no puede estar vacio');
       if(!ctype_digit($cant_pasajeros)) throw new Exception('El campo cant_pasajeros debe ser numerico');
       if(strlen($cant_pasajeros)<1) throw new Exception('El campo cant_pasajeros es muy corto');
       if(strlen($cant_pasajeros)>200) throw new Exception('El campo cant_pasajeros es muy largo');
@@ -71,7 +66,6 @@
 
     public function deleteReserva($id){
 
-      if(!isset($id)) throw new Exception('El campo id no puede estar vacio');
       if(!ctype_digit($id)) throw new Exception('El campo id debe ser numerico');
       if(strlen($id)<1) throw new Exception('El campo id es muy corto');
       if(strlen($id)>10) throw new Exception('El campo id es muy largo');

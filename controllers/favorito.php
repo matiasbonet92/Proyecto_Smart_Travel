@@ -24,28 +24,60 @@
         exit;
 
       }else{
-        $dni = $_SESSION['dni'];
-        $id_vuelo = $_GET['id_vuelo'];
 
-        $resultado = $vf->createFavorito($dni,$id_vuelo);
+        $error = false;
 
-        $vuelos_precio_minimo = $m->getVuelosConPrecioMinimo();
-        $size_array = count($vuelos_precio_minimo);
+  			try {
 
-        if ($size_array<=4) {
-          $v = new Principal();
-          $v->mensaje = $resultado;
-          $v->vuelos_precio_minimo = $vuelos_precio_minimo;
-          $v->render();
-        }else{
-          shuffle($vuelos_precio_minimo);
-          $v = new Principal();
-          $v->mensaje = $resultado;
-          $v->vuelos_precio_minimo = $vuelos_precio_minimo;
-          $v->render();
-        }
+  				if(!isset($_SESSION['dni'])) throw new Exception('El campo dni no puede estar vacio');
+  	      if(!isset($_GET['id_vuelo'])) throw new Exception('El campo id_vuelo no puede estar vacio');
+          $dni = $_SESSION['dni'];
+          $id_vuelo = $_GET['id_vuelo'];
 
-      }
+          $resultado = $vf->createFavorito($dni,$id_vuelo);
+
+          $vuelos_precio_minimo = $m->getVuelosConPrecioMinimo();
+          $size_array = count($vuelos_precio_minimo);
+
+          if ($size_array<=4) {
+            $v = new Principal();
+            $v->mensaje = $resultado;
+            $v->vuelos_precio_minimo = $vuelos_precio_minimo;
+            $v->render();
+          }else{
+            shuffle($vuelos_precio_minimo);
+            $v = new Principal();
+            $v->mensaje = $resultado;
+            $v->vuelos_precio_minimo = $vuelos_precio_minimo;
+            $v->render();
+          }
+
+  			} catch (Exception $err) {
+
+  				$error = true;
+  				$resultado = $err->getMessage();
+
+  			}
+
+  			if($error){
+
+          $vuelos_precio_minimo = $m->getVuelosConPrecioMinimo();
+          $size_array = count($vuelos_precio_minimo);
+
+          if ($size_array<=4) {
+            $v = new Principal();
+            $v->mensaje = $resultado;
+            $v->vuelos_precio_minimo = $vuelos_precio_minimo;
+            $v->render();
+          }else{
+            shuffle($vuelos_precio_minimo);
+            $v = new Principal();
+            $v->mensaje = $resultado;
+            $v->vuelos_precio_minimo = $vuelos_precio_minimo;
+            $v->render();
+          }
+
+  			}/*Termina*/
 
     }else{
       $v = new Ingreso();

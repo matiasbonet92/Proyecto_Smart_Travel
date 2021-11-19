@@ -4,12 +4,11 @@
 
     public function getFavoritos($dni){
 
-      if(!isset($dni)) throw new Exception('El campo dni no puede estar vacio');
       if(!ctype_digit($dni)) throw new Exception('El campo dni debe ser numerico');
       if(strlen($dni)<1) throw new Exception('El campo dni es muy corto');
       if(strlen($dni)>10) throw new Exception('El campo dni es muy largo');
 
-      
+
       $this->db->query("SELECT dni,vf.id_vuelos as id_vuelos,nombre,origen,destino,fecha_origen,fecha_destino,precio,descripcion_vuelo,id_empresa FROM vuelos_favoritos vf
                           LEFT JOIN vuelos v ON vf.id_vuelos=v.id_vuelos
                           WHERE dni='$dni'");
@@ -20,13 +19,11 @@
 
     public function createFavorito($dni,$id_vuelo){
 
-      if(!isset($id_vuelo)) throw new Exception('El campo id_vuelo no puede estar vacio');
       if(!ctype_digit($id_vuelo)) throw new Exception('El campo id_vuelo debe ser numerico');
       if(strlen($id_vuelo)<1) throw new Exception('El campo id_vuelo es muy corto');
       if(strlen($id_vuelo)>10) throw new Exception('El campo id_vuelo es muy largo');
 
 
-      if(!isset($dni)) throw new Exception('El campo dni no puede estar vacio');
       if(!ctype_digit($dni)) throw new Exception('El campo dni debe ser numerico');
       if(strlen($dni)<1) throw new Exception('El campo dni es muy corto');
       if(strlen($dni)>10) throw new Exception('El campo dni es muy largo');
@@ -46,13 +43,11 @@
 
     public function deleteFavorito($dni,$id_vuelo){
 
-      if(!isset($id_vuelo)) throw new Exception('El campo id_vuelo no puede estar vacio');
       if(!ctype_digit($id_vuelo)) throw new Exception('El campo id_vuelo debe ser numerico');
       if(strlen($id_vuelo)<1) throw new Exception('El campo id_vuelo es muy corto');
       if(strlen($id_vuelo)>10) throw new Exception('El campo id_vuelo es muy largo');
 
 
-      if(!isset($dni)) throw new Exception('El campo dni no puede estar vacio');
       if(!ctype_digit($dni)) throw new Exception('El campo dni debe ser numerico');
       if(strlen($dni)<1) throw new Exception('El campo dni es muy corto');
       if(strlen($dni)>10) throw new Exception('El campo dni es muy largo');

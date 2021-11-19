@@ -15,14 +15,25 @@ if (isset($_SESSION['logueado'])) {
 
   if (count($_POST)>0) {
 
-    $nombre = $_POST['nombre'];
-    $contacto = $_POST['contacto'];
-    $direccion = $_POST['direccion'];
     $error = false;
 
     try {
 
+      if(!isset($_POST['nombre'])) throw new Exception('El campo nombre no puede estar vacio');
+      if(!isset($_POST['contacto'])) throw new Exception('El campo contacto no puede estar vacio');
+      if(!isset($_POST['direccion'])) throw new Exception('El campo direccion no puede estar vacio');
+      $nombre = $_POST['nombre'];
+      $contacto = $_POST['contacto'];
+      $direccion = $_POST['direccion'];
+
       $e->createEmpresa($nombre,$contacto,$direccion);
+      $resultado = 'Empresa creada con exito';
+      $empresas = $e->getEmpresas();
+
+      $v = new Administrador();
+      $v->empresas = $empresas;
+      $v->resultado = $resultado;
+      $v->render();
 
     } catch(Exception $err) {
 
@@ -37,14 +48,6 @@ if (isset($_SESSION['logueado'])) {
       $v->resultado = $resultado;
       $v->render();
 
-    }else{
-      $resultado = 'Empresa creada con exito';
-      $empresas = $e->getEmpresas();
-
-      $v = new Administrador();
-      $v->empresas = $empresas;
-      $v->resultado = $resultado;
-      $v->render();
     }
 
   }else{

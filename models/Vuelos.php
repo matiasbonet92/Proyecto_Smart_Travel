@@ -9,7 +9,6 @@
 
     public function getVueloById($id_vuelo){
 
-      if(!isset($id_vuelo)) throw new Exception('El campo id_vuelo no puede estar vacio');
       if(!ctype_digit($id_vuelo)) throw new Exception('El campo id_vuelo debe ser numerico');
       if(strlen($id_vuelo)<1) throw new Exception('El campo id_vuelo es muy corto');
       if(strlen($id_vuelo)>10) throw new Exception('El campo id_vuelo es muy largo');
@@ -23,27 +22,22 @@
     public function createVuelo($id_empresa,$nombre,$origen,$fecha_origen,$destino,
     $fecha_destino,$precio,$descripcion_vuelo){
 
-      if(!isset($id_empresa)) throw new Exception('El campo id_empresa no puede estar vacio');
       if(!ctype_digit($id_empresa)) throw new Exception('El campo id_empresa debe ser numerico');
       if(strlen($id_empresa)<1) throw new Exception('El campo id_empresa es muy corto');
       if(strlen($id_empresa)>11) throw new Exception('El campo id_empresa es muy largo');
 
-      if(!isset($nombre)) throw new Exception('El campo nombre no puede estar vacio');
       if(strlen($nombre)<1) throw new Exception('El campo nombre no puede estar vacio');
       if(strlen($nombre)>50) throw new Exception('El campo nombre es muy grande');
       $nombre = $this->db->escape($nombre);
 
-      if(!isset($origen)) throw new Exception('El campo origen no puede estar vacio');
       if(strlen($origen)<1) throw new Exception('El campo origen no puede estar vacio');
       if(strlen($origen)>100) throw new Exception('El campo origen es muy grande');
       $origen = $this->db->escape($origen);
 
-      if(!isset($destino)) throw new Exception('El campo destino no puede estar vacio');
       if(strlen($destino)<1) throw new Exception('El campo destino no puede estar vacio');
       if(strlen($destino)>100) throw new Exception('El campo destino es muy grande');
       $destino = $this->db->escape($destino);
 
-      if(!isset($descripcion_vuelo)) throw new Exception('El campo descripcion no puede estar vacio');
       if(strlen($descripcion_vuelo)<1) throw new Exception('El campo descripcion no puede estar vacio');
       if(strlen($descripcion_vuelo)>1000) throw new Exception('El campo descripcion es muy grande');
       $descripcion_vuelo = $this->db->escape($descripcion_vuelo);
@@ -105,7 +99,6 @@
 
       if($forigen > $fdestino) throw new Exception('La fecha de destino no puede ser posterior a la de origen');
 
-      if(!isset($precio)) throw new Exception('El precio no puede estar vacio');
       if(!is_numeric($precio)) throw new Exception('El precio debe ser numerico');
       if(strlen($precio)<0) throw new Exception('El precio no puede ser menor a 0');
 
@@ -118,28 +111,23 @@
     public function editarVuelo($id_empresa,$id_vuelos,$nombre,$origen,$fecha_origen,$destino,
     $fecha_destino,$precio,$descripcion_vuelo){
 
-      if(!isset($id_empresa)) throw new Exception('El campo id_empresa no puede estar vacio');
       if(!ctype_digit($id_empresa)) throw new Exception('El campo id_empresa debe ser numerico');
       if(strlen($id_empresa)<1) throw new Exception('El campo id_empresa es muy corto');
       if(strlen($id_empresa)>11) throw new Exception('El campo id_empresa es muy largo');
 
 
-      if(!isset($nombre)) throw new Exception('El campo nombre no puede estar vacio');
       if(strlen($nombre)<1) throw new Exception('El campo nombre no puede estar vacio');
       if(strlen($nombre)>100) throw new Exception('El campo nombre es muy grande');
       $nombre = $this->db->escape($nombre);
 
-      if(!isset($origen)) throw new Exception('El campo origen no puede estar vacio');
       if(strlen($origen)<1) throw new Exception('El campo origen no puede estar vacio');
       if(strlen($origen)>100) throw new Exception('El campo origen es muy grande');
       $origen = $this->db->escape($origen);
 
-      if(!isset($destino)) throw new Exception('El campo destino no puede estar vacio');
       if(strlen($destino)<1) throw new Exception('El campo destino no puede estar vacio');
       if(strlen($destino)>100) throw new Exception('El campo destino es muy grande');
       $destino = $this->db->escape($destino);
 
-      if(!isset($descripcion_vuelo)) throw new Exception('El campo descripcion no puede estar vacio');
       if(strlen($descripcion_vuelo)<1) throw new Exception('El campo descripcion no puede estar vacio');
       if(strlen($descripcion_vuelo)>1000) throw new Exception('El campo descripcion es muy grande');
       $descripcion_vuelo = $this->db->escape($descripcion_vuelo);
@@ -201,7 +189,6 @@
 
       if($forigen > $fdestino) throw new Exception('La fecha de destino no puede ser posterior a la de origen');
 
-      if(!isset($precio)) throw new Exception('El precio no puede estar vacio');
       if(!is_numeric($precio)) throw new Exception('El precio debe ser numerico');
       if(strlen($precio)<0) throw new Exception('El precio no puede ser menor a 0');
 
@@ -215,7 +202,6 @@
 
     public function getVuelosByEmpresa($id){
 
-      if(!isset($id)) throw new Exception('El campo id no puede estar vacio');
       if(!ctype_digit($id)) throw new Exception('El campo id debe ser numerico');
       if(strlen($id)<1) throw new Exception('El campo id es muy corto');
       if(strlen($id)>11) throw new Exception('El campo id es muy largo');
@@ -237,14 +223,12 @@
       try{
         //Validaciones
         //validar origen (listado strings)
-        if (!isset($origen)) throw new Exception('El Origen no puede estar vacio'); //existe?
         if (strlen($origen)<1) throw new Exception('El Origen no puede estar vacio'); //tamaño minimo
         $origen = substr($origen,0,100); //tamaño maximo
         $origen = $this->db->escape($origen); //escapar comillas
         $origen = $this->db->escapeWildcards($origen); //escapa comodines
 
         //validar destino (listado strings)
-        if (!isset($destino)) throw new Exception('El Destino no puede estar vacio'); //existe?
         if (strlen($destino)<1) throw new Exception('El Destino no puede estar vacio'); //tamaño minimo
         $destino = substr($destino,0,100); //tamaño maximo
         $destino = $this->db->escape($destino); //escapar comillas
@@ -272,14 +256,12 @@
       try{
         //Validaciones
         //validar origen (listado strings)
-        if (!isset($origen)) throw new Exception('El Origen no puede estar vacio'); //existe?
         if (strlen($origen)<1) throw new Exception('El Origen no puede estar vacio'); //tamaño minimo
         $origen = substr($origen,0,100); //tamaño maximo
         $origen = $this->db->escape($origen); //escapar comillas
         $origen = $this->db->escapeWildcards($origen); //escapa comodines
 
         //validar destino (listado strings)
-        if (!isset($destino)) throw new Exception('El Destino no puede estar vacio'); //existe?
         if (strlen($destino)<1) throw new Exception('El Destino no puede estar vacio'); //tamaño minimo
         $destino = substr($destino,0,100); //tamaño maximo
         $destino = $this->db->escape($destino); //escapar comillas
@@ -327,7 +309,6 @@
 
     public function eliminarVuelosByEmpresa($id){
 
-      if(!isset($id)) throw new Exception('El campo id no puede estar vacio');
       if(!ctype_digit($id)) throw new Exception('El campo id debe ser numerico');
       if(strlen($id)<1) throw new Exception('El campo id es muy corto');
       if(strlen($id)>11) throw new Exception('El campo id es muy largo');
@@ -338,7 +319,6 @@
 
     public function eliminarVuelo($id){
 
-      if(!isset($id)) throw new Exception('El campo id no puede estar vacio');
       if(!ctype_digit($id)) throw new Exception('El campo id debe ser numerico');
       if(strlen($id)<1) throw new Exception('El campo id es muy corto');
       if(strlen($id)>11) throw new Exception('El campo id es muy largo');

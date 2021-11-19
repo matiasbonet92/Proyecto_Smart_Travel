@@ -28,15 +28,25 @@ if (count($_GET)>0) {
 
 		if(count($_POST)>0){
 
-			$descripcion = $_POST['descripcion'];
-			$asunto = $_POST['asunto'];
-			$id_reserva = $_POST['id_reserva'];
-
 			$error = false;
 
 			try {
 
+				if(!isset($_POST['descripcion'])) throw new Exception('El campo descripcion no puede estar vacio');
+	      if(!isset($_POST['asunto'])) throw new Exception('El campo asunto no puede estar vacio');
+	      if(!isset($_POST['id_reserva'])) throw new Exception('El campo id_reserva no puede estar vacio');
+				$descripcion = $_POST['descripcion'];
+				$asunto = $_POST['asunto'];
+				$id_reserva = $_POST['id_reserva'];
+
 				$r->createReclamo( $id_reserva, $descripcion, $asunto);
+				$reservas = $re->getReservasByDni($_SESSION['dni']);
+				$resultado = 'Reclamo realizado con éxito';
+
+				$v = new Mis_Viajes();
+				$v->reservas = $reservas;
+				$v->resultado = $resultado;
+				$v->render();
 
 			} catch (Exception $err) {
 
@@ -44,8 +54,6 @@ if (count($_GET)>0) {
 				$resultado = $err->getMessage();
 
 			}
-
-			$reservas = $re->getReservasByDni($_SESSION['dni']);
 
 			if($error){
 
@@ -56,15 +64,8 @@ if (count($_GET)>0) {
 				$v->resultado = $resultado;
 				$v->render();
 
-			}else{
-				$resultado = 'Reclamo realizado con éxito';
-
-				$v = new Mis_Viajes();
-				$v->reservas = $reservas;
-				$v->resultado = $resultado;
-				$v->render();
-
 			}
+
 		}
 }
 

@@ -14,64 +14,145 @@ $res = new Reservas();
 
 if (count($_GET)>0) {
 
-  $origen = $_GET['origen'];
-  $destino = $_GET['destino'];
-  $max_pax = 200;
-  $array = array();
-
-  $resultado_vuelos = $m->getVuelosDesdeBuscadorSinFecha($origen,$destino);
-
-  foreach ($resultado_vuelos as $vuelo) {
-    $cant_pasajeros = $res->consultarCantidadPasajerosVuelo($vuelo['id_vuelos']);
-
-    if (isset($cant_pasajeros['0']['pasajeros_actual'])) {
-      $cant_restante = ($max_pax - $cant_pasajeros['0']['pasajeros_actual']);
-    }else{
-      $cant_restante = $max_pax;
-    }
-
-    $res_vuelos = array(
-                    "cant_restante" => $cant_restante,
-                    "resultado_vuelos" => $vuelo
-                  );
-    array_push($array,$res_vuelos);
-  }
-
-  $v = new Resultado_busqueda();
-  $v->resultado = $array;
-  $v->render();
-}
-
-if (count($_POST)>0) {
-
-  $origen = $_POST['origen'];
-  $destino = $_POST['destino'];
-
-  if (isset($_POST['no-fecha'])) {
-    $resultado_vuelos = $m->getVuelosDesdeBuscadorSinFecha($origen,$destino);
-  }else{
-    $fecha = $_POST['fecha'];
-    $resultado_vuelos = $m->getVuelosDesdeBuscadorConFecha($origen,$destino,$fecha);
-  }
-
-  if (empty($resultado_vuelos)) {
-    $mensaje = 'No existen vuelos que se correspondan con la busqueda';
+  if ( !isset($_GET['origen']) ) {
 
     $vuelos_precio_minimo = $m->getVuelosConPrecioMinimo();
     $size_array = count($vuelos_precio_minimo);
 
     if ($size_array<=4) {
       $v = new Principal();
-      $v->mensaje = $mensaje;
+      $v->mensaje = 'El origen y destino no existe';
       $v->vuelos_precio_minimo = $vuelos_precio_minimo;
       $v->render();
     }else{
       shuffle($vuelos_precio_minimo);
       $v = new Principal();
-      $v->mensaje = $mensaje;
+      $v->mensaje = 'El origen y destino no existe';
       $v->vuelos_precio_minimo = $vuelos_precio_minimo;
       $v->render();
     }
+
+  }elseif ( !isset($_GET['destino']) ) {
+
+    $vuelos_precio_minimo = $m->getVuelosConPrecioMinimo();
+    $size_array = count($vuelos_precio_minimo);
+
+    if ($size_array<=4) {
+      $v = new Principal();
+      $v->mensaje = 'El origen o el destino no existe';
+      $v->vuelos_precio_minimo = $vuelos_precio_minimo;
+      $v->render();
+    }else{
+      shuffle($vuelos_precio_minimo);
+      $v = new Principal();
+      $v->mensaje = 'El origen o el destino no existe';
+      $v->vuelos_precio_minimo = $vuelos_precio_minimo;
+      $v->render();
+    }
+
+  }else{
+
+    $origen = $_GET['origen'];
+    $destino = $_GET['destino'];
+
+    $max_pax = 200;
+    $array = array();
+
+    $resultado_vuelos = $m->getVuelosDesdeBuscadorSinFecha($origen,$destino);
+
+    foreach ($resultado_vuelos as $vuelo) {
+      $cant_pasajeros = $res->consultarCantidadPasajerosVuelo($vuelo['id_vuelos']);
+
+      if (isset($cant_pasajeros['0']['pasajeros_actual'])) {
+        $cant_restante = ($max_pax - $cant_pasajeros['0']['pasajeros_actual']);
+      }else{
+        $cant_restante = $max_pax;
+      }
+
+      $res_vuelos = array(
+                      "cant_restante" => $cant_restante,
+                      "resultado_vuelos" => $vuelo
+                    );
+      array_push($array,$res_vuelos);
+    }
+
+    $v = new Resultado_busqueda();
+    $v->resultado = $array;
+    $v->render();
+  }
+}
+
+
+if (count($_POST)>0) {
+
+  if ( !isset($_POST['origen']) ) {
+
+    $vuelos_precio_minimo = $m->getVuelosConPrecioMinimo();
+    $size_array = count($vuelos_precio_minimo);
+
+    if ($size_array<=4) {
+      $v = new Principal();
+      $v->mensaje = 'El origen y destino no existe';
+      $v->vuelos_precio_minimo = $vuelos_precio_minimo;
+      $v->render();
+    }else{
+      shuffle($vuelos_precio_minimo);
+      $v = new Principal();
+      $v->mensaje = 'El origen y destino no existe';
+      $v->vuelos_precio_minimo = $vuelos_precio_minimo;
+      $v->render();
+    }
+
+  }elseif ( !isset($_POST['destino']) ) {
+
+    $vuelos_precio_minimo = $m->getVuelosConPrecioMinimo();
+    $size_array = count($vuelos_precio_minimo);
+
+    if ($size_array<=4) {
+      $v = new Principal();
+      $v->mensaje = 'El origen o el destino no existe';
+      $v->vuelos_precio_minimo = $vuelos_precio_minimo;
+      $v->render();
+    }else{
+      shuffle($vuelos_precio_minimo);
+      $v = new Principal();
+      $v->mensaje = 'El origen o el destino no existe';
+      $v->vuelos_precio_minimo = $vuelos_precio_minimo;
+      $v->render();
+    }
+
+  }else{
+
+    $origen = $_POST['origen'];
+    $destino = $_POST['destino'];
+
+    if (isset($_POST['no-fecha'])) {
+      $resultado_vuelos = $m->getVuelosDesdeBuscadorSinFecha($origen,$destino);
+    }else{
+      $fecha = $_POST['fecha'];
+      $resultado_vuelos = $m->getVuelosDesdeBuscadorConFecha($origen,$destino,$fecha);
+    }
+
+    if (empty($resultado_vuelos)) {
+      $mensaje = 'No existen vuelos que se correspondan con la busqueda';
+
+      $vuelos_precio_minimo = $m->getVuelosConPrecioMinimo();
+      $size_array = count($vuelos_precio_minimo);
+
+      if ($size_array<=4) {
+        $v = new Principal();
+        $v->mensaje = $mensaje;
+        $v->vuelos_precio_minimo = $vuelos_precio_minimo;
+        $v->render();
+      }else{
+        shuffle($vuelos_precio_minimo);
+        $v = new Principal();
+        $v->mensaje = $mensaje;
+        $v->vuelos_precio_minimo = $vuelos_precio_minimo;
+        $v->render();
+      }
+    }
+  }
 
   }elseif (is_array($resultado_vuelos)) {
 

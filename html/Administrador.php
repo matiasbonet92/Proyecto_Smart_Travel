@@ -57,7 +57,7 @@
 
                 <tbody>
                   <tr class="table-primary">
-                    <th scope="row"><?= htmlentities($empresa['id_empresa'] ?></th>
+                    <th scope="row"><?= htmlentities($empresa['id_empresa']) ?></th>
                     <td><?= htmlentities($empresa['nombre']) ?></td>
                     <td><?= htmlentities($empresa['contacto']) ?></td>
                     <td><?= htmlentities($empresa['direccion']) ?></td>

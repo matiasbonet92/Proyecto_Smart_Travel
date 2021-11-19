@@ -25,52 +25,67 @@ if(isset($_GET['id_vuelo'])){
 
 }elseif (count($_POST)>0) {
 
-    if ($_POST['mail'] != 'root') {
-      $mail = $_POST['mail'];
-    }
+    $error = false;
 
-    $clave = $_POST['clave'];
-    $nombre = $_POST['nombre'];
-    $clave_repetida = $_POST['clave_repetida'];
+    try {
 
-    if ($clave==$clave_repetida) {
-      $datos_login = $u->createUsuarios($mail,$clave,$nombre);
+      if(!isset($_POST['mail'])) throw new Exception('El campo mail no puede estar vacio');
+      if(!isset($_POST['clave'])) throw new Exception('El campo clave no puede estar vacio');
+      if(!isset($_POST['nombre'])) throw new Exception('El campo nombre no puede estar vacio');
+      if(!isset($_POST['clave_repetida'])) throw new Exception('El campo clave_repetida no puede estar vacio');
+      if ($_POST['mail'] != 'root') {
+        $mail = $_POST['mail'];
+      }
+      $clave = $_POST['clave'];
+      $nombre = $_POST['nombre'];
+      $clave_repetida = $_POST['clave_repetida'];
 
-      if (is_array($datos_login)) {
+      if ($clave==$clave_repetida) {
+        $datos_login = $u->createUsuarios($mail,$clave,$nombre);
 
-        $_SESSION['logueado'] = true;
+        if (is_array($datos_login)) {
 
-        foreach($datos_login as $data){
-          $_SESSION['id_login'] = $data['id_login'];
-          $_SESSION['mail'] = $data['mail'];
-          $_SESSION['nombre'] = $data['nombre'];
+          $_SESSION['logueado'] = true;
+
+          foreach($datos_login as $data){
+            $_SESSION['id_login'] = $data['id_login'];
+            $_SESSION['mail'] = $data['mail'];
+            $_SESSION['nombre'] = $data['nombre'];
+          }
+
+          $id_vuelo = $_POST['estado'];
+          $redireccion = $_POST['redireccion'];
+
+          $mensaje = 'Complete sus datos personales ya que son obligatorios para reservar vuelos y guardar favoritos';
+          header("Location: ../controllers/perfil.php?mensaje=$mensaje&id_vuelo=$id_vuelo&redireccion=$redireccion");
+          exit;
+
         }
-
-        $id_vuelo = $_POST['estado'];
-        $redireccion = $_POST['redireccion'];
-
-        $mensaje = 'Complete sus datos personales ya que son obligatorios para reservar vuelos y guardar favoritos';
-        header("Location: ../controllers/perfil.php?mensaje=$mensaje&id_vuelo=$id_vuelo&redireccion=$redireccion");
-        exit;
 
       }else{
-
-        if (!isset($mail)) {
-          $datos_login = 'El mail root no puede ser dado de alta como usuario';
-          header("Location: ../controllers/register.php?error=$datos_login");
+          header("Location: ../controllers/register.php?error=Las claves ingresadas no son iguales");
           exit;
-        }else{
-          header("Location: ../controllers/register.php?error=$datos_login");
-          exit;
-        }
-
       }
 
-    }else{
+    } catch (Exception $err) {
 
-      header("Location: ../controllers/register.php?error=Las claves ingresadas no son iguales");
-      exit;
+      $error = true;
+      $resultado = $err->getMessage();
+
     }
+
+    if($error){
+
+      if (!isset($mail)) {
+        $datos_login = 'El mail root no puede ser dado de alta como usuario';
+        header("Location: ../controllers/register.php?error=$datos_login");
+        exit;
+      }else{
+        header("Location: ../controllers/register.php?error=$resultado");
+        exit;
+      }
+
+    }/*TERMINA*/
 
 }elseif(count($_POST)==0){
   $v = new Registro();
