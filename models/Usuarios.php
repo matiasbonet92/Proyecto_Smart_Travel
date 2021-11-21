@@ -22,12 +22,10 @@ class Usuarios extends Model{
         if(strlen($mail)<1) throw new Exception('El campo mail no puede estar vacio');
         if(strlen($mail)>100) throw new Exception('El campo mail es muy largo');
         $mail = $this->db->escape($mail);
-        $mail = $this->db->escapeWildcards($mail);
 
         if(strlen($clave)<1) throw new Exception('El campo clave no puede estar vacio');
         if(strlen($clave)>40) throw new Exception('El campo clave es muy largo');
         $clave = $this->db->escape($clave);
-        $clave = $this->db->escapeWildcards($clave);
         $clave = sha1($clave);
 
       }catch(Exception $e){
@@ -37,7 +35,7 @@ class Usuarios extends Model{
 
       if (!$error) {
         $this->db->query("SELECT * FROM usuarios
-                          WHERE mail LIKE '%$mail%' AND clave LIKE '%$clave%'");
+                          WHERE mail = '$mail' AND clave = '$clave'");
 
         if ($this->db->numRows()==0) {
           return 'El usuario no existe';
@@ -64,12 +62,10 @@ class Usuarios extends Model{
         if(strlen($mail)<1) throw new Exception('El campo mail no puede estar vacio');
         if(strlen($mail)>100) throw new Exception('El campo mail es muy grande');
         $mail = $this->db->escape($mail);
-        $mail = $this->db->escapeWildcards($mail);
 
         if(strlen($clave)<1) throw new Exception('El campo clave no puede estar vacio');
         if(strlen($clave)>40) throw new Exception('El campo clave es muy largo');
         $clave = $this->db->escape($clave);
-        $clave = $this->db->escapeWildcards($clave);
         $clave = sha1($clave);
 
       }catch(Exception $e){
@@ -79,7 +75,7 @@ class Usuarios extends Model{
 
       if (!$error) {
 
-        $this->db->query("SELECT mail FROM usuarios WHERE mail LIKE '%$mail%'");
+        $this->db->query("SELECT mail FROM usuarios WHERE mail = '$mail'");
 
         $cantidad = $this->db->numRows();
         if ($cantidad>0) {
@@ -90,7 +86,7 @@ class Usuarios extends Model{
                               VALUES ('$mail','$clave','$nombre')");
 
             $this->db->query("SELECT * FROM usuarios
-                                          WHERE mail LIKE '%$mail%' AND clave LIKE '%$clave%'");
+                                          WHERE mail = '$mail' AND clave = '$clave'");
 
             return $this->db->fetchAll();
           }
