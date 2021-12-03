@@ -116,6 +116,10 @@
               exit;
             }
 
+          }else{
+            $v = new Ingreso();
+            $v->error = $login_correcto;
+            $v->render();
           }
 
         } catch (Exception $err) {
