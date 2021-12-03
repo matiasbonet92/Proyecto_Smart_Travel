@@ -169,6 +169,8 @@ if (isset($_SESSION['logueado'])) {
 
     }
 
+  }
+
 }else{
 
   $v = new Ingreso();
