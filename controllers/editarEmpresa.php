@@ -56,7 +56,7 @@ if (isset($_SESSION['logueado'])) {
 
     try {
 
-      if(!isset($_POST['id_empresa'])) throw new Exception('El campo id_empresa no puede estar vacio');
+      if(!isset($_GET['id_empresa'])) throw new Exception('El campo id_empresa no puede estar vacio');
       $id = $_GET['id_empresa'];
       $datos = $e->getEmpresaById($id);
 
